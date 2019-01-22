@@ -122,19 +122,19 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="概述我们需要自己定义一些需求，要有网络请求，要跟服务器进行交互，能把数据存在我们本地的数据库里。而不是简单看了小程序API文档，在手机上显示几个界面和控件。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/smallprogram3.jpg">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/xiaochengxuluoji.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/login.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/shouye.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/shenqing.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/tongzhi1.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/handleinfo.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/result.png">
-<meta property="og:updated_time" content="2018-11-06T00:46:02.653Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/smallprogram3.jpg">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/xiaochengxuluoji.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/login.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shouye.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shenqing.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/tongzhi1.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/handleinfo.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/result.png">
+<meta property="og:updated_time" content="2019-01-22T09:32:41.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信小程序（三）——需求逻辑篇">
 <meta name="twitter:description" content="概述我们需要自己定义一些需求，要有网络请求，要跟服务器进行交互，能把数据存在我们本地的数据库里。而不是简单看了小程序API文档，在手机上显示几个界面和控件。">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/smallprogram3.jpg">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/smallprogram3.jpg">
 
 
 
@@ -449,11 +449,11 @@
       
 
       
-        <p><img src="http://oxr4g4c3v.bkt.clouddn.com/smallprogram3.jpg" alt=""></p>
+        <p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/smallprogram3.jpg" alt=""></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>我们需要自己定义一些需求，要有网络请求，要跟服务器进行交互，能把数据存在我们本地的数据库里。而不是简单看了小程序API文档，在手机上显示几个界面和控件。<br> <a id="more"></a> </p>
 <h1 id="具体需求"><a href="#具体需求" class="headerlink" title="具体需求"></a>具体需求</h1><p>请假出差申请系统概述：员工根据姓名和工号登录并绑定openid，进入小程序主页index，员工可向具有审核能力的人（通常是公司领导）申请出差或请假，post提交具体参数到后台，同时推送提交服务通知（类似一条微信消息）给审核人，告知其需要处理。处理结果再post到后台，并同时将处理结果以服务通知的形式推送给申请人。</p>
-<h1 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h1><p>申请小程序与审核小程序为同一款小程序：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/xiaochengxuluoji.png" alt=""></p>
-<h1 id="效果模拟"><a href="#效果模拟" class="headerlink" title="效果模拟"></a>效果模拟</h1><p>我们主要实现这里的逻辑，界面会粗糙一点。<br>首次进入会登录，第二进入不会有登录过程：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/login.png" alt=""><br>首页：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/shouye.png" alt=""><br>提交一个申请：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/shenqing.png" alt=""><br>审核人收到一个申请：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/tongzhi1.png" alt=""><br>处理一个申请<br><img src="http://oxr4g4c3v.bkt.clouddn.com/handleinfo.png" alt=""><br>申请人收到申请结果<br><img src="http://oxr4g4c3v.bkt.clouddn.com/result.png" alt=""></p>
+<h1 id="逻辑图"><a href="#逻辑图" class="headerlink" title="逻辑图"></a>逻辑图</h1><p>申请小程序与审核小程序为同一款小程序：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/xiaochengxuluoji.png" alt=""></p>
+<h1 id="效果模拟"><a href="#效果模拟" class="headerlink" title="效果模拟"></a>效果模拟</h1><p>我们主要实现这里的逻辑，界面会粗糙一点。<br>首次进入会登录，第二进入不会有登录过程：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/login.png" alt=""><br>首页：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shouye.png" alt=""><br>提交一个申请：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shenqing.png" alt=""><br>审核人收到一个申请：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/tongzhi1.png" alt=""><br>处理一个申请<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/handleinfo.png" alt=""><br>申请人收到申请结果<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/result.png" alt=""></p>
 
       
     </div>
@@ -531,8 +531,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/25/微信小程序（二）——开发工具篇/" rel="prev" title="微信小程序（二）——开发工具篇">
-                微信小程序（二）——开发工具篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/25/微信小程序（一）——简介/" rel="prev" title="微信小程序（一）——简介">
+                微信小程序（一）——简介 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -605,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -665,7 +665,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

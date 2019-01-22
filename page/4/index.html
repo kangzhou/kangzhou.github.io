@@ -444,7 +444,7 @@
 
       
         
-          <p><blockquote class="blockquote-center"><br><em>这座城市特别亮，到处都有光</em><br><em>我觉得我只要站在光里</em><br><em>我就能够虚张声势</em><br></blockquote><br><img src="http://oxr4g4c3v.bkt.clouddn.com/takedream.jpg" alt=""></p>
+          <p><blockquote class="blockquote-center"><br><em>这座城市特别亮，到处都有光</em><br><em>我觉得我只要站在光里</em><br><em>我就能够虚张声势</em><br></blockquote><br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/takedream.jpg" alt=""></p>
 <p>今天不聊技术，聊聊人生吧。<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -617,6 +617,169 @@
         
       
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2017/05/12/关于1.7和1.8的HashMap分析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/05/12/关于1.7和1.8的HashMap分析/" itemprop="url">
+                  关于1.7和1.8的HashMap分析
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-05-12 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-12T00:00:00+08:00">2017-05-12</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
+<li><p>HashMap类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span></span><br><span class="line"><span class="class">         <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>类介绍<br>定义：基于哈希表的Map接口的实现类，继承了AbstractMap抽象类，同时实现了Map（基于Map），Cloneable（可克隆）,Serializable（序列化）接口。<br>特点：允许空值空键，非安全线程，不保证有序。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/12/关于1.7和1.8的HashMap分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ul></div>
 
     
 
@@ -1088,7 +1251,7 @@ TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发�
 
       
         
-          <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1508492533211&amp;di=de3abd21f5b11532b18ebae729c43827&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160914%2F38b0c776230244d7a7b7431c85bde0ac_th.jpg" alt=""></p>
+          <p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/java_title.jpg" alt=""></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>算法几乎在所有的面试中都会遇到，尤其是在笔试的时候，除了理论知识外，就是要求手写算法。今天尝试手写几个经典算法。<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1247,7 +1410,7 @@ TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发�
 
       
         
-          <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1508492533211&amp;di=de3abd21f5b11532b18ebae729c43827&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160914%2F38b0c776230244d7a7b7431c85bde0ac_th.jpg" alt=""></p>
+          <p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/java_title.jpg" alt=""></p>
 <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>面试的时候遇到过这样一道算法题，已知HashMap map,User类中有int age，String name属性。请根据User中的age进行降序排序。我们知道HashMap是没有顺序的，这里应该怎么处理呢？回来后想想应该用LinkedHashMap，LinkedHashMap是有顺序的而且是继承HashMap。<br>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1406,16 +1569,12 @@ TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发�
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>ListView是我最初学Android时最常用的几个控件之一了，那时候根本不知道什么是自定义View，什么是优化。后来看了别人写的代码才发现在getView里面还能有这样的操作呢！ListView的优化是我每次去面试必问的几道面试题之一。当然内容也很简单，今天不细讲，就大概汇总一下。</p>
-<h1 id="ListView的优化方案"><a href="#ListView的优化方案" class="headerlink" title="ListView的优化方案"></a>ListView的优化方案</h1><ol>
-<li>复用converView<br>目的不用每次都findViewbyid</li>
-<li>定义静态内部类ViewHolder<br>为了避免对外部类（外部类很可能是Activity）对象的引用，那么最好将内部类声明为static的（非必须的）。</li>
-<li>尽可能减少在getView中的逻辑判断</li>
-<li>Item布局优化<br>减少布局镶嵌，减少背景覆盖（重复渲染）</li>
-<li>滑动时停止加载图片</li>
-<li>使用分页</li>
-<li>数据类型考虑使用弱引用</li>
-<li>缓存
+          
+          概述ListView是我最初学Android时最常用的几个控件之一了，那时候根本不知道什么是自定义View，什么是优化。后来看了别人写的代码才发现在getView里面还能有这样的操作呢！ListView的优化是我每次去面试必问的几道面试题之一。当然内容也很简单，今天不细讲，就大概汇总一下。
+ListView的优化方案
+复用converView目的不用每次都findViewbyid
+定义静态内部类V
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/03/25/ListView的优化/#more" rel="contents">
@@ -1425,7 +1584,7 @@ TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发�
           <!--/noindex-->
         
       
-    </li></ol></div>
+    </div>
 
     
 
@@ -1671,7 +1830,7 @@ TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1731,7 +1890,9 @@ TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发�
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -114,27 +114,27 @@
 
 
 
-  <meta name="description" content="前言在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。 简介 HashMap类 12public class HashMap&amp;lt;K,V&amp;gt; extends AbstractMap&amp;lt;K,V&amp;gt;          implements Map&amp;lt;K,V&amp;gt;, Cloneable, Serial">
-<meta name="keywords" content="HashMap">
+  <meta name="description" content="概述在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。关于更多关于Binder机制的知识可参看《IPC机制》">
+<meta name="keywords" content="Binder">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于1.7和1.8的HashMap分析">
-<meta property="og:url" content="http://kangzhou.github.io/2018/04/04/关于1.7和1.8的HashMap分析/index.html">
+<meta property="og:title" content="IPC的实现：AIDL">
+<meta property="og:url" content="http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="前言在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。 简介 HashMap类 12public class HashMap&amp;lt;K,V&amp;gt; extends AbstractMap&amp;lt;K,V&amp;gt;          implements Map&amp;lt;K,V&amp;gt;, Cloneable, Serial">
+<meta property="og:description" content="概述在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。关于更多关于Binder机制的知识可参看《IPC机制》">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/944365-37470dbec0adc57a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-10-23T05:59:42.505Z">
+<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta property="og:updated_time" content="2019-01-22T07:49:24.097Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于1.7和1.8的HashMap分析">
-<meta name="twitter:description" content="前言在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。 简介 HashMap类 12public class HashMap&amp;lt;K,V&amp;gt; extends AbstractMap&amp;lt;K,V&amp;gt;          implements Map&amp;lt;K,V&amp;gt;, Cloneable, Serial">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/944365-37470dbec0adc57a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="IPC的实现：AIDL">
+<meta name="twitter:description" content="概述在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。关于更多关于Binder机制的知识可参看《IPC机制》">
+<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2018/04/04/关于1.7和1.8的HashMap分析/">
+  <link rel="canonical" href="http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/">
 
 
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title>关于1.7和1.8的HashMap分析 | 周康的博客</title>
+  <title>IPC的实现：AIDL | 周康的博客</title>
   
 
 
@@ -348,7 +348,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/04/关于1.7和1.8的HashMap分析/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">关于1.7和1.8的HashMap分析
+          <h1 class="post-title" itemprop="name headline">IPC的实现：AIDL
               
             
           </h1>
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2018-04-04 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-04T00:00:00+08:00">2018-04-04</time>
+              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
             
 
             
@@ -408,7 +408,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -442,22 +442,12 @@
       
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
-<li><p>HashMap类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span></span><br><span class="line"><span class="class">         <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。<br>两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。<br>关于更多关于Binder机制的知识可参看《<a href="/2018/04/09/IPC机制/" title="IPC机制">IPC机制</a>》<br><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
+<h1 id="AIDL具体实现"><a href="#AIDL具体实现" class="headerlink" title="AIDL具体实现"></a>AIDL具体实现</h1><ol>
+<li>首先定义AIDL文件，<strong>IMyAidlInterface.aidl：</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IMyAidlInterface.aidl</span></span><br><span class="line"><span class="keyword">package</span> com.zhouk.soft.mystudio;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Declare any non-default types here with import statements</span></span><br><span class="line"><span class="keyword">import</span> com.zhouk.soft.mystudio.entity.TestAidlBean;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">IMyAidlInterface</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">AIDL_Service</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addMyAidlBean</span><span class="params">(in TestAidlBean bean)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">List&lt;TestAidlBean&gt; <span class="title">getList</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>类介绍<br>定义：基于哈希表的Map接口的实现类，继承了AbstractMap抽象类，同时实现了Map（基于Map），Cloneable（可克隆）,Serializable（序列化）接口。<br>特点：允许空值空键，非安全线程，不保证有序。</p>
-<a id="more"></a>
-<h1 id="HashMap的实现"><a href="#HashMap的实现" class="headerlink" title="HashMap的实现"></a>HashMap的实现</h1><p>简单来说，<strong>HashMap是基于数组+链表的形式来实现的</strong>。<br>数组的元素就是键值对（一个链表），数组的下标就是Key的hash值，数组的大小就是HashMap的容量。由于不同的Key计算的hash值可能会相同（hash冲突），链表就是用于解决这种冲突的。即发生冲突时，新元素插入到链表头中，新元素总是添加到数组里，旧元素移到单列表中。<br>假设自己设计一个类似HashMap的类，可以采用数组+Entry的形式实现，Entry对象用来存放Key和Value。其插入和查询的都是O(n)级别的。</p>
-</li>
-</ul>
-<h1 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h1><p><img src="http://upload-images.jianshu.io/upload_images/944365-37470dbec0adc57a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HashMap示意图"></p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">V <span class="title">get</span><span class="params">(Object key)</span></span>; <span class="comment">// 获得指定键的值</span></span><br><span class="line"><span class="function">V <span class="title">put</span><span class="params">(K key, V value)</span></span>;  <span class="comment">// 添加键值对</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">putAll</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span></span>;  <span class="comment">// 将指定Map中的键值对 复制到 此Map中</span></span><br><span class="line"><span class="function">V <span class="title">remove</span><span class="params">(Object key)</span></span>;  <span class="comment">// 删除该键值对</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(Object key)</span></span>; <span class="comment">// 判断是否存在该键的键值对；是 则返回true</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">containsValue</span><span class="params">(Object value)</span></span>;  <span class="comment">// 判断是否存在该值的键值对；是 则返回true</span></span><br><span class="line"></span><br><span class="line"><span class="function">Set&lt;K&gt; <span class="title">keySet</span><span class="params">()</span></span>;  <span class="comment">// 单独抽取key序列，将所有key生成一个Set</span></span><br><span class="line"><span class="function">Collection&lt;V&gt; <span class="title">values</span><span class="params">()</span></span>;  <span class="comment">// 单独value序列，将所有value生成一个Collection</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>; <span class="comment">// 清除哈希表中的所有键值对</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>;  <span class="comment">// 返回哈希表中所有 键值对的数量 = 数组中的键值对 + 链表中的键值对</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isEmpty</span><span class="params">()</span></span>; <span class="comment">// 判断HashMap是否为空；size == 0时 表示为 空</span></span><br></pre></td></tr></table></figure>
-<h1 id="1-7与1-8HashMap的区别"><a href="#1-7与1-8HashMap的区别" class="headerlink" title="1.7与1.8HashMap的区别"></a>1.7与1.8HashMap的区别</h1><p>以上的分析主要是针对1.7的分析，其与1.8版本中最大的区别是加入了红黑树。即：<strong>数组+链表+红黑树</strong>。<br>在实现过程中将原先1.7的Entry换成了Node。当链表长度小于等于8时，两个版本无异，都是链表存放。当链表长度大于8时，就会将链表改成红黑树。<br>由于链表过长的话会导致索引变慢，而红黑树具有快速增删改查的优点，因此长度大于8时采用数组+红黑树的形式实现。<br>有关于红黑树的介绍，可参看《》。</p>
-<h1 id="问题探究"><a href="#问题探究" class="headerlink" title="问题探究"></a>问题探究</h1><h2 id="当-key-null时，该键值对存放什么位置？"><a href="#当-key-null时，该键值对存放什么位置？" class="headerlink" title="当 key ==null时，该键值对存放什么位置？"></a>当 key ==null时，该键值对存放什么位置？</h2><p>当 key ==null时，将该 key-value 的存储位置规定为数组table 中的第1个位置，即table [0]。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 函数使用原型</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">      <span class="keyword">if</span> (key == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">return</span> putForNullKey(value);</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 源码分析：putForNullKey(value)</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">      <span class="function"><span class="keyword">private</span> V <span class="title">putForNullKey</span><span class="params">(V value)</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// 遍历以table[0]为首的链表，寻找是否存在key==null 对应的键值对</span></span><br><span class="line">        <span class="comment">// 1. 若有：则用新value 替换 旧value；同时返回旧的value值</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;K,V&gt; e = table[<span class="number">0</span>]; e != <span class="keyword">null</span>; e = e.next) &#123;  </span><br><span class="line">          <span class="keyword">if</span> (e.key == <span class="keyword">null</span>) &#123;   </span><br><span class="line">            V oldValue = e.value;  </span><br><span class="line">            e.value = value;  </span><br><span class="line">            e.recordAccess(<span class="keyword">this</span>);  </span><br><span class="line">            <span class="keyword">return</span> oldValue;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    modCount++;  </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2 .若无key==null的键，那么调用addEntry（），将空键 &amp; 对应的值封装到Entry中，并放到table[0]中</span></span><br><span class="line">    addEntry(<span class="number">0</span>, <span class="keyword">null</span>, value, <span class="number">0</span>); </span><br><span class="line">    <span class="comment">// 注：</span></span><br><span class="line">    <span class="comment">// a. addEntry（）的第1个参数 = hash值 = 传入0</span></span><br><span class="line">    <span class="comment">// b. 即 说明：当key = null时，也有hash值 = 0，所以HashMap的key 可为null</span></span><br><span class="line">    <span class="comment">// c. 对比HashTable，由于HashTable对key直接hashCode（），若key为null时，会抛出异常，所以HashTable的key不可为null</span></span><br><span class="line">    <span class="comment">// d. 此处只需知道是将 key-value 添加到HashMap中即可，关于addEntry（）的源码分析将等到下面再详细说明，</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="equals-和-的区别，hashCode-与它们之间的联系？"><a href="#equals-和-的区别，hashCode-与它们之间的联系？" class="headerlink" title="equals 和 == 的区别，hashCode 与它们之间的联系？"></a>equals 和 == 的区别，hashCode 与它们之间的联系？</h2><p>equals是针对于内容，==是针对于地址或者基本数据类型的值。在Object中，equals就是==，即是否指向同一对象。<br>equals于hashCode的联系是：<br>原则 1 ： 如果 x.equals(y) 返回 “true”，那么 x 和 y 的 hashCode() 必须相等 ；<br>原则 2 ： 如果 x.equals(y) 返回 “false”，那么 x 和 y 的 hashCode() 有可能相等，也有可能不等 ；<br>原则 3 ： 如果 x 和 y 的 hashCode() 不相等，那么 x.equals(y) 一定返回 “false” ；</p>
-<h2 id="HashMap-的长度为什么是-2-的幂次？"><a href="#HashMap-的长度为什么是-2-的幂次？" class="headerlink" title="HashMap 的长度为什么是 2 的幂次？"></a>HashMap 的长度为什么是 2 的幂次？</h2><h2 id="多线程同时往-HashMap-中-put-数据会发生什么？"><a href="#多线程同时往-HashMap-中-put-数据会发生什么？" class="headerlink" title="多线程同时往 HashMap 中 put 数据会发生什么？"></a>多线程同时往 HashMap 中 put 数据会发生什么？</h2>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
       
     </div>
 
@@ -478,7 +468,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2018/04/04/关于1.7和1.8的HashMap分析/" title="关于1.7和1.8的HashMap分析">http://kangzhou.github.io/2018/04/04/关于1.7和1.8的HashMap分析/</a>
+    <a href="http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/" title="IPC的实现：AIDL">http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -491,7 +481,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HashMap/" rel="tag"># HashMap</a>
+            <a href="/tags/Binder/" rel="tag"># Binder</a>
           
         </div>
       
@@ -608,7 +598,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -668,7 +658,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -728,7 +720,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简介"><span class="nav-number">2.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap的实现"><span class="nav-number">3.</span> <span class="nav-text">HashMap的实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示意图"><span class="nav-number">4.</span> <span class="nav-text">示意图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">5.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-7与1-8HashMap的区别"><span class="nav-number">6.</span> <span class="nav-text">1.7与1.8HashMap的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题探究"><span class="nav-number">7.</span> <span class="nav-text">问题探究</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#当-key-null时，该键值对存放什么位置？"><span class="nav-number">7.1.</span> <span class="nav-text">当 key ==null时，该键值对存放什么位置？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#equals-和-的区别，hashCode-与它们之间的联系？"><span class="nav-number">7.2.</span> <span class="nav-text">equals 和 == 的区别，hashCode 与它们之间的联系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-的长度为什么是-2-的幂次？"><span class="nav-number">7.3.</span> <span class="nav-text">HashMap 的长度为什么是 2 的幂次？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程同时往-HashMap-中-put-数据会发生什么？"><span class="nav-number">7.4.</span> <span class="nav-text">多线程同时往 HashMap 中 put 数据会发生什么？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AIDL具体实现"><span class="nav-number">2.</span> <span class="nav-text">AIDL具体实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

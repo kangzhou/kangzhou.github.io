@@ -122,13 +122,13 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="概述Android事件分发也属于Android的基础，我尝试用自己的话来叙述一下，结果说不出来…能理解，但是不能说，只能说是不太熟悉。还是写一篇文章来记录一下吧。 使用场景">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/shijianfenfa1.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/shijianfenfa2.png">
-<meta property="og:updated_time" content="2018-11-05T08:55:11.363Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shijianfenfa1.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shijianfenfa2.png">
+<meta property="og:updated_time" content="2019-01-22T07:48:27.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android事件分发">
 <meta name="twitter:description" content="概述Android事件分发也属于Android的基础，我尝试用自己的话来叙述一下，结果说不出来…能理解，但是不能说，只能说是不太熟悉。还是写一篇文章来记录一下吧。 使用场景">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/shijianfenfa1.png">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shijianfenfa1.png">
 
 
 
@@ -444,7 +444,7 @@
 
       
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Android事件分发也属于Android的基础，我尝试用自己的话来叙述一下，结果说不出来…能理解，但是不能说，只能说是不太熟悉。还是写一篇文章来记录一下吧。</p>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/shijianfenfa1.png" alt=""><br><a id="more"></a><br>在View与View之间嵌套的时候，通常要处理事件的分发，判断是否拦截或是下发一个事件。<br>事件作用于View，分发的对象是对触摸屏幕产生的事件，让该事件在具体View上产生作用。<br>所以，分发的对象是：点击事件。作用的对象是：Activity，ViewGroup，View。<br>分发的顺序是：Activity ——&gt; ViewGroup ——&gt; View<br><img src="http://oxr4g4c3v.bkt.clouddn.com/shijianfenfa2.png" alt=""></p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shijianfenfa1.png" alt=""><br><a id="more"></a><br>在View与View之间嵌套的时候，通常要处理事件的分发，判断是否拦截或是下发一个事件。<br>事件作用于View，分发的对象是对触摸屏幕产生的事件，让该事件在具体View上产生作用。<br>所以，分发的对象是：点击事件。作用的对象是：Activity，ViewGroup，View。<br>分发的顺序是：Activity ——&gt; ViewGroup ——&gt; View<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shijianfenfa2.png" alt=""></p>
 <h1 id="事件类型"><a href="#事件类型" class="headerlink" title="事件类型"></a>事件类型</h1><p>MotionEvent.ACTION_DOWN 按下View（所有事件的开始）<br>MotionEvent.ACTION_UP 抬起View（与DOWN对应）<br>MotionEvent.ACTION_MOVE 滑动View<br>MotionEvent.ACTION_CANCEL 结束事件（非人为原因）</p>
 <h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><ol>
 <li>dispatchTouchEvent：<br>用来进行事件的分发。<br>如果事件能够被传递给当前View，那么此方法一定会被调用，返回结果受到当前View的onTouchEvent和下级View的dispatchTouchEvent方法影响，表示是否消耗当前事件。</li>
@@ -608,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -668,7 +668,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/04/关于1.7和1.8的HashMap分析/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -364,8 +364,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/04/关于1.7和1.8的HashMap分析/" itemprop="url">
-                  关于1.7和1.8的HashMap分析
+                <a class="post-title-link" href="/2018/04/09/IPC的实现：AIDL/" itemprop="url">
+                  IPC的实现：AIDL
                 </a>
               
             
@@ -391,7 +391,7 @@
                 
               
 
-              <time title="创建时间：2018-04-04 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-04T00:00:00+08:00">2018-04-04</time>
+              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
             
 
             
@@ -409,7 +409,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -444,22 +444,17 @@
 
       
         
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><ul>
-<li><p>HashMap类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span></span><br><span class="line"><span class="class">         <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>类介绍<br>定义：基于哈希表的Map接口的实现类，继承了AbstractMap抽象类，同时实现了Map（基于Map），Cloneable（可克隆）,Serializable（序列化）接口。<br>特点：允许空值空键，非安全线程，不保证有序。</p>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。<br>两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。<br>关于更多关于Binder机制的知识可参看《<a href="/2018/04/09/IPC机制/" title="IPC机制">IPC机制</a>》<br><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/04/关于1.7和1.8的HashMap分析/#more" rel="contents">
+            <a class="btn" href="/2018/04/09/IPC的实现：AIDL/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </li></ul></div>
+    </p></div>
 
     
 
@@ -607,7 +602,7 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Java虚拟机在运行时的区域称为Java运行时数据区，同时会分成不同的区域各司其职，Java虚拟机运行数据区结构如图显示：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Java虚拟机在运行时的区域称为Java运行时数据区，同时会分成不同的区域各司其职，Java虚拟机运行数据区结构如图显示：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-neicun2.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/03/JVM：内存结构/#more" rel="contents">
@@ -1082,7 +1077,7 @@
       
         
           <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Android事件分发也属于Android的基础，我尝试用自己的话来叙述一下，结果说不出来…能理解，但是不能说，只能说是不太熟悉。还是写一篇文章来记录一下吧。</p>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/shijianfenfa1.png" alt=""><br>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/shijianfenfa1.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/03/18/Android事件分发/#more" rel="contents">
@@ -1716,7 +1711,7 @@
       
         
           <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在众多的图片加载的框架中，个人觉得<strong>Glide</strong>是表现的最好的，尤其是它缓存策略的设计，今天来根据源码来看一下<strong>Glide</strong>里面是如何运作的。由于<strong>Glide</strong>代码十分的庞大，而且隐晦难懂。这里主要是理解其中的含义，点到为止。该系列分为两篇来记录：<br><a href="/2018/02/24/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a><br><a href="/2018/02/25/Glide源码分析（二）/" title="Glide源码分析（二）">Glide源码分析（二）</a></p>
-<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/Glide-1.jpg" alt=""><br>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/Glide-1.jpg" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/24/Glide源码分析（一）/#more" rel="contents">
@@ -1775,7 +1770,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/25/微信小程序（一）——简介/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/25/微信小程序（二）——开发工具篇/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -1794,8 +1789,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/25/微信小程序（一）——简介/" itemprop="url">
-                  微信小程序（一）——简介
+                <a class="post-title-link" href="/2018/01/25/微信小程序（二）——开发工具篇/" itemprop="url">
+                  微信小程序（二）——开发工具篇
                 </a>
               
             
@@ -1874,11 +1869,13 @@
 
       
         
-          <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1517220945407&amp;di=1c2d1b13d4b95ab9b771cf2ea4879ff2&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.woshipm.com%2Fwp-files%2F2017%2F01%2FlkRmKU9XOOADaT96fRv0.jpg" alt=""></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>已经一个多月没有更新博客了，这段时间一直都在研究小程序，现在小程序火的是一塌糊涂，微信对我来说，算是最成功的产品了，没有之一。
+          <h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><p>服务器：<br><a href="https://www.apachefriends.org/zh_cn/index.html" target="_blank" rel="noopener">XAMPP下载:</a>用于搭建部署本地Apach服务器<br><a href="http://www.sublimetext.com/" target="_blank" rel="noopener">subline编辑器</a>：用于编写后台接口<br><a href="https://www.getpostman.com/postman" target="_blank" rel="noopener">Postman：</a>用于接口测试<br><a href="https://www.navicat.com.cn/download/navicat-for-mysql" target="_blank" rel="noopener">NAVICAT：</a>用来管理查看数据库</p>
+<p>小程序开发工具：<br><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=2018125" target="_blank" rel="noopener">微信开发者工具：</a>开发小程序</p>
+<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p>后台接口用了ThinkPHP5框架来编写，对我这种不会php，不会写后台的人来说，这个框架帮了我的大忙，国人写的框架，文档教材写的非常的详细，很多问题都能在文档中找到解决的办法</p>
+<p>ThinkPHP5:<br><a href="https://www.kancloud.cn/manual/thinkphp5/118003" target="_blank" rel="noopener">ThinkPHP5开发文档</a><br><a href="http://www.thinkphp.cn/" target="_blank" rel="noopener">ThinkPHP5下载</a><br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/25/微信小程序（一）——简介/#more" rel="contents">
+            <a class="btn" href="/2018/01/25/微信小程序（二）——开发工具篇/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1968,7 +1965,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2028,7 +2025,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

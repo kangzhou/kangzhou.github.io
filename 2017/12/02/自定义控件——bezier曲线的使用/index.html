@@ -123,9 +123,9 @@
 <meta property="og:description" content="概述关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客HenCoder今天尝试用贝瑟尔曲线自定义一个控件，效果如下：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/bezierAn.png">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/view1.gif">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/bezierAn.png">
-<meta property="og:updated_time" content="2018-11-02T07:29:38.200Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view1.gif">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png">
+<meta property="og:updated_time" content="2019-01-22T09:36:12.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义控件——bezier曲线的使用">
 <meta name="twitter:description" content="概述关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客HenCoder今天尝试用贝瑟尔曲线自定义一个控件，效果如下：">
@@ -445,8 +445,8 @@
 
       
         <p><img src="http://oxr4g4c3v.bkt.clouddn.com/bezierAn.png" alt=""></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客<a href="http://hencoder.com/" target="_blank" rel="noopener">HenCoder</a><br>今天尝试用贝瑟尔曲线自定义一个控件，效果如下：<br><a id="more"></a><br><img src="http://oxr4g4c3v.bkt.clouddn.com/view1.gif" alt=""><br>是不是有种似曾相识的感觉，没错啦，就是QQ消息拖拽的效果。<br>如果还有人不太了解贝瑟尔曲线，可以<a href="http://www.html-js.com/article/1628" target="_blank" rel="noopener">拼命戳我</a>,里面介绍的很详细。</p>
-<h1 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h1><p>首先看下这个图：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/bezierAn.png" alt=""><br>可以看出这里涉及到一些三角函数方面的数学知识，我们都可以用代码的形式把它表述出来。以下：</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客<a href="http://hencoder.com/" target="_blank" rel="noopener">HenCoder</a><br>今天尝试用贝瑟尔曲线自定义一个控件，效果如下：<br><a id="more"></a><br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view1.gif" alt=""><br>是不是有种似曾相识的感觉，没错啦，就是QQ消息拖拽的效果。<br>如果还有人不太了解贝瑟尔曲线，可以<a href="http://www.html-js.com/article/1628" target="_blank" rel="noopener">拼命戳我</a>,里面介绍的很详细。</p>
+<h1 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h1><p>首先看下这个图：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png" alt=""><br>可以看出这里涉及到一些三角函数方面的数学知识，我们都可以用代码的形式把它表述出来。以下：</p>
 <ol>
 <li><p>先有一个拖动大圆c1的圆心，和一个固定小圆c0圆心。我点击屏幕的地方就是两个圆的圆心，获取圆心：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">switch</span> (event.getAction())&#123;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">               iniPoint(event.getX(),event.getY());<span class="comment">//获取圆心</span></span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">               upPoint(event.getX(),event.getY());<span class="comment">//移动的时候拖动圆一直在动，固定圆不动</span></span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       invalidate();</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 按下便初始化该点</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">iniPoint</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>&#123;</span><br><span class="line">       PressPoint = <span class="keyword">new</span> PointF(x,y);</span><br><span class="line">       unPressPoint = <span class="keyword">new</span> PointF(x,y);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 移动该点</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">upPoint</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>&#123;<span class="comment">//移动的时候拖动圆一直在动，固定圆不动</span></span><br><span class="line">       PressPoint.x = x;</span><br><span class="line">       PressPoint.y = y;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
@@ -623,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -683,7 +683,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="概述选择合适的数据结构来对日常的数据进行增删改查是十分必要的，不同的结构在不同的情况下会表现出不同的效果，今天记录一下List、Set、Map的一些特点。List、Set、Map在Java中被定义为借口，都有增删改查的方法。Collection也是接口，是所有集合类的接口。继承实现关系如下：123456789101112131415Collection&amp;lt;–List&amp;lt;–ArrayList">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-07T03:03:55.442Z">
+<meta property="og:updated_time" content="2019-01-22T08:19:35.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="List、Set、Map数据结构">
 <meta name="twitter:description" content="概述选择合适的数据结构来对日常的数据进行增删改查是十分必要的，不同的结构在不同的情况下会表现出不同的效果，今天记录一下List、Set、Map的一些特点。List、Set、Map在Java中被定义为借口，都有增删改查的方法。Collection也是接口，是所有集合类的接口。继承实现关系如下：123456789101112131415Collection&amp;lt;–List&amp;lt;–ArrayList">
@@ -452,7 +452,7 @@
 </ul>
 <h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><p>关联键和值，存放关联的键值对，根据键来获取值，所以必须保证键的唯一性</p>
 <ul>
-<li>HashMap<br>最常用的Map，基于<strong>数组和链表</strong>实现，根据键算出一个hash值，确定一个存放的index，允许null。具体可参看《<a href="/2018/04/04/关于1.7和1.8的HashMap分析/" title="关于1.7和1.8的HashMap分析">关于1.7和1.8的HashMap分析</a>》</li>
+<li>HashMap<br>最常用的Map，基于<strong>数组和链表</strong>实现，根据键算出一个hash值，确定一个存放的index，允许null。具体可参看《<a href="/2017/05/12/关于1.7和1.8的HashMap分析/" title="关于1.7和1.8的HashMap分析">关于1.7和1.8的HashMap分析</a>》</li>
 <li>LinkedHashMap<br>LinkedHashMap继承自HashMap，特点是内部存入数据是有顺序的，增加了记住元素插入或者访问顺序的功能，这个是通过内部一个<strong>双向的循环链表</strong>实现的。</li>
 <li>TreeMap<br>基于<strong>红黑二叉树</strong>的NavigableMap的实现，线程非安全，不允许null，key不可以重复</li>
 <li>HashTable<br><strong>线程安全</strong>，其他均与HashMap相同</li>
@@ -469,14 +469,16 @@
 <li>TreeSet<br>实现了SortedSet接口，所以是有序的，基于TreeMap（二叉树）实现的，同样不能重复，但是不能为空<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>大多数情况下，从性能上来说ArrayList最好</p>
-<p>当集合内的元素需要频繁插入、删除时LinkedList会有比较好的表现</p>
-<p>它们三个性能都比不上数组，另外Vector是线程同步的</p>
-<p>能用数组的时候(元素类型固定，数组长度固定)，请尽量使用数组来代替List</p>
-<p>没有频繁的删除插入操作，又不用考虑多线程问题，优先选择ArrayList</p>
-<p>在多线程条件下使用，可以考虑Vector</p>
-<p>需要频繁地删除插入，LinkedList就有了用武之地</p>
-<p>如果你什么都不知道，用ArrayList没错。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li>大多数情况下，从性能上来说ArrayList最好</li>
+<li>当集合内的元素需要频繁插入、删除时LinkedList会有比较好的表现</li>
+<li>它们三个性能都比不上数组，另外Vector是线程同步的</li>
+<li>能用数组的时候(元素类型固定，数组长度固定)，请尽量使用数组来代替List</li>
+<li>没有频繁的删除插入操作，又不用考虑多线程问题，优先选择ArrayList</li>
+<li>在多线程条件下使用，可以考虑Vector</li>
+<li>需要频繁地删除插入，LinkedList就有了用武之地</li>
+<li>如果你什么都不知道，用ArrayList没错。</li>
+</ol>
 
       
     </div>
@@ -628,7 +630,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -688,7 +690,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

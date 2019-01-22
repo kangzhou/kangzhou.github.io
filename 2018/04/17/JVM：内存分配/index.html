@@ -122,12 +122,12 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="前言在开发过程中如果要创建一个对象可以通过以下几种方式：new、克隆（Clone）、反射（Class.forName(“类全限定名”).newInstance()，Constructor类的newInstance）。今天只针对通过关键字new来创建对象作分析，通过new创建一个对象的方式如下：1Object o = new Object(); 但在new之后J虚拟机还会经过一系列的操作才能创建，今">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-newobject1.png">
-<meta property="og:updated_time" content="2018-11-05T00:43:45.064Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-newobject1.png">
+<meta property="og:updated_time" content="2019-01-22T08:16:08.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM：Java对象的创建与内存布局">
 <meta name="twitter:description" content="前言在开发过程中如果要创建一个对象可以通过以下几种方式：new、克隆（Clone）、反射（Class.forName(“类全限定名”).newInstance()，Constructor类的newInstance）。今天只针对通过关键字new来创建对象作分析，通过new创建一个对象的方式如下：1Object o = new Object(); 但在new之后J虚拟机还会经过一系列的操作才能创建，今">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-newobject1.png">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-newobject1.png">
 
 
 
@@ -444,7 +444,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在开发过程中如果要创建一个对象可以通过以下几种方式：<br>new、克隆（Clone）、反射（Class.forName(“类全限定名”).newInstance()，Constructor类的newInstance）。<br>今天只针对通过关键字<strong>new</strong>来创建对象作分析，通过<strong>new</strong>创建一个对象的方式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();</span><br></pre></td></tr></table></figure></p>
 <p>但在<strong>new</strong>之后J虚拟机还会经过一系列的操作才能创建，今天来记录一下<strong>new</strong>之后的事情，以及对象的组成结构。</p>
-<h1 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h1><h3 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h3><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-newobject1.png" alt=""><br><a id="more"></a></p>
+<h1 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h1><h3 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h3><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-newobject1.png" alt=""><br><a id="more"></a></p>
 <h3 id="创建步骤"><a href="#创建步骤" class="headerlink" title="创建步骤"></a>创建步骤</h3><ul>
 <li>类的检查<br>在<strong>new</strong>指令之后首先在常量池中检查是否能定位到该类符号的引用。<br>如果没有定位到，则进行类的加载、解析和初始化</li>
 <li>为对象分配内存<br>虚拟机将为对象分配内存，即把一块确定大小的内存从 Java 堆中划分出来<br>这种分配方式会根据堆内存是否整齐分成两种形式。<br>1.堆内存整齐：指针碰撞<br>2.堆内存零散：闲散列表<br>另外，为对象分配内存会引发线程不安全问题，解决方式是：<br><strong>把内存分配行为 按照线程 划分在不同的内存空间进行</strong></li>
@@ -605,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -665,7 +665,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

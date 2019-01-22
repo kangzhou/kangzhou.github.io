@@ -774,7 +774,7 @@
 <li>解析：将常量池内的符号引用转成直接引用</li>
 <li>初始化：初始化类变量</li>
 </ol>
-<h1 id="Java字节码"><a href="#Java字节码" class="headerlink" title="Java字节码"></a>Java字节码</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>Java的产生是由javac将.java文件编译成.class文件。.class文件中存放的就是.java文件里的内容。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> m;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">()</span></span>&#123;</span><br><span class="line">		reture m+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Java字节码"><a href="#Java字节码" class="headerlink" title="Java字节码"></a>Java字节码</h1><p>Java的产生是由javac将.java文件编译成.class文件。.class文件中存放的就是.java文件里的内容。例如：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> m;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">()</span></span>&#123;</span><br><span class="line">		reture m+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>将上面定义的Demo.java（源文件）通过javac编译成.class文件，然后用16进制文本打开.class文件，文本里显示的是十六进制的符号内容。这段符号的组成是遵守着虚拟机的规范的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">C38AC3BEC2BAC2BE2020203320130A20</span><br><span class="line">04200F09200320100720110720120120</span><br><span class="line">016D012001490120063C696E69743E01</span><br><span class="line">2003282956012004436F646501200F4C</span><br><span class="line">696E654E756D6265725461626C650120</span><br><span class="line">03696E6301200328294901200A536F75</span><br><span class="line">72636546696C6501200944656D6F2E6A</span><br><span class="line">6176610C200720080C20052006012004</span><br><span class="line">44656D6F0120106A6176612F6C616E67</span><br><span class="line">2F4F626A656374202120032004202020</span><br><span class="line">01200220052006202020022001200720</span><br><span class="line">08200120092020201D20012001202020</span><br><span class="line">052AC2B72001C2B120202001200A2020</span><br><span class="line">20062001202020012001200B200C2001</span><br><span class="line">20092020201F20022001202020072AC2</span><br><span class="line">B420020460C2AC20202001200A202020</span><br><span class="line">062001202020042001200D2020200220</span><br><span class="line">0E</span><br></pre></td></tr></table></figure></p>
 <p>但是这些十六进制符号内容代表的是什么意思呢？<br>如果我们再用javap -verbose来反编译查看一下<br>
           <!--noindex-->
@@ -936,7 +936,7 @@
         
           <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在开发过程中如果要创建一个对象可以通过以下几种方式：<br>new、克隆（Clone）、反射（Class.forName(“类全限定名”).newInstance()，Constructor类的newInstance）。<br>今天只针对通过关键字<strong>new</strong>来创建对象作分析，通过<strong>new</strong>创建一个对象的方式如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object o = <span class="keyword">new</span> Object();</span><br></pre></td></tr></table></figure></p>
 <p>但在<strong>new</strong>之后J虚拟机还会经过一系列的操作才能创建，今天来记录一下<strong>new</strong>之后的事情，以及对象的组成结构。</p>
-<h1 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h1><h3 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h3><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-newobject1.png" alt=""><br>
+<h1 id="对象的创建"><a href="#对象的创建" class="headerlink" title="对象的创建"></a>对象的创建</h1><h3 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h3><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-newobject1.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/17/JVM：内存分配/#more" rel="contents">
@@ -1153,164 +1153,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/IPC机制/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周  康">
-      <meta itemprop="description" content="猥琐发育，别浪！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周康的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/09/IPC机制/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/09/IPC机制/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/添加依赖失败/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1410,11 +1252,171 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>今天换了台电脑，想把项目移到新电脑上去，结果发现了一个比较奇怪的问题，就是明明已经添加依赖了，可是类却是一直导不进来。而且这个类是可以在本地搜索到的。如下图：</p>
-<p>问题还是挺搞笑的，如果我依赖导错的话，为什么会搜索到这个类，后面想了一下应该跟本地的配置有关，最后发现gradle的distributionUrl有问题，没有下载成功，本地不存在gradle-4.1-all.zip。<br>索性下了一个添加进来。编译成功，完美运行。打个Tag。<br>
+          
+          概述今天换了台电脑，想把项目移到新电脑上去，结果发现了一个比较奇怪的问题，就是明明已经添加依赖了，可是类却是一直导不进来。而且这个类是可以在本地搜索到的。如下图：
+问题还是挺搞笑的，如果我依赖导错的话，为什么会搜索到这个类，后面想了一下应该跟本地的配置有关，最后发现gradle的distributionUrl有问题，没有下载成功，本地不存在gradle-4.1-all.zip。索性下了一个添加进来
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/09/添加依赖失败/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/IPC机制/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/09/IPC机制/" itemprop="url">
+                  IPC机制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>IPC：Inter-Proscess Communication，意为进程间的通信。在Android平台，跨进程通信的方式有好几种，分别是：管道，消息队列，共享内存，信号量，socket以及Binder等。<br>同时这也是Linux的跨进程通信方式。但是今天，主要分析的是Binder机制。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/09/IPC机制/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1978,7 +1980,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">38</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2038,7 +2040,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
