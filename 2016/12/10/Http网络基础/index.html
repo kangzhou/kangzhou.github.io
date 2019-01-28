@@ -124,7 +124,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/OSImodel.png">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/TCPconnetion.png">
-<meta property="og:updated_time" content="2019-01-22T07:54:45.873Z">
+<meta property="og:updated_time" content="2019-01-24T01:55:37.470Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Http网络基础">
 <meta name="twitter:description" content="OSI 的七层模型 TCPTCP的三次握手（建立连接）和四次挥手（断开连接），发生在传输层。  建立连接，形成传输数据的通道。 在连接中进行大数据量传输。 通过三次握手完成连接，是可靠协议。 必须建立连接，占用计算机的处理时间和网络的带宽，效率会稍低。通过TCP协议传输，得到的是一个顺序的无差错的数据流。在TCP/IP协议中，IP层主要负责网络主机的定位，数据传输的路由，由IP地址可以唯一确定In">
@@ -474,6 +474,7 @@
 </ol>
 <h1 id="Http状态码"><a href="#Http状态码" class="headerlink" title="Http状态码"></a>Http状态码</h1><p>1xx: Infomational (信息状态码) ，接收的请求正在处理<br>2xx: Succeed(成功)，请求正常处理完毕,如 200，204<br>3xx: Redirection(重定向)，需要进行附加操作，一般是没有响应数据返回的，如 304（Not,modified）307<br>4xx: Client Error (客户端的错误)，服务器无法处理请求，如 404，405<br>5xx: Server Error (服务端的错误)，服务器处理请求出错，如 500，502</p>
 <h1 id="Http-和-Https-的区别"><a href="#Http-和-Https-的区别" class="headerlink" title="Http 和 Https 的区别"></a>Http 和 Https 的区别</h1><p>Https = Http + 加密 + 验证 + 完整<br>Http 的缺点：<br>1 数据是没有加密传输，可能会遭遇窃听；<br>2 不验证通信方的身份，可能会遭遇伪装；<br>3 无法验证报文的完整性，可能会遭遇篡改。</p>
+<p>SSL/TLS协议就是为了解决这些风险而设计的<br>SSL原理：<br>SSL/TLS协议基本思路是采用公钥加密法（最有名的是RSA加密算法）。大概流程是，客户端向服务器索要公钥，然后用公钥加密信息，服务器收到密文，用自己的私钥解密。<br>为了防止公钥被篡改，把公钥放在数字证书（二进制文件）中，证书可信则公钥可信。公钥加密计算量很大，为了提高效率，服务端和客户端都生成对话秘钥，用它加密信息，而对话秘钥是对称加密，速度非常快。而公钥用来机密对话秘钥。</p>
 
       
     </div>
@@ -625,7 +626,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -644,7 +645,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -687,7 +690,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -114,30 +114,27 @@
 
 
 
-  <meta name="description" content="准备我们把微信小程序（二）——开发工具篇里面提供的XAMPP下载下来，XAMPP是一款集成软件包，包含 MySQL、PHP 和 Perl 的 Apache 发行版，我们用XAMPP来搭建本地服务器会节省我们很多的事情。">
-<meta name="keywords" content="小程序">
+  <meta name="description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。《》">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="微信小程序（五）——服务器搭建篇">
-<meta property="og:url" content="http://kangzhou.github.io/2018/01/21/微信小程序（五）——服务器搭建篇/index.html">
+<meta property="og:title" content="设计模式（二）：简单工厂与策略模式">
+<meta property="og:url" content="http://kangzhou.github.io/2018/03/17/设计模式（二）：简单工厂与策略模式/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="准备我们把微信小程序（二）——开发工具篇里面提供的XAMPP下载下来，XAMPP是一款集成软件包，包含 MySQL、PHP 和 Perl 的 Apache 发行版，我们用XAMPP来搭建本地服务器会节省我们很多的事情。">
+<meta property="og:description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。《》">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517220945407&di=1c2d1b13d4b95ab9b771cf2ea4879ff2&imgtype=0&src=http%3A%2F%2Fimage.woshipm.com%2Fwp-files%2F2017%2F01%2FlkRmKU9XOOADaT96fRv0.jpg">
-<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/anzhuanglujing.jpg">
-<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/xamppstart.jpg">
-<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/startchorm.jpg">
-<meta property="og:updated_time" content="2019-01-22T09:34:20.376Z">
+<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta property="og:updated_time" content="2019-01-28T07:16:26.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="微信小程序（五）——服务器搭建篇">
-<meta name="twitter:description" content="准备我们把微信小程序（二）——开发工具篇里面提供的XAMPP下载下来，XAMPP是一款集成软件包，包含 MySQL、PHP 和 Perl 的 Apache 发行版，我们用XAMPP来搭建本地服务器会节省我们很多的事情。">
-<meta name="twitter:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1517220945407&di=1c2d1b13d4b95ab9b771cf2ea4879ff2&imgtype=0&src=http%3A%2F%2Fimage.woshipm.com%2Fwp-files%2F2017%2F01%2FlkRmKU9XOOADaT96fRv0.jpg">
+<meta name="twitter:title" content="设计模式（二）：简单工厂与策略模式">
+<meta name="twitter:description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。《》">
+<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2018/01/21/微信小程序（五）——服务器搭建篇/">
+  <link rel="canonical" href="http://kangzhou.github.io/2018/03/17/设计模式（二）：简单工厂与策略模式/">
 
 
 
@@ -147,7 +144,7 @@
   };
 </script>
 
-  <title>微信小程序（五）——服务器搭建篇 | 周康的博客</title>
+  <title>设计模式（二）：简单工厂与策略模式 | 周康的博客</title>
   
 
 
@@ -351,7 +348,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/21/微信小程序（五）——服务器搭建篇/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/03/17/设计模式（二）：简单工厂与策略模式/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -368,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">微信小程序（五）——服务器搭建篇
+          <h1 class="post-title" itemprop="name headline">设计模式（二）：简单工厂与策略模式
               
             
           </h1>
@@ -393,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2018-01-21 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-21T00:00:00+08:00">2018-01-21</time>
+              <time title="创建时间：2018-03-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-03-17T00:00:00+08:00">2018-03-17</time>
             
 
             
@@ -445,10 +442,22 @@
       
 
       
-        <p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1517220945407&amp;di=1c2d1b13d4b95ab9b771cf2ea4879ff2&amp;imgtype=0&amp;src=http%3A%2F%2Fimage.woshipm.com%2Fwp-files%2F2017%2F01%2FlkRmKU9XOOADaT96fRv0.jpg" alt=""></p>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>我们把<a href="/2018/01/25/微信小程序（二）——开发工具篇/" title="微信小程序（二）——开发工具篇">微信小程序（二）——开发工具篇</a>里面提供的XAMPP下载下来，XAMPP是一款集成软件包，包含 MySQL、PHP 和 Perl 的 Apache 发行版，我们用XAMPP来搭建本地服务器会节省我们很多的事情。<br><a id="more"></a></p>
-<h1 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h1><p>网上有很多关于XAMPP的教程，都大同小异。需要注意所有的安装路径都不要包含中文字符，可以自行百度。<br>首先在D盘新建xampp文件夹，将XAMPP安装到此目录下（省略安装过程）：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/anzhuanglujing.jpg" alt=""><br>运行xampp，红色圈住的部分如果显示的是红叉，可以点击红叉直接安装<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/xamppstart.jpg" alt=""><br>点击Apach的start按钮，便可直接开启服务器了<br>开启后，我们可以直接在浏览器输入ip地址或者<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> ，如果看到下图的情况，说明安装成功了，可以说XAMPP搭建服务器不能更简单了<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/startchorm.jpg" alt=""></p>
-<p>附加说明<br>安装路径下的htdocs文件下是放我们后台项目的地方，我们在浏览器直接输入<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> ，其实是访问的是XAMPP自带的dashboard下的项目。下期我们下载ThinkPHP5，也是安装到D:\xampp\htdocs目录下的，具体的可参看<a href="/2018/01/20/微信小程序（六）——ThinkPHP接口篇/" title="微信小程序（六）——ThinkPHP接口篇">微信小程序（六）——ThinkPHP接口篇</a></p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。<br>《》<br><a id="more"></a></p>
+<h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>简单工厂属于创建型模式，也叫静态工厂方法模式，我们只需要知道要生产什么样的实体对象，不需要知道生产这个实体对象需要哪些具体的参数</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>将实例化操作与使用实例对象的操作分开<br>避免显示指定，解耦。</p>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>首先是工厂类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="comment">//根据不用的要求生产生产什么样的产品</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Product <span class="title">createProduct</span><span class="params">(String modeStr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">switch</span>(modeStr)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"A"</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ProductA();</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"B"</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ProductB();</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"C"</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ProductC();</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>各种产品实体肯定要实现Product接口啦：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">()</span></span>;<span class="comment">//被生产</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductA</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Log.e(Tag,<span class="string">"创建了A产品呀"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductB</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Log.e(Tag,<span class="string">"创建了C产品呀"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProductC</span> <span class="keyword">implements</span> <span class="title">Product</span></span>&#123;</span><br><span class="line">	<span class="meta">@override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">create</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Log.e(Tag,<span class="string">"创建了C产品呀"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在其他地方使用工厂类来生产产品<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleFactoryPattern</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Factory mFactory = <span class="keyword">new</span> Factory();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//客户要产品A</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="comment">//调用工厂类的静态方法 &amp; 传入不同参数从而创建产品实例</span></span><br><span class="line">            mFactory.createProduct(<span class="string">"A"</span>).create();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">"没有这一类产品"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//客户要产品B</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mFactory.createProduct(<span class="string">"B"</span>).create();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">"没有这一类产品"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//客户要产品C</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mFactory.createProduct(<span class="string">"C"</span>).create();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">"没有这一类产品"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//客户要产品D</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mFactory.createProduct(<span class="string">"D"</span>).create();</span><br><span class="line">        &#125;<span class="keyword">catch</span> (NullPointerException e)&#123;</span><br><span class="line">            System.out.println(<span class="string">"没有这一类产品"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">创建了A产品呀</span><br><span class="line">创建了B产品呀</span><br><span class="line">创建了C产品呀</span><br><span class="line">没有这一类产品</span><br></pre></td></tr></table></figure></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>上面已经已经说了简单工厂模式只需关心我要什么样的产品，而不需要关系怎么生产这产品。能实现产品的操作与产品的创建解耦。这是它的优点。<br>同时，现在已经能生产ABC这些产品，但是一旦要新添加产品ProductD的话，就必须修改工厂类，违反设计模式的开闭原则，这也是它的缺点。<br>日常开发要视情况而定。</p>
+<h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><p>开头说简单工厂模式与策略模式十分相似，到底哪些地方相似？</p>
+<h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>定义了一系列的算法策略，放在一个策略类中，根据不同情况而选择不同的策略（简单模式是根据不同的需要生产不同的产品）。</p>
+<h1 id="具体实现-1"><a href="#具体实现-1" class="headerlink" title="具体实现"></a>具体实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context_SalesMan</span></span>&#123;</span><br><span class="line"><span class="comment">//持有抽象策略角色的引用</span></span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SalesMan</span><span class="params">(String festival)</span> </span>&#123;<span class="comment">//根据不同的需求创建不同的策略</span></span><br><span class="line">        <span class="keyword">switch</span> ( festival) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"A"</span>:</span><br><span class="line">                strategy = <span class="keyword">new</span> StrategyA();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"B"</span>:</span><br><span class="line">                strategy = <span class="keyword">new</span> StrategyB();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">"C"</span>:</span><br><span class="line">                strategy = <span class="keyword">new</span> StrategyC();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">SalesManShow</span><span class="params">()</span></span>&#123;<span class="comment">//使用策略</span></span><br><span class="line">        strategy.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义Strategy<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Strategy</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyA</span> <span class="keyword">implements</span> <span class="title">Strategy</span></span>&#123;</span><br><span class="line">	override</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Log.e(Tag,<span class="string">"使用了A策略"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyB</span> <span class="keyword">implements</span> <span class="title">Strategy</span></span>&#123;</span><br><span class="line">	override</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Log.e(Tag,<span class="string">"使用了B策略"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">... ...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StrategyC</span> <span class="keyword">implements</span> <span class="title">Strategy</span></span>&#123;</span><br><span class="line">	override</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Log.e(Tag,<span class="string">"使用了C策略"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在其他地方使用<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StrategyPattern</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        Context_SalesMan mSalesMan ;</span><br><span class="line">		</span><br><span class="line">        mSalesMan =  <span class="function">Context_SalesMan <span class="title">SalesMan</span><span class="params">(<span class="string">"A"</span>)</span></span>;</span><br><span class="line">        mSalesMan.SalesManShow();</span><br><span class="line">        </span><br><span class="line">        mSalesMan =  <span class="function">Context_SalesMan <span class="title">SalesMan</span><span class="params">(<span class="string">"B"</span>)</span></span>;</span><br><span class="line">        mSalesMan.SalesManShow();</span><br><span class="line"></span><br><span class="line">        mSalesMan =  <span class="function">Context_SalesMan <span class="title">SalesMan</span><span class="params">(<span class="string">"C"</span>)</span></span>;</span><br><span class="line">        mSalesMan.SalesManShow();  </span><br><span class="line">  &#125;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Log.e(Tag,<span class="string">"使用了A策略"</span>);</span><br><span class="line">Log.e(Tag,<span class="string">"使用了B策略"</span>);</span><br><span class="line">Log.e(Tag,<span class="string">"使用了C策略"</span>);</span><br></pre></td></tr></table></figure></p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>从上面的代码中可以看出根据不同情况来实例化具体的策略，假如我们不知道全部的策略，SalesMan(String festival)里面传入了“D”，这在后面肯定会引起异常错误。所以要必须知道所有的策略类。<br>当添加一个新的策略时，只需要新增一个具体的策略类即可，无须更改原有的代码。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>主要介绍了简单工厂模式和策略模式，其他设计模式可参看：<br><a href="/2018/03/13/设计模式（一）：简介及单例模式/" title="设计模式（一）：简介及单例模式">设计模式（一）：简介及单例模式</a></p>
 
       
     </div>
@@ -470,7 +479,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2018/01/21/微信小程序（五）——服务器搭建篇/" title="微信小程序（五）——服务器搭建篇">http://kangzhou.github.io/2018/01/21/微信小程序（五）——服务器搭建篇/</a>
+    <a href="http://kangzhou.github.io/2018/03/17/设计模式（二）：简单工厂与策略模式/" title="设计模式（二）：简单工厂与策略模式">http://kangzhou.github.io/2018/03/17/设计模式（二）：简单工厂与策略模式/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -483,7 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/小程序/" rel="tag"># 小程序</a>
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
           
         </div>
       
@@ -516,8 +525,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/20/微信小程序（六）——ThinkPHP接口篇/" rel="next" title="微信小程序（六）——ThinkPHP接口篇">
-                <i class="fa fa-chevron-left"></i> 微信小程序（六）——ThinkPHP接口篇
+              <a href="/2018/03/13/设计模式（一）：简介及单例模式/" rel="next" title="设计模式（一）：简介及单例模式">
+                <i class="fa fa-chevron-left"></i> 设计模式（一）：简介及单例模式
               </a>
             
           </div>
@@ -526,8 +535,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/22/微信小程序（四）——数据库设计篇/" rel="prev" title="微信小程序（四）——数据库设计篇">
-                微信小程序（四）——数据库设计篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/18/Android事件分发/" rel="prev" title="Android事件分发">
+                Android事件分发 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -726,7 +735,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备"><span class="nav-number">1.</span> <span class="nav-text">准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体步骤"><span class="nav-number">2.</span> <span class="nav-text">具体步骤</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单工厂模式"><span class="nav-number">2.</span> <span class="nav-text">简单工厂模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">2.0.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用"><span class="nav-number">2.0.2.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体实现"><span class="nav-number">2.0.3.</span> <span class="nav-text">具体实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#小结"><span class="nav-number">2.0.4.</span> <span class="nav-text">小结</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">3.</span> <span class="nav-text">策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">介绍</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体实现-1"><span class="nav-number">4.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#小结-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></div>
             
 
           </div>

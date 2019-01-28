@@ -115,19 +115,19 @@
 
 
   <meta name="description" content="概述每一个应用程序都对应着一个虚拟机实例，他们提供了对对象生命周期管理，堆栈管理，线程管理，安全和异常管理以及垃圾回收等重要的功能。Java虚拟机称为JVM，Android虚拟机称为DVM，其中D代表了Dalvik，在Android5.0以后引入了ART，对DVM又做了进一步的优化。">
-<meta name="keywords" content="JVM">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="周康的博客">
+<meta property="og:title" content="JVM：ART与DVM">
 <meta property="og:url" content="http://kangzhou.github.io/2018/03/27/JVM：ART与DVM/index.html">
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="概述每一个应用程序都对应着一个虚拟机实例，他们提供了对对象生命周期管理，堆栈管理，线程管理，安全和异常管理以及垃圾回收等重要的功能。Java虚拟机称为JVM，Android虚拟机称为DVM，其中D代表了Dalvik，在Android5.0以后引入了ART，对DVM又做了进一步的优化。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-01-09T09:45:11.498Z">
+<meta property="og:image" content="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/art.png">
+<meta property="og:updated_time" content="2019-01-23T01:15:34.919Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周康的博客">
+<meta name="twitter:title" content="JVM：ART与DVM">
 <meta name="twitter:description" content="概述每一个应用程序都对应着一个虚拟机实例，他们提供了对对象生命周期管理，堆栈管理，线程管理，安全和异常管理以及垃圾回收等重要的功能。Java虚拟机称为JVM，Android虚拟机称为DVM，其中D代表了Dalvik，在Android5.0以后引入了ART，对DVM又做了进一步的优化。">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:image" content="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/art.png">
 
 
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title> | 周康的博客</title>
+  <title>JVM：ART与DVM | 周康的博客</title>
   
 
 
@@ -365,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">JVM：ART与DVM
               
             
           </h1>
@@ -408,7 +408,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/ART/" itemprop="url" rel="index"><span itemprop="name">ART</span></a></span>
 
                 
                 
@@ -442,16 +442,23 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>每一个应用程序都对应着一个虚拟机实例，他们提供了对对象生命周期管理，堆栈管理，线程管理，安全和异常管理以及垃圾回收等重要的功能。Java虚拟机称为JVM，Android虚拟机称为DVM，其中D代表了Dalvik，在Android5.0以后引入了ART，对DVM又做了进一步的优化。<br><a id="more"></a></p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>每一个应用程序都对应着一个虚拟机实例，他们提供了对对象生命周期管理，堆栈管理，线程管理，安全和异常管理以及垃圾回收等重要的功能。Java虚拟机称为JVM，Android虚拟机称为DVM，其中D代表了Dalvik，在Android5.0以后引入了ART，对DVM又做了进一步的优化。<br><img src="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/art.png" alt=""><br><a id="more"></a></p>
 <h1 id="JVM与DVM"><a href="#JVM与DVM" class="headerlink" title="JVM与DVM"></a>JVM与DVM</h1><h3 id="相同点："><a href="#相同点：" class="headerlink" title="相同点："></a>相同点：</h3><ol>
 <li>都表现执行</li>
 <li>都是每一个进程运行一个虚拟机实例，并运行一个单独的程序。</li>
 </ol>
-<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><p>DVM执行的是.dex文件，JVM执行的.class文件。多个.class文件可以合成一个.dex文件。<br>DVM是基于寄存器的虚拟机，具有存取快的特点<br>JVM是基于栈的虚拟机，程序在运行时，会对栈上进行频繁的读取和写入，所以DVM会比较快<br>JVM的堆是Java堆，而DVM的堆则分成A（Active）堆和Z（Zygote）堆。在进程启动时预加载的类，资源和对象是在Z堆中存储的，除此之外的所有对象都是在A堆中存储的。这样设计的目的是：<br>因为Android通过fork方法创建到一个新的gygote进程，为了尽可能的避免父进程和子进程之间的数据拷贝，fork方法使用写时拷贝技术，写时拷贝技术简单讲就是fork的时候不立即拷贝父进程的数据到子进程中，而是在子进程或者父进程对内存进行写操作时是才对内存内容进行复制，Dalvik的gygote堆存放的预加载的类都是Android核心类和java运行时库，这部分内容很少被修改，大多数情况父进程和子进程共享这块内存区域。通常垃圾回收重点对Active堆进行回收操作。</p>
-<h1 id="ART与DVM"><a href="#ART与DVM" class="headerlink" title="ART与DVM"></a>ART与DVM</h1><p>ART是在5.0中引用的，DVM执行的.dex文件，而ART则是执行的是本地机器码。apk解压出来的.dex文件加上其他资源文件和.so库等。在apk安装的过程会把.dex文件编译成本地机器码。之后每次打开该应用，执行的都是本地机器码。<br>ART这种方式效率更高，启动更快</p>
-<pre><code class="java">
+<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ol>
+<li>DVM执行的是.dex文件，JVM执行的.class文件。多个.class文件可以合成一个.dex文件，该过程中会将冗余的信息去掉，执行起来更高效。</li>
+<li>DVM是基于寄存器的虚拟机，具有存取快，指令数少的特点</li>
+<li>JVM是基于栈的虚拟机，程序在运行时，会对栈上进行频繁的读取和写入，所以DVM会比较快</li>
+<li>JVM的堆是Java堆，而DVM的堆则分成A（Active）堆和Z（Zygote）堆。在进程启动时预加载的类，资源和对象是在Z堆中存储的，除此之外的所有对象都是在A堆中存储的。这样设计的目的是：<br>因为Android通过fork方法创建到一个新的gygote进程，为了尽可能的避免父进程和子进程之间的数据拷贝，fork方法使用写时拷贝技术，写时拷贝技术简单讲就是fork的时候不立即拷贝父进程的数据到子进程中，而是在子进程或者父进程对内存进行写操作时是才对内存内容进行复制，Dalvik的gygote堆存放的预加载的类都是Android核心类和java运行时库，这部分内容很少被修改，大多数情况父进程和子进程共享这块内存区域。通常垃圾回收重点对Active堆进行回收操作。</li>
+</ol>
+<h1 id="ART与DVM"><a href="#ART与DVM" class="headerlink" title="ART与DVM"></a>ART与DVM</h1><ol>
+<li>ART是在5.0中引用的，DVM执行的.dex文件，而ART则是执行的是本地机器码。apk解压出来的.dex文件加上其他资源文件和.so库等。在apk安装的过程会把.dex文件编译成本地机器码。之后每次打开该应用，执行的都是本地机器码。<br>ART这种方式效率更高，启动更快，除了首次安装会慢些，因为需要编译成机器码。<pre><code class="java">
 </code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1></li>
+</ol>
+
       
     </div>
 
@@ -472,7 +479,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2018/03/27/JVM：ART与DVM/" title="">http://kangzhou.github.io/2018/03/27/JVM：ART与DVM/</a>
+    <a href="http://kangzhou.github.io/2018/03/27/JVM：ART与DVM/" title="JVM：ART与DVM">http://kangzhou.github.io/2018/03/27/JVM：ART与DVM/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -485,7 +492,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/Android/" rel="tag"># Android</a>
           
         </div>
       
@@ -602,7 +609,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -621,7 +628,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -664,7 +673,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
