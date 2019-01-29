@@ -995,7 +995,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/RecyclerView分析/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/14/IPC的实现：AIDL/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -1014,8 +1014,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/09/RecyclerView分析/" itemprop="url">
-                  RecyclerView分析
+                <a class="post-title-link" href="/2018/04/14/IPC的实现：AIDL/" itemprop="url">
+                  IPC的实现：AIDL
                 </a>
               
             
@@ -1041,7 +1041,7 @@
                 
               
 
-              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
+              <time title="创建时间：2018-04-14 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-14T00:00:00+08:00">2018-04-14</time>
             
 
             
@@ -1094,17 +1094,21 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>几乎所有的应用中都会有列表的存在，以前喜欢用ListView，而现在用的更多的是RecyclerView。列表是展示数据的最常见的载体，所以在处理大数据列表的时候要特别注意内存问题，卡顿问题和数据刷新问题。<br>今天来重点分析一下RecyclerView。<br>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>AIDL是Android Interface Definition Language的缩写，在某种意义上讲，<strong>AIDL其实是一个模板，有规范和约束的作用。实际上起作用的是根据AIDL而生产的实例代码。</strong><br>AIDL与Java语音的接口十分的相似，也它也有一些几点特点：</p>
+<ol>
+<li>AIDL支持的数据格式支持8大基本数据类型（byte、char、short、int、long、float、double、boolean，String，CharSequence），支持的空间数据结构有List和Map。</li>
+<li>数据流向标记。in、out、inout。in 表示数据只能由客户端流向服务端， out 表示数据只能由服务端流向客户端，而 inout 则表示数据可在服务端与客户端之间双向流通。</li>
+<li>手动导包。<br>在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。<br>两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。<br>关于更多关于Binder机制的知识可参看《<a href="/2018/04/09/IPC机制/" title="IPC机制">IPC机制</a>》
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/09/RecyclerView分析/#more" rel="contents">
+            <a class="btn" href="/2018/04/14/IPC的实现：AIDL/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
-    </p></div>
+    </li></ol></div>
 
     
 
@@ -1630,7 +1634,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/Android的适配方案与原理/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/Gradle相关问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -1649,7 +1653,165 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/09/Android的适配方案与原理/" itemprop="url">
+                <a class="post-title-link" href="/2018/04/09/Gradle相关问题/" itemprop="url">
+                  Gradle相关问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/09/Gradle相关问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/关于Handle的几个问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/09/关于Handle的几个问题/" itemprop="url">
                   未命名
                 </a>
               
@@ -1732,165 +1894,7 @@
           <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/04/09/Android的适配方案与原理/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/IPC的实现：AIDL/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周  康">
-      <meta itemprop="description" content="猥琐发育，别浪！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周康的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/09/IPC的实现：AIDL/" itemprop="url">
-                  IPC的实现：AIDL
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Android中，跨进程通信采用的Binder机制，而基于Binder来实现跨进程的方式通常是采用AIDL和Massenger。<br>两者的关系是：AIDL是基于Messenger，而Messenger是基于Binder的。<br>关于更多关于Binder机制的知识可参看《<a href="/2018/04/09/IPC机制/" title="IPC机制">IPC机制</a>》<br><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/09/IPC的实现：AIDL/#more" rel="contents">
+            <a class="btn" href="/2018/04/09/关于Handle的几个问题/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1935,7 +1939,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1980,7 +1984,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

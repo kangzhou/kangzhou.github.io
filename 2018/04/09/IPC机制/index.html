@@ -125,7 +125,7 @@
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/ipc1.png">
 <meta property="og:image" content="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/binder3.png">
 <meta property="og:image" content="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/ipc3.png">
-<meta property="og:updated_time" content="2019-01-23T01:12:52.592Z">
+<meta property="og:updated_time" content="2019-01-29T06:54:17.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IPC机制">
 <meta name="twitter:description" content="概述IPC：Inter-Proscess Communication，意为进程间的通信。在Android平台，跨进程通信的方式有好几种，分别是：管道，消息队列，共享内存，信号量，socket以及Binder等。同时这也是Linux的跨进程通信方式。但是今天，主要分析的是Binder机制。">
@@ -464,7 +464,14 @@
 <li>发送进程通过copy_from_user（）将用户空间的数据拷贝到内核空间的内缓存区中。</li>
 <li>内核空间和接收进程的用户空间地址存在映射关系（同时映射到Binder创建的接收缓存区）。相对于也将数据发送到了接收进程的用户空间，即实现了进程间的通信。过程只进行了一次数据复制。<br>示意图：<br><img src="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/binder3.png" alt=""><br>可以看到只有一次数据复制，使得传递效率变高。</li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不同进程间的交互在Android中会以客户端进程和服务进程表现出来，即C/S模式。Binder连接了Service进程和Client进程和ServieManager进程。<br>Client进程，Service进程和ServiceManager进程属于上述所说的进程空间的用户空间，是不能进行通信的。而Binder属于进程空间的内核空间，可以采用复制和映射的形式进行通信的。如下图：<br><img src="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/ipc3.png" alt=""><br>关于利用Binder跨进程的如何具体实现，可参看（）</p>
+<h1 id="多进程引发的问题"><a href="#多进程引发的问题" class="headerlink" title="多进程引发的问题"></a>多进程引发的问题</h1><p>在Android中，多进程会引发以下几个问题：</p>
+<ol>
+<li>静态成员和单例失效：每个进程保持各自的静态成员和单例，相互独立。</li>
+<li>线程同步机制失效：每个进程有自己的线程锁。</li>
+<li>SharedPreferences可靠性下降：不支持并发写，会出现脏数据。</li>
+<li>Application多次创建：不同进程跑在不同虚拟机，每个虚拟机启动会创建自己的Application，自定义Application时生命周期会混乱。</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>不同进程间的交互在Android中会以客户端进程和服务进程表现出来，即C/S模式。Binder连接了Service进程和Client进程和ServieManager进程。<br>Client进程，Service进程和ServiceManager进程属于上述所说的进程空间的用户空间，是不能进行通信的。而Binder属于进程空间的内核空间，可以采用复制和映射的形式进行通信的。如下图：<br><img src="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/ipc3.png" alt=""><br>关于利用Binder跨进程的如何具体实现（AIDL），可参看《<a href="/2018/04/14/IPC的实现：AIDL/" title="IPC的实现：AIDL">IPC的实现：AIDL</a>》</p>
 
       
     </div>
@@ -616,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -742,7 +749,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binder"><span class="nav-number">2.</span> <span class="nav-text">Binder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Binder机制是什么？"><span class="nav-number">2.0.1.</span> <span class="nav-text">Binder机制是什么？</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Binder的优点"><span class="nav-number">3.</span> <span class="nav-text">Binder的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户空间"><span class="nav-number">3.0.1.</span> <span class="nav-text">用户空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核空间"><span class="nav-number">3.0.2.</span> <span class="nav-text">内核空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binder机制原理"><span class="nav-number">4.</span> <span class="nav-text">Binder机制原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binder"><span class="nav-number">2.</span> <span class="nav-text">Binder</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Binder机制是什么？"><span class="nav-number">2.0.1.</span> <span class="nav-text">Binder机制是什么？</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Binder的优点"><span class="nav-number">3.</span> <span class="nav-text">Binder的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用户空间"><span class="nav-number">3.0.1.</span> <span class="nav-text">用户空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内核空间"><span class="nav-number">3.0.2.</span> <span class="nav-text">内核空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Binder机制原理"><span class="nav-number">4.</span> <span class="nav-text">Binder机制原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多进程引发的问题"><span class="nav-number">5.</span> <span class="nav-text">多进程引发的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></div>
             
 
           </div>

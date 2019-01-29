@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/25/微信小程序（二）——开发工具篇/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/02/25/Glide源码分析（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -364,8 +364,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/25/微信小程序（二）——开发工具篇/" itemprop="url">
-                  微信小程序（二）——开发工具篇
+                <a class="post-title-link" href="/2018/02/25/Glide源码分析（二）/" itemprop="url">
+                  Glide源码分析（二）
                 </a>
               
             
@@ -391,7 +391,165 @@
                 
               
 
-              <time title="创建时间：2018-01-25 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-25T00:00:00+08:00">2018-01-25</time>
+              <time title="创建时间：2018-02-25 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-25T00:00:00+08:00">2018-02-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>上一篇《<a href="/2018/02/24/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a>》我们讲到了Glide在经过with()和load()之后，最终返回了<strong>RequestBuilder</strong>，这篇来看看into(ImageView)里面发生了什么事，这也是整个Glide最核心复杂的地方。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/25/Glide源码分析（二）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/02/24/Glide源码分析（一）/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/24/Glide源码分析（一）/" itemprop="url">
+                  Glide源码分析（一）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-02-24 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-24T00:00:00+08:00">2018-02-24</time>
             
 
             
@@ -444,13 +602,11 @@
 
       
         
-          <h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><p>服务器：<br><a href="https://www.apachefriends.org/zh_cn/index.html" target="_blank" rel="noopener">XAMPP下载:</a>用于搭建部署本地Apach服务器<br><a href="http://www.sublimetext.com/" target="_blank" rel="noopener">subline编辑器</a>：用于编写后台接口<br><a href="https://www.getpostman.com/postman" target="_blank" rel="noopener">Postman：</a>用于接口测试<br><a href="https://www.navicat.com.cn/download/navicat-for-mysql" target="_blank" rel="noopener">NAVICAT：</a>用来管理查看数据库</p>
-<p>小程序开发工具：<br><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=2018125" target="_blank" rel="noopener">微信开发者工具：</a>开发小程序</p>
-<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p>后台接口用了ThinkPHP5框架来编写，对我这种不会php，不会写后台的人来说，这个框架帮了我的大忙，国人写的框架，文档教材写的非常的详细，很多问题都能在文档中找到解决的办法</p>
-<p>ThinkPHP5:<br><a href="https://www.kancloud.cn/manual/thinkphp5/118003" target="_blank" rel="noopener">ThinkPHP5开发文档</a><br><a href="http://www.thinkphp.cn/" target="_blank" rel="noopener">ThinkPHP5下载</a><br>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在众多的图片加载的框架中，个人觉得<strong>Glide</strong>是表现的最好的，尤其是它缓存策略的设计，今天来根据源码来看一下<strong>Glide</strong>里面是如何运作的。由于<strong>Glide</strong>代码十分的庞大，而且隐晦难懂。这里主要是理解其中的含义，点到为止。该系列分为两篇来记录：<br><a href="/2018/02/24/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a><br><a href="/2018/02/25/Glide源码分析（二）/" title="Glide源码分析（二）">Glide源码分析（二）</a></p>
+<h1 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h1><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/Glide-1.jpg" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2018/01/25/微信小程序（二）——开发工具篇/#more" rel="contents">
+            <a class="btn" href="/2018/02/24/Glide源码分析（一）/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -610,6 +766,167 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/25/微信小程序（一）——简介/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/25/微信小程序（二）——开发工具篇/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/25/微信小程序（二）——开发工具篇/" itemprop="url">
+                  微信小程序（二）——开发工具篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-25 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-25T00:00:00+08:00">2018-01-25</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h1><p>服务器：<br><a href="https://www.apachefriends.org/zh_cn/index.html" target="_blank" rel="noopener">XAMPP下载:</a>用于搭建部署本地Apach服务器<br><a href="http://www.sublimetext.com/" target="_blank" rel="noopener">subline编辑器</a>：用于编写后台接口<br><a href="https://www.getpostman.com/postman" target="_blank" rel="noopener">Postman：</a>用于接口测试<br><a href="https://www.navicat.com.cn/download/navicat-for-mysql" target="_blank" rel="noopener">NAVICAT：</a>用来管理查看数据库</p>
+<p>小程序开发工具：<br><a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=2018125" target="_blank" rel="noopener">微信开发者工具：</a>开发小程序</p>
+<h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p>后台接口用了ThinkPHP5框架来编写，对我这种不会php，不会写后台的人来说，这个框架帮了我的大忙，国人写的框架，文档教材写的非常的详细，很多问题都能在文档中找到解决的办法</p>
+<p>ThinkPHP5:<br><a href="https://www.kancloud.cn/manual/thinkphp5/118003" target="_blank" rel="noopener">ThinkPHP5开发文档</a><br><a href="http://www.thinkphp.cn/" target="_blank" rel="noopener">ThinkPHP5下载</a><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/25/微信小程序（二）——开发工具篇/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1601,327 +1918,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/17/微信小程序（九）——资源下载/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周  康">
-      <meta itemprop="description" content="猥琐发育，别浪！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周康的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/17/微信小程序（九）——资源下载/" itemprop="url">
-                  微信小程序（九）——资源下载
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-01-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-17T00:00:00+08:00">2018-01-17</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><p>请假出差小程序：<a href="https://github.com/Kanging/testSmallPragram" target="_blank" rel="noopener">https://github.com/Kanging/testSmallPragram</a> 。<br>数据库SQL:<br>请假出差小程序后台：<a href="https://github.com/Kanging/ThinkphpForSmallPragram" target="_blank" rel="noopener">https://github.com/Kanging/ThinkphpForSmallPragram</a> 。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/17/微信小程序（九）——资源下载/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2017/12/09/Glide、Fasco、Picasso的对比/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周  康">
-      <meta itemprop="description" content="猥琐发育，别浪！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周康的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/09/Glide、Fasco、Picasso的对比/" itemprop="url">
-                  Glide、Fresco、Picasso的对比
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-12-09 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-09T00:00:00+08:00">2017-12-09</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Android应用中，体现给用户最多的就是图片，所以选择一种适合自己的图片加载框架是我开发中需要慎重考虑的事情，今天来对比一下当下最火的三款图片加载框架的区别。它们分别是：Glide、Fasco和Picasso。目前个人对于Glide比较熟悉，因为在过往的项目中运用的最多的就是Glide，写过《<a href="/2018/02/24/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a>》这篇文章帮助自己更好的运用这个框架。而今天这篇文章的目的就是更好的理解这些图片加载框架之间的优缺点。以便日后的开发工作。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/09/Glide、Fasco、Picasso的对比/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1966,7 +1967,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-count">46</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
