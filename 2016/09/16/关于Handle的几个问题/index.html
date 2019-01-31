@@ -114,27 +114,27 @@
 
 
 
-  <meta name="description" content="概述">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="提出问题现在这里列出几个问题：  Handler的作用 为什么Android中要设计为只能在UI线程中去更新UI呢? Handler、Looper MessageQueue之间的关系 主线程如何让往子线程发消息 子线程中可以使用Handler吗？ 可以在非主线程中更新UI吗？ 使用Handle要注意什么（会引发什么问题）？">
+<meta name="keywords" content="Handle">
 <meta property="og:type" content="article">
-<meta property="og:title" content="周康的博客">
-<meta property="og:url" content="http://kangzhou.github.io/2018/04/09/关于Handle的几个问题/index.html">
+<meta property="og:title" content="关于Handle的几个问题">
+<meta property="og:url" content="http://kangzhou.github.io/2016/09/16/关于Handle的几个问题/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="提出问题现在这里列出几个问题：  Handler的作用 为什么Android中要设计为只能在UI线程中去更新UI呢? Handler、Looper MessageQueue之间的关系 主线程如何让往子线程发消息 子线程中可以使用Handler吗？ 可以在非主线程中更新UI吗？ 使用Handle要注意什么（会引发什么问题）？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2018-10-24T00:45:22.214Z">
+<meta property="og:image" content="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92.png">
+<meta property="og:updated_time" content="2019-01-31T08:39:37.130Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周康的博客">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="关于Handle的几个问题">
+<meta name="twitter:description" content="提出问题现在这里列出几个问题：  Handler的作用 为什么Android中要设计为只能在UI线程中去更新UI呢? Handler、Looper MessageQueue之间的关系 主线程如何让往子线程发消息 子线程中可以使用Handler吗？ 可以在非主线程中更新UI吗？ 使用Handle要注意什么（会引发什么问题）？">
+<meta name="twitter:image" content="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2018/04/09/关于Handle的几个问题/">
+  <link rel="canonical" href="http://kangzhou.github.io/2016/09/16/关于Handle的几个问题/">
 
 
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title> | 周康的博客</title>
+  <title>关于Handle的几个问题 | 周康的博客</title>
   
 
 
@@ -348,7 +348,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/04/09/关于Handle的几个问题/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/09/16/关于Handle的几个问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">关于Handle的几个问题
               
             
           </h1>
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2018-04-09 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-09T00:00:00+08:00">2018-04-09</time>
+              <time title="创建时间：2016-09-16 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-16T00:00:00+08:00">2016-09-16</time>
             
 
             
@@ -408,7 +408,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -442,10 +442,39 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <h1 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h1><p>现在这里列出几个问题：</p>
+<ol>
+<li>Handler的作用</li>
+<li>为什么Android中要设计为只能在UI线程中去更新UI呢?</li>
+<li>Handler、Looper MessageQueue之间的关系</li>
+<li>主线程如何让往子线程发消息</li>
+<li>子线程中可以使用Handler吗？</li>
+<li>可以在非主线程中更新UI吗？</li>
+<li>使用Handle要注意什么（会引发什么问题）？<a id="more"></a>
+</li>
+</ol>
+<h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>以上几个问题如果都能回答的上来，说明关于Handle你已经基本掌握了，如果还有点模糊的话可以先看下以下两篇文章：<br>《<a href="/2017/03/21/Android消息处理机制/" title="Android消息处理机制">Android消息处理机制</a>》<br>《<a href="/2016/09/15/View的绘制流程/" title="View的绘制流程">View的绘制流程</a>》<br>ok，现在先看第一个问题：</p>
+<h3 id="Handler的作用"><a href="#Handler的作用" class="headerlink" title="Handler的作用"></a>Handler的作用</h3><ul>
+<li>接收消息：在非UI线程中完成耗时操作，在UI线程中去更新UI。</li>
+<li>发送消息：可以在主线程中发送延时消息。<h3 id="为什么Android中要设计为只能在UI线程中去更新UI呢"><a href="#为什么Android中要设计为只能在UI线程中去更新UI呢" class="headerlink" title="为什么Android中要设计为只能在UI线程中去更新UI呢?"></a>为什么Android中要设计为只能在UI线程中去更新UI呢?</h3></li>
+<li><p>从源码的角度来回答：<br>我们知道既然是要更新UI,那么一定会涉及到View的绘制，既然要绘制View，那么一定会调用ViewRootImpl. ()方法，requestLayout()方法，里面都会调用checkThread();里面就对当前是否是主线程进行判断。如果不是主线程，就会抛异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestLayout</span><span class="params">()</span> </span>&#123;<span class="comment">//我们在自定义ViewGroup的时候，如果要更新布局就会调用这个方法刷新界面，其实就是调用了View的重新绘制流程。</span></span><br><span class="line">   <span class="keyword">if</span> (!mHandlingLayoutInLayoutRequest) &#123;</span><br><span class="line">       checkThread();</span><br><span class="line">       mLayoutRequested = <span class="keyword">true</span>;</span><br><span class="line">       scheduleTraversals();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">checkThread</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mThread != Thread.currentThread()) &#123;<span class="comment">//非主线程抛异常</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> CalledFromWrongThreadException(</span><br><span class="line">                    <span class="string">"Only the original thread that created a view hierarchy can touch its views."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从设计思想的角度来回答：</p>
+</li>
+</ul>
+<ol>
+<li>解决多线程并发问题（根本原因）在子线程中加锁也可以解决并发的问题，可是会造成UI卡顿的新问题，性能低下，所以不能加锁。</li>
+<li>提高界面更新的性能问题</li>
+<li>架构设计的简单<h3 id="说说Handler、Looper-MessageQueue之间的关系"><a href="#说说Handler、Looper-MessageQueue之间的关系" class="headerlink" title="说说Handler、Looper MessageQueue之间的关系"></a>说说Handler、Looper MessageQueue之间的关系</h3><img src="https://zhoukanghblog.oss-cn-beijing.aliyuncs.com/%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92.png" alt=""><br>这里的话我举个例子来回答：在一个流水线生产车间中，整个大的机器就是Looper（一直在工作状态），而传送带就是MessageQueue，有货物（Massage）时，就会一直传送（Loop循环），机器处理这些货物（Massage）。没有货物（Massage）时就机器就关闭（主线程进入休眠状态），因为节省成本要省电（释放CPU资源），而工人（Handle）负责把货物（Massage）放到传送带上（Handler.sendMessage(Message)）。<br>这个例子不知道贴不贴切。。。<h3 id="主线程往子线程发消息"><a href="#主线程往子线程发消息" class="headerlink" title="主线程往子线程发消息"></a>主线程往子线程发消息</h3>我们用的最多的就是子线程向主线程发送消息，那如何让主线程给子线程发送消息呢？<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">OnClickListener</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> UPDATE_TEXT = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> TextView tv;</span><br><span class="line">    <span class="keyword">private</span> Button btn;</span><br><span class="line">    <span class="keyword">private</span> Handler handler;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        tv = (TextView) findViewById(R.id.tv);</span><br><span class="line">        btn = (Button) findViewById(R.id.btn);</span><br><span class="line">        btn.setOnClickListener(<span class="keyword">this</span>);</span><br><span class="line">		<span class="comment">//固定写法</span></span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="comment">//1、准备Looper对象</span></span><br><span class="line">                Looper.prepare();</span><br><span class="line">                <span class="comment">//2、在子线程中创建Handler</span></span><br><span class="line">                handler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">                        <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line">                        Log.i(<span class="string">"当前线程2"</span>, Thread.currentThread().getName());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;;</span><br><span class="line">                <span class="comment">//3、调用Looper的loop()方法，取出消息对象</span></span><br><span class="line">                Looper.loop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Log.i(<span class="string">"当前线程1"</span>, Thread.currentThread().getName());</span><br><span class="line">        <span class="keyword">switch</span> (v.getId()) &#123;</span><br><span class="line">            <span class="keyword">case</span> R.id.btn:</span><br><span class="line">                Message msg = handler.obtainMessage();</span><br><span class="line">                handler.sendMessage(msg);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>由此可见可以在子线程中创建使用Handle的，但是以下写法是不对的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        tv = (TextView) findViewById(R.id.tv);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//尝试在子线程中去创建Handler</span></span><br><span class="line">        <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="keyword">new</span> Handler();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Handle.class:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mLooper = Looper.myLooper();</span><br><span class="line">       <span class="keyword">if</span> (mLooper == <span class="keyword">null</span>) &#123;</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">               <span class="string">"Can't create handler inside thread that has not called Looper.prepare()"</span>);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上会有 “Can’t create handler inside thread that has not called Looper.prepare()”的错误。<br>所以要在子线程中创建Handle的话必须要执行Looper的prepare()方法，生成Looper对象，把Looper对象和当前线程对象形成键值对（线程为键），存放在ThreadLocal当中，然后生成handler对象，调用Looper的myLooper()方法，mLooper就不会为null了，得到与Handler所对应的Looper对象。handler、looper 、消息队列就形成了一一对应的关系<br>可以在非主线程中更新UI吗？<br>可以吗？答案是可以的。要从源码的角度来分析就很好理解。<br>还是说回View的绘制吧，刚刚也说了View的绘制肯定会调用CheckThread()方法，不是主线程的话肯定会执行不下去的。那好，我们想想，当我们开启一个Activiy的时候，在哪个生命周期方法中开始View的绘制的，是在onCreate()吗？我们看了源码就会知道是在onRsume()中才开始绘制View的：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H();</span></span><br><span class="line"> <span class="keyword">case</span> RESUME_ACTIVITY:<span class="comment">//Acticity生命周期Resume</span></span><br><span class="line">     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="string">"activityResume"</span>);</span><br><span class="line">     SomeArgs args = (SomeArgs) msg.obj;</span><br><span class="line">     handleResumeActivity((IBinder) args.arg1, <span class="keyword">true</span>, args.argi1 != <span class="number">0</span>, <span class="keyword">true</span>,</span><br><span class="line">             args.argi3, <span class="string">"RESUME_ACTIVITY"</span>);</span><br><span class="line">     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">handleResumeActivity</span><span class="params">(IBinder token, <span class="keyword">boolean</span> clearHide, <span class="keyword">boolean</span> isForward, <span class="keyword">boolean</span> reallyResume, <span class="keyword">int</span> seq, String reason)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 调用onResume方法</span></span><br><span class="line">    r = performResumeActivity(token, clearHide, reason);</span><br><span class="line">    <span class="comment">// 将decorView添加到屏幕中</span></span><br><span class="line">    View decor = r.window.getDecorView();</span><br><span class="line">    decor.setVisibility(View.INVISIBLE);</span><br><span class="line">    ViewManager wm = a.getWindowManager();</span><br><span class="line">    WindowManager.LayoutParams l = r.window.getAttributes();</span><br><span class="line">    a.mDecor = decor;</span><br><span class="line">	<span class="comment">//wm其实就是WindowManagerImpl，而在WindowManagerImpl中又调用了WindowManagerGlobal的addView方法。</span></span><br><span class="line">	<span class="comment">//将DecorView添加到Window中</span></span><br><span class="line">    wm.addView(decor, l);<span class="comment">//调用AddView，开始View的绘制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以，我们只要在onResume方法之前，比如说在onCreate方法中：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">       setContentView(R.layout.activity_main);</span><br><span class="line">       tv = (TextView) <span class="keyword">this</span>.findViewById(R.id.startBtn);</span><br><span class="line">           <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">               <span class="meta">@Override</span></span><br><span class="line">               <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">               tv.setText(<span class="string">"子线程更细UI"</span>);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;).start();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上代码可直接运行。</p>
+
       
     </div>
 
@@ -466,7 +495,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2018/04/09/关于Handle的几个问题/" title="">http://kangzhou.github.io/2018/04/09/关于Handle的几个问题/</a>
+    <a href="http://kangzhou.github.io/2016/09/16/关于Handle的几个问题/" title="关于Handle的几个问题">http://kangzhou.github.io/2016/09/16/关于Handle的几个问题/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -479,7 +508,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/Handle/" rel="tag"># Handle</a>
           
         </div>
       
@@ -512,8 +541,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/09/RecyclerView分析/" rel="next" title="RecyclerView分析">
-                <i class="fa fa-chevron-left"></i> RecyclerView分析
+              <a href="/2016/09/15/View的绘制流程/" rel="next" title="View的绘制流程">
+                <i class="fa fa-chevron-left"></i> View的绘制流程
               </a>
             
           </div>
@@ -522,8 +551,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/09/Gradle相关问题/" rel="prev" title="Gradle相关问题">
-                Gradle相关问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/10/25/算法：数组排序/" rel="prev" title="算法：数组排序">
+                算法：数组排序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -662,7 +691,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -722,7 +753,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#提出问题"><span class="nav-number">1.</span> <span class="nav-text">提出问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题分析"><span class="nav-number">2.</span> <span class="nav-text">问题分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Handler的作用"><span class="nav-number">2.0.1.</span> <span class="nav-text">Handler的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么Android中要设计为只能在UI线程中去更新UI呢"><span class="nav-number">2.0.2.</span> <span class="nav-text">为什么Android中要设计为只能在UI线程中去更新UI呢?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说说Handler、Looper-MessageQueue之间的关系"><span class="nav-number">2.0.3.</span> <span class="nav-text">说说Handler、Looper MessageQueue之间的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主线程往子线程发消息"><span class="nav-number">2.0.4.</span> <span class="nav-text">主线程往子线程发消息</span></a></li></ol></li></ol></div>
             
 
           </div>

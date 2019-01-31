@@ -114,20 +114,20 @@
 
 
 
-  <meta name="description" content="概述">
+  <meta name="description" content="概述关于View的绘制我阅读过的所有博文都很长，一篇文章看下来至少要花两三个小时，才能看个大概，包括其中的源码分析等。今天这篇文章主要是针对View的绘制做下大概的汇总，不会很详细，网上关于View的绘制流程详细介绍有很多，大家自行百度吧。这篇文章的目的是假如有人问你的时候，比如面试官，你能用简单的话语介绍给他听，尽管是简答，但是该有的还是要有。">
 <meta name="keywords" content="源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="View的绘制流程">
 <meta property="og:url" content="http://kangzhou.github.io/2016/09/15/View的绘制流程/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="概述关于View的绘制我阅读过的所有博文都很长，一篇文章看下来至少要花两三个小时，才能看个大概，包括其中的源码分析等。今天这篇文章主要是针对View的绘制做下大概的汇总，不会很详细，网上关于View的绘制流程详细介绍有很多，大家自行百度吧。这篇文章的目的是假如有人问你的时候，比如面试官，你能用简单的话语介绍给他听，尽管是简答，但是该有的还是要有。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-01-29T07:43:50.469Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.png">
+<meta property="og:updated_time" content="2019-01-31T07:20:12.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View的绘制流程">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:description" content="概述关于View的绘制我阅读过的所有博文都很长，一篇文章看下来至少要花两三个小时，才能看个大概，包括其中的源码分析等。今天这篇文章主要是针对View的绘制做下大概的汇总，不会很详细，网上关于View的绘制流程详细介绍有很多，大家自行百度吧。这篇文章的目的是假如有人问你的时候，比如面试官，你能用简单的话语介绍给他听，尽管是简答，但是该有的还是要有。">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.png">
 
 
 
@@ -442,10 +442,20 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>关于View的绘制我阅读过的所有博文都很长，一篇文章看下来至少要花两三个小时，才能看个大概，包括其中的源码分析等。今天这篇文章主要是针对View的绘制做下大概的汇总，不会很详细，网上关于View的绘制流程详细介绍有很多，大家自行百度吧。这篇文章的目的是假如有人问你的时候，比如面试官，你能用简单的话语介绍给他听，尽管是简答，但是该有的还是要有。<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.png" alt=""><br><a id="more"></a><br>介绍几个View，结构如上图所示：</p>
+<ul>
+<li>PhoneWindow：将Decoriew设置为整个应用窗口的根View，是Window的实现类，它是Android中的最基本的窗口；</li>
+<li>DsecorView：又叫顶级View，系统会将要显示的具体内容呈现在PhoneWindow上。一般情况下，它的内部会包含一个竖直方向的LinearLayout，在这个layout中有两个部分：title和content，DecorView可以通过View view = getWindow().getDecorView()获得。它还是PhoneWindow与ViewRoot之间的桥梁，ViewRoot会通过DecorView设置窗口属性；</li>
+<li>DecorView中的TitleView：标题栏，一般指的是toolbar。</li>
+<li>DecorView中的ContentView：内容栏，是一个id为content的Framelayout，我们平时所写的setContentView()其实就是在设置它。</li>
+</ul>
+<h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p>通常我们自定义View的时候可能会用到<strong>view.setBackgroundColor()</strong>，或是布局中添加<strong>View（view.addView()）</strong>，这些都能引发View的绘制。并且这些都是依附于Activity的，也就是说没有Activity就没有View的绘制。看下Activity的生命周期回调<br><strong>ActivityThead.class：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// H();</span></span><br><span class="line"> <span class="keyword">case</span> RESUME_ACTIVITY:<span class="comment">//Acticity生命周期Resume</span></span><br><span class="line">     Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, <span class="string">"activityResume"</span>);</span><br><span class="line">     SomeArgs args = (SomeArgs) msg.obj;</span><br><span class="line">     handleResumeActivity((IBinder) args.arg1, <span class="keyword">true</span>, args.argi1 != <span class="number">0</span>, <span class="keyword">true</span>,</span><br><span class="line">             args.argi3, <span class="string">"RESUME_ACTIVITY"</span>);</span><br><span class="line">     Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);</span><br><span class="line">     <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">final</span> <span class="keyword">void</span> <span class="title">handleResumeActivity</span><span class="params">(IBinder token, <span class="keyword">boolean</span> clearHide, <span class="keyword">boolean</span> isForward, <span class="keyword">boolean</span> reallyResume, <span class="keyword">int</span> seq, String reason)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 调用onResume方法</span></span><br><span class="line">    r = performResumeActivity(token, clearHide, reason);</span><br><span class="line">    <span class="comment">// 将decorView添加到屏幕中</span></span><br><span class="line">    View decor = r.window.getDecorView();</span><br><span class="line">    decor.setVisibility(View.INVISIBLE);</span><br><span class="line">    ViewManager wm = a.getWindowManager();</span><br><span class="line">    WindowManager.LayoutParams l = r.window.getAttributes();</span><br><span class="line">    a.mDecor = decor;</span><br><span class="line">	<span class="comment">//wm其实就是WindowManagerImpl，而在WindowManagerImpl中又调用了WindowManagerGlobal的addView方法。</span></span><br><span class="line">	<span class="comment">//将DecorView添加到Window中</span></span><br><span class="line">    wm.addView(decor, l);<span class="comment">//调用AddView，开始View的绘制</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>了解到Activity的生命周期回调原理，我们知道View的绘制就是在onResume中开始的。<br>wm其实就是WindowManagerImpl，而在WindowManagerImpl中又调用了WindowManagerGlobal的addView方法。<br>将DecorView添加到Window中，同时创建ViewRootImp对象<br><strong>WindowManagerGlobal.java：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// WindowManagerGlobal.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addView</span><span class="params">(View view, ViewGroup.LayoutParams params,</span></span></span><br><span class="line"><span class="function"><span class="params">            Display display, Window parentWindow)</span> </span>&#123;</span><br><span class="line">    ViewRootImpl root;</span><br><span class="line">    root = <span class="keyword">new</span> ViewRootImpl(view.getContext(), display);<span class="comment">//构建ViewRootImpl，这个类非常的关键</span></span><br><span class="line">    view.setLayoutParams(wparams);</span><br><span class="line">	</span><br><span class="line">    mViews.add(view);</span><br><span class="line">    mRoots.add(root);</span><br><span class="line">    mParams.add(wparams);</span><br><span class="line">	<span class="comment">//创建ViewRootImp对象，并将ViewRootImp和DecorView建立关联</span></span><br><span class="line">    root.setView(view, wparams, panelParentView);<span class="comment">//设置View</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上前期的准备工作完成后，<br>View的绘制流程是从ViewRoot（ViewRootImpl）的performTraversals()方法开始的<br><strong>ViewRootImpl.java:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setView</span><span class="params">(View view, WindowManager.LayoutParams attrs, View panelParentView)</span> </span>&#123;</span><br><span class="line">    requestLayout();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">requestLayout</span><span class="params">()</span> </span>&#123;<span class="comment">//我们在自定义ViewGroup的时候，如果要更新布局就会调用这个方法刷新界面，其实就是调用了View的重新绘制流程。</span></span><br><span class="line">   <span class="keyword">if</span> (!mHandlingLayoutInLayoutRequest) &#123;</span><br><span class="line">       checkThread();</span><br><span class="line">       mLayoutRequested = <span class="keyword">true</span>;</span><br><span class="line">       scheduleTraversals();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scheduleTraversals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       mChoreographer.postCallback(</span><br><span class="line">               Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">final</span> TraversalRunnable mTraversalRunnable = <span class="keyword">new</span> TraversalRunnable();</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">TraversalRunnable</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      doTraversal();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">doTraversal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	performTraversals();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//View的绘制再此开始</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">performTraversals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">        <span class="comment">// Ask host how big it wants to be</span></span><br><span class="line">        performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">        performLayout(lp, mWidth, mHeight);</span><br><span class="line">        <span class="comment">// ... ...</span></span><br><span class="line">        performDraw();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>说是简答，感觉越写越长。。。刹不住车了<br>View的绘制流程是从 ViewRoot 的 performTraversals 方法开始的，它经过 measure、layout、draw三个过程才最终将一个View绘制出来，performTraversals会依次调用 performMeasure，performLayout和 performDraw 三个方法，这三个方法分别会完成View的measure、layout、draw的流程。例如performMeasure会调用measure方法，measure方法中又会调用onMeasure方法，在onMeasure方法中会对所有子view进行measure过程，子view再重复此过程，如此反复就实现了view树的遍历。参数：(widthMeasureSpec,heightMeasureSpec)高2位表示MODE，低30位表示size。当然在measure、layout、draw中还有许多的细节，这里就不讲了。</p>
+<h1 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h1><h3 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h3><p>启动Activity —&gt; 创建一个PhoneWindow —&gt; getWindow().setContentView(id)下初始化DecorView —&gt; onRsume()下将DecorView添加到Window中，同时创建ViewRootImp对象 —&gt; performTraversals()</p>
+<h3 id="绘制阶段"><a href="#绘制阶段" class="headerlink" title="绘制阶段"></a>绘制阶段</h3><p>performTraversals()会依次调用performMeasure、performLayout和performDraw ,然后就是各种遍历计算，绘制子view。</p>
+
       
     </div>
 
@@ -512,8 +522,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/23/ScrollView镶嵌ListView问题原因分析/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/07/23/ScrollView镶嵌ListView问题原因分析/" rel="next" title="ScrollView镶嵌ListView问题原因分析">
+                <i class="fa fa-chevron-left"></i> ScrollView镶嵌ListView问题原因分析
               </a>
             
           </div>
@@ -522,8 +532,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/25/算法：数组排序/" rel="prev" title="算法：数组排序">
-                算法：数组排序 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/16/关于Handle的几个问题/" rel="prev" title="关于Handle的几个问题">
+                关于Handle的几个问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +606,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -662,7 +672,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -722,7 +734,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结一下"><span class="nav-number">3.</span> <span class="nav-text">总结一下</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#准备阶段"><span class="nav-number">3.0.1.</span> <span class="nav-text">准备阶段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制阶段"><span class="nav-number">3.0.2.</span> <span class="nav-text">绘制阶段</span></a></li></ol></li></ol></div>
             
 
           </div>

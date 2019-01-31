@@ -114,17 +114,17 @@
 
 
 
-  <meta name="description" content="概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。 问题分析先看关于测量View的几个参数：在ScrollView中添加ListView，那么ScrollView就是父View，ListView是子View。先看ScrollView的onMeasure()的源码：ScrollView.class:123456789@Over">
+  <meta name="description" content="概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="周康的博客">
+<meta property="og:title" content="ScrollView镶嵌ListView问题原因分析">
 <meta property="og:url" content="http://kangzhou.github.io/2016/07/23/ScrollView镶嵌ListView问题原因分析/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。 问题分析先看关于测量View的几个参数：在ScrollView中添加ListView，那么ScrollView就是父View，ListView是子View。先看ScrollView的onMeasure()的源码：ScrollView.class:123456789@Over">
+<meta property="og:description" content="概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-29T08:38:12.165Z">
+<meta property="og:updated_time" content="2019-01-31T07:21:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周康的博客">
-<meta name="twitter:description" content="概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。 问题分析先看关于测量View的几个参数：在ScrollView中添加ListView，那么ScrollView就是父View，ListView是子View。先看ScrollView的onMeasure()的源码：ScrollView.class:123456789@Over">
+<meta name="twitter:title" content="ScrollView镶嵌ListView问题原因分析">
+<meta name="twitter:description" content="概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。">
 
 
 
@@ -141,7 +141,7 @@
   };
 </script>
 
-  <title> | 周康的博客</title>
+  <title>ScrollView镶嵌ListView问题原因分析 | 周康的博客</title>
   
 
 
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">ScrollView镶嵌ListView问题原因分析
               
             
           </h1>
@@ -439,7 +439,7 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。</p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。<br><a id="more"></a></p>
 <h1 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h1><p>先看关于测量View的几个参数：<br>在ScrollView中添加ListView，那么ScrollView就是父View，ListView是子View。先看ScrollView的onMeasure()的源码：<br>ScrollView.class:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onMeasure(widthMeasureSpec, heightMeasureSpec);<span class="comment">//先调用父类的onMeasure();</span></span><br><span class="line">        <span class="comment">//而ScrollView的父类是FrameLaout</span></span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// ... ... </span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <p>父View：<br>FrameLaout.class :<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onMeasure</span><span class="params">(<span class="keyword">int</span> widthMeasureSpec, <span class="keyword">int</span> heightMeasureSpec)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// ... ...</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">            <span class="keyword">final</span> View child = getChildAt(i);</span><br><span class="line">            <span class="keyword">if</span> (mMeasureAllChildren || child.getVisibility() != GONE) &#123;</span><br><span class="line">                measureChildWithMargins(child, widthMeasureSpec, <span class="number">0</span>, heightMeasureSpec, <span class="number">0</span>);<span class="comment">//这里先对子View进行处理</span></span><br><span class="line">				</span><br><span class="line">				<span class="comment">//接着开始测量</span></span><br><span class="line">                <span class="keyword">final</span> LayoutParams lp = (LayoutParams) child.getLayoutParams();</span><br><span class="line">                maxWidth = Math.max(maxWidth,</span><br><span class="line">                        child.getMeasuredWidth() + lp.leftMargin + lp.rightMargin);</span><br><span class="line">                maxHeight = Math.max(maxHeight,</span><br><span class="line">                        child.getMeasuredHeight() + lp.topMargin + lp.bottomMargin);</span><br><span class="line">                childState = combineMeasuredStates(childState, child.getMeasuredState());</span><br><span class="line">                <span class="keyword">if</span> (measureMatchParentChildren) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (lp.width == LayoutParams.MATCH_PARENT ||</span><br><span class="line">                            lp.height == LayoutParams.MATCH_PARENT) &#123;</span><br><span class="line">                        mMatchParentChildren.add(child);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// ... ...</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
 <p>到这里就需要看下measureChildWithMargins方法了，点进去之后发现在ViewGroup里面,这里对子View进行了测量处理<br>ViewGroup.class:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">measureChildWithMargins</span><span class="params">(View child,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">int</span> parentWidthMeasureSpec, <span class="keyword">int</span> widthUsed,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">int</span> parentHeightMeasureSpec, <span class="keyword">int</span> heightUsed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> MarginLayoutParams lp = (MarginLayoutParams) child.getLayoutParams();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> childWidthMeasureSpec = getChildMeasureSpec(parentWidthMeasureSpec,</span><br><span class="line">                mPaddingLeft + mPaddingRight + lp.leftMargin + lp.rightMargin</span><br><span class="line">                        + widthUsed, lp.width);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> childHeightMeasureSpec = getChildMeasureSpec(parentHeightMeasureSpec,</span><br><span class="line">                mPaddingTop + mPaddingBottom + lp.topMargin + lp.bottomMargin</span><br><span class="line">                        + heightUsed, lp.height);</span><br><span class="line"></span><br><span class="line">        child.measure(childWidthMeasureSpec, childHeightMeasureSpec);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
@@ -475,7 +475,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2016/07/23/ScrollView镶嵌ListView问题原因分析/" title="">http://kangzhou.github.io/2016/07/23/ScrollView镶嵌ListView问题原因分析/</a>
+    <a href="http://kangzhou.github.io/2016/07/23/ScrollView镶嵌ListView问题原因分析/" title="ScrollView镶嵌ListView问题原因分析">http://kangzhou.github.io/2016/07/23/ScrollView镶嵌ListView问题原因分析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -599,7 +599,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -665,7 +665,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

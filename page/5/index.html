@@ -504,6 +504,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/09/16/关于Handle的几个问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/09/16/关于Handle的几个问题/" itemprop="url">
+                  关于Handle的几个问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-09-16 00:00:00" itemprop="dateCreated datePublished" datetime="2016-09-16T00:00:00+08:00">2016-09-16</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h1><p>现在这里列出几个问题：</p>
+<ol>
+<li>Handler的作用</li>
+<li>为什么Android中要设计为只能在UI线程中去更新UI呢?</li>
+<li>Handler、Looper MessageQueue之间的关系</li>
+<li>主线程如何让往子线程发消息</li>
+<li>子线程中可以使用Handler吗？</li>
+<li>可以在非主线程中更新UI吗？</li>
+<li>使用Handle要注意什么（会引发什么问题）？
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/09/16/关于Handle的几个问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </li></ol></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/09/15/View的绘制流程/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -603,7 +769,7 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>关于View的绘制我阅读过的所有博文都很长，一篇文章看下来至少要花两三个小时，才能看个大概，包括其中的源码分析等。今天这篇文章主要是针对View的绘制做下大概的汇总，不会很详细，网上关于View的绘制流程详细介绍有很多，大家自行百度吧。这篇文章的目的是假如有人问你的时候，比如面试官，你能用简单的话语介绍给他听，尽管是简答，但是该有的还是要有。<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B.png" alt=""><br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/09/15/View的绘制流程/#more" rel="contents">
@@ -682,7 +848,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/2016/07/23/ScrollView镶嵌ListView问题原因分析/" itemprop="url">
-                  未命名
+                  ScrollView镶嵌ListView问题原因分析
                 </a>
               
             
@@ -761,10 +927,7 @@
 
       
         
-          
-          概述ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。
-问题分析先看关于测量View的几个参数：在ScrollView中添加ListView，那么ScrollView就是父View，ListView是子View。先看ScrollView的onMeasure()的源码：ScrollView.class:123456789@Over
-          ...
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>ScrollView内镶嵌ListView会出现显示不全（只显示一个Item）的问题，这里我们要回答具体原因和解决方案。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/07/23/ScrollView镶嵌ListView问题原因分析/#more" rel="contents">
@@ -774,7 +937,7 @@
           <!--/noindex-->
         
       
-    </div>
+    </p></div>
 
     
 
@@ -1081,12 +1244,16 @@
 
       
         
-          
-          概述ListView是我最初学Android时最常用的几个控件之一了，那时候根本不知道什么是自定义View，什么是优化。后来看了别人写的代码才发现在getView里面还能有这样的操作呢！ListView的优化是我每次去面试必问的几道面试题之一。当然内容也很简单，今天不细讲，就大概汇总一下。
-ListView的优化方案
-复用converView目的不用每次都findViewbyid
-定义静态内部类V
-          ...
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>ListView是我最初学Android时最常用的几个控件之一了，那时候根本不知道什么是自定义View，什么是优化。后来看了别人写的代码才发现在getView里面还能有这样的操作呢！ListView的优化是我每次去面试必问的几道面试题之一。当然内容也很简单，今天不细讲，就大概汇总一下。</p>
+<h1 id="ListView的优化方案"><a href="#ListView的优化方案" class="headerlink" title="ListView的优化方案"></a>ListView的优化方案</h1><ol>
+<li>复用converView<br>目的不用每次都findViewbyid</li>
+<li>定义静态内部类ViewHolder<br>为了避免对外部类（外部类很可能是Activity）对象的引用，那么最好将内部类声明为static的（非必须的）。</li>
+<li>尽可能减少在getView中的逻辑判断</li>
+<li>Item布局优化<br>减少布局镶嵌，减少背景覆盖（重复渲染）</li>
+<li>滑动时停止加载图片</li>
+<li>使用分页</li>
+<li>数据类型考虑使用弱引用</li>
+<li>缓存
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2016/03/25/ListView的优化/#more" rel="contents">
@@ -1096,7 +1263,7 @@ ListView的优化方案
           <!--/noindex-->
         
       
-    </div>
+    </li></ol></div>
 
     
 
@@ -1342,7 +1509,7 @@ ListView的优化方案
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1408,7 +1575,9 @@ ListView的优化方案
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
