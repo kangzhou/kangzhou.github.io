@@ -124,7 +124,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/OSImodel.png">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/TCPconnetion.png">
-<meta property="og:updated_time" content="2019-01-31T07:07:29.555Z">
+<meta property="og:updated_time" content="2019-03-01T07:15:27.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Http网络基础">
 <meta name="twitter:description" content="OSI 的七层模型">
@@ -475,6 +475,7 @@
 <h1 id="Http状态码"><a href="#Http状态码" class="headerlink" title="Http状态码"></a>Http状态码</h1><p>1xx: Infomational (信息状态码) ，接收的请求正在处理<br>2xx: Succeed(成功)，请求正常处理完毕,如 200，204<br>3xx: Redirection(重定向)，需要进行附加操作，一般是没有响应数据返回的，如 304（Not,modified）307<br>4xx: Client Error (客户端的错误)，服务器无法处理请求，如 404，405<br>5xx: Server Error (服务端的错误)，服务器处理请求出错，如 500，502</p>
 <h1 id="Http-和-Https-的区别"><a href="#Http-和-Https-的区别" class="headerlink" title="Http 和 Https 的区别"></a>Http 和 Https 的区别</h1><p>Https = Http + 加密 + 验证 + 完整<br>Http 的缺点：<br>1 数据是没有加密传输，可能会遭遇窃听；<br>2 不验证通信方的身份，可能会遭遇伪装；<br>3 无法验证报文的完整性，可能会遭遇篡改。</p>
 <p>SSL/TLS协议就是为了解决这些风险而设计的<br>SSL原理：<br>SSL/TLS协议基本思路是采用公钥加密法（最有名的是RSA加密算法）。大概流程是，客户端向服务器索要公钥，然后用公钥加密信息，服务器收到密文，用自己的私钥解密。<br>为了防止公钥被篡改，把公钥放在数字证书（二进制文件）中，证书可信则公钥可信。公钥加密计算量很大，为了提高效率，服务端和客户端都生成对话秘钥，用它加密信息，而对话秘钥是对称加密，速度非常快。而公钥用来机密对话秘钥。</p>
+<h1 id="Http与Socket的区别"><a href="#Http与Socket的区别" class="headerlink" title="Http与Socket的区别"></a>Http与Socket的区别</h1><p>Http是一种基于TCP/IP的协议。有客户端发起请求，服务器来处理响应请求<br>Sockt是对TCP/IP进行封装的一种接口。步骤为服务器监听——&gt;客户端请求——&gt;确认连接。所以服务器也可直接将数据发送给客户端。</p>
 
       
     </div>
@@ -626,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">47</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -694,7 +695,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -754,7 +761,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OSI-的七层模型"><span class="nav-number">1.</span> <span class="nav-text">OSI 的七层模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP"><span class="nav-number">2.</span> <span class="nav-text">TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要设计成三次握手和四次挥手"><span class="nav-number">2.0.1.</span> <span class="nav-text">为什么要设计成三次握手和四次挥手</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP"><span class="nav-number">3.</span> <span class="nav-text">UDP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http-报文简介"><span class="nav-number">4.</span> <span class="nav-text">Http 报文简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie、Session-和-Token"><span class="nav-number">5.</span> <span class="nav-text">Cookie、Session 和 Token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http-缓存"><span class="nav-number">6.</span> <span class="nav-text">Http 缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http状态码"><span class="nav-number">7.</span> <span class="nav-text">Http状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http-和-Https-的区别"><span class="nav-number">8.</span> <span class="nav-text">Http 和 Https 的区别</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OSI-的七层模型"><span class="nav-number">1.</span> <span class="nav-text">OSI 的七层模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP"><span class="nav-number">2.</span> <span class="nav-text">TCP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要设计成三次握手和四次挥手"><span class="nav-number">2.0.1.</span> <span class="nav-text">为什么要设计成三次握手和四次挥手</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP"><span class="nav-number">3.</span> <span class="nav-text">UDP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http-报文简介"><span class="nav-number">4.</span> <span class="nav-text">Http 报文简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cookie、Session-和-Token"><span class="nav-number">5.</span> <span class="nav-text">Cookie、Session 和 Token</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http-缓存"><span class="nav-number">6.</span> <span class="nav-text">Http 缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http状态码"><span class="nav-number">7.</span> <span class="nav-text">Http状态码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http-和-Https-的区别"><span class="nav-number">8.</span> <span class="nav-text">Http 和 Https 的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Http与Socket的区别"><span class="nav-number">9.</span> <span class="nav-text">Http与Socket的区别</span></a></li></div>
             
 
           </div>
