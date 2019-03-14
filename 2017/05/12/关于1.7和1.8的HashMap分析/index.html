@@ -124,7 +124,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/hashMap.jpg">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/hashMap2.png">
-<meta property="og:updated_time" content="2019-02-27T07:28:24.954Z">
+<meta property="og:updated_time" content="2019-03-13T03:30:22.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于1.7和1.8的HashMap的总结">
 <meta name="twitter:description" content="前言工行的项目中，我们大量的使用了Map，但对于7和8的版本有哪些区别还比较模糊，特此来总结归纳一下，在日常的开发过程中，HashMap是我常用的数据结构体，在分析1.7和1.8的HashMap之间的区别之前，先了解一下HashMap。 简介 HashMap类 12public class HashMap&amp;lt;K,V&amp;gt; extends AbstractMap&amp;lt;K,V&amp;gt;">
@@ -450,7 +450,7 @@
 </li>
 <li><p>类介绍<br>定义：基于哈希表的Map接口的实现类，继承了AbstractMap抽象类，同时实现了Map（基于Map），Cloneable（可克隆）,Serializable（序列化）接口。<br>特点：允许空值空键，非安全线程，不保证有序。</p>
 <a id="more"></a>
-<h1 id="HashMap的实现"><a href="#HashMap的实现" class="headerlink" title="HashMap的实现"></a>HashMap的实现</h1><p>简单来说，<strong>HashMap是基于数组+链表的形式来实现的</strong>。<br>数组的元素就是键值对（一个链表），数组的下标就是Key的hash值，数组的大小就是HashMap的容量。由于不同的Key计算的hash值可能会相同（hash冲突），链表就是用于解决这种冲突的。即发生冲突时，新元素插入到链表头中，新元素总是添加到数组里，旧元素移到单列表中。<br>假设自己设计一个类似HashMap的类，可以采用数组+Entry的形式实现，Entry对象用来存放Key和Value。其插入和查询的都是O(n)级别的。</p>
+<h1 id="HashMap的实现"><a href="#HashMap的实现" class="headerlink" title="HashMap的实现"></a>HashMap的实现</h1><p>简单来说，<strong>HashMap是基于数组+链表的形式来实现的</strong>。HashMap的初始容量是16，扩容因子是0.75。意思是当put到13个键值对的时候（13 &gt; 16 * 0.75），HashMap会进行扩容,从16扩容到32。<br>数组的元素就是键值对（一个链表），数组的下标就是Key的hash值，数组的大小就是HashMap的容量。由于不同的Key计算的hash值可能会相同（hash冲突），链表就是用于解决这种冲突的。即发生冲突时，新元素插入到链表头中，新元素总是添加到数组里，旧元素移到单列表中。<br>假设自己设计一个类似HashMap的类，可以采用数组+Entry的形式实现，Entry对象用来存放Key和Value。其插入和查询的都是O(n)级别的。</p>
 </li>
 </ul>
 <h1 id="示意图"><a href="#示意图" class="headerlink" title="示意图"></a>示意图</h1><p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/hashMap.jpg" alt="HashMap示意图"></p>
@@ -610,7 +610,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -684,7 +684,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
