@@ -114,20 +114,18 @@
 
 
 
-  <meta name="description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。《》">
+  <meta name="description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。">
 <meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="设计模式（二）：简单工厂与策略模式">
 <meta property="og:url" content="http://kangzhou.github.io/2018/03/17/设计模式（二）：简单工厂与策略模式/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。《》">
+<meta property="og:description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-01-28T08:26:05.090Z">
+<meta property="og:updated_time" content="2019-03-14T06:07:11.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式（二）：简单工厂与策略模式">
-<meta name="twitter:description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。《》">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:description" content="概述在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。">
 
 
 
@@ -442,7 +440,7 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br>在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。<br>《》<br><a id="more"></a></p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在我看来简单工厂模式与策略模式是十分相似的，都是针对不同情况而产生不用的策略或是实体。因为十分相似的缘故，写在同一篇文章里比较合适。首先来看看简单工厂模式。<br><a id="more"></a></p>
 <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>简单工厂属于创建型模式，也叫静态工厂方法模式，我们只需要知道要生产什么样的实体对象，不需要知道生产这个实体对象需要哪些具体的参数</p>
 <h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>将实例化操作与使用实例对象的操作分开<br>避免显示指定，解耦。</p>
 <h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>首先是工厂类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Factory</span></span>&#123;</span><br><span class="line">	<span class="comment">//根据不用的要求生产生产什么样的产品</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Product <span class="title">createProduct</span><span class="params">(String modeStr)</span></span>&#123;</span><br><span class="line">		<span class="keyword">switch</span>(modeStr)&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"A"</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ProductA();</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"B"</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ProductB();</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"C"</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ProductC();</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -609,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -630,7 +628,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -689,7 +689,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
