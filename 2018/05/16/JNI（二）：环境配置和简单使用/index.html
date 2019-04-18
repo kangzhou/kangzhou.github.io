@@ -114,27 +114,30 @@
 
 
 
-  <meta name="description" content="概述">
+  <meta name="description" content="前期准备下载JNI所需的工具集并进行配置：">
 <meta name="keywords" content="JNI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JNI（三）：基于OpenCV的图片处理">
-<meta property="og:url" content="http://kangzhou.github.io/2018/05/22/JNI（三）：基于OpenCV的图片处理/index.html">
+<meta property="og:title" content="JNI（二）：环境配置和简单使用">
+<meta property="og:url" content="http://kangzhou.github.io/2018/05/16/JNI（二）：环境配置和简单使用/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="前期准备下载JNI所需的工具集并进行配置：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-02-12T06:28:47.197Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C1.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C2.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C3.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C4.png">
+<meta property="og:updated_time" content="2019-04-11T09:14:19.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JNI（三）：基于OpenCV的图片处理">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="JNI（二）：环境配置和简单使用">
+<meta name="twitter:description" content="前期准备下载JNI所需的工具集并进行配置：">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2018/05/22/JNI（三）：基于OpenCV的图片处理/">
+  <link rel="canonical" href="http://kangzhou.github.io/2018/05/16/JNI（二）：环境配置和简单使用/">
 
 
 
@@ -144,7 +147,7 @@
   };
 </script>
 
-  <title>JNI（三）：基于OpenCV的图片处理 | 周康的博客</title>
+  <title>JNI（二）：环境配置和简单使用 | 周康的博客</title>
   
 
 
@@ -348,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/05/22/JNI（三）：基于OpenCV的图片处理/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/05/16/JNI（二）：环境配置和简单使用/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +368,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JNI（三）：基于OpenCV的图片处理
+          <h1 class="post-title" itemprop="name headline">JNI（二）：环境配置和简单使用
               
             
           </h1>
@@ -390,7 +393,7 @@
                 
               
 
-              <time title="创建时间：2018-05-22 00:00:00" itemprop="dateCreated datePublished" datetime="2018-05-22T00:00:00+08:00">2018-05-22</time>
+              <time title="创建时间：2018-05-16 00:00:00" itemprop="dateCreated datePublished" datetime="2018-05-16T00:00:00+08:00">2018-05-16</time>
             
 
             
@@ -442,10 +445,19 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
+        <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>下载JNI所需的工具集并进行配置：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C1.png" alt=""><br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C2.png" alt=""><br><a id="more"></a></p>
+<h1 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h1><p>新建项目（勾选C++），生成一个native项目，项目结构：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C3.png" alt=""><br>可以看出NDK项目的结构跟普通的项目还是有些区别的。</p>
+<ul>
+<li>ccp：c文件，需要在里面编写c/c++代码</li>
+<li>CMakeLists.txt：指定了cmake最小的版本，添加/创建动态库，例如要生成编写库，将native_lib.cpp添加进去即可，具体如下：<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"># Sets the minimum version of CMake required to build the native library.</span><br><span class="line"></span><br><span class="line">cmake_minimum_required(VERSION <span class="number">3.4</span><span class="number">.1</span>)</span><br><span class="line"></span><br><span class="line"># 创建动态库（自己将要生成的动态库）</span><br><span class="line"></span><br><span class="line">add_library( # Sets the name of the library.</span><br><span class="line">             native-lib</span><br><span class="line"></span><br><span class="line">             # Sets the library as a shared library.</span><br><span class="line">             SHARED</span><br><span class="line"></span><br><span class="line">             # Provides a relative path to your source file(s).</span><br><span class="line">             src/main/cpp/native-lib.cpp )</span><br><span class="line"></span><br><span class="line"># Searches <span class="keyword">for</span> a specified prebuilt library <span class="keyword">and</span> stores the path as a</span><br><span class="line"><span class="meta"># variable. Because CMake includes system libraries in the search path by</span></span><br><span class="line"><span class="meta"># default, you only need to specify the name of the public NDK library</span></span><br><span class="line"><span class="meta"># you want to add. CMake verifies that the library exists before</span></span><br><span class="line"><span class="meta"># completing its build.</span></span><br><span class="line"></span><br><span class="line">find_library( # Sets the name of the path variable.</span><br><span class="line">              <span class="built_in">log</span>-lib</span><br><span class="line"></span><br><span class="line">              # Specifies the name of the NDK library that</span><br><span class="line">              # you want CMake to locate.</span><br><span class="line">              <span class="built_in">log</span> )</span><br><span class="line"></span><br><span class="line"># 链接需要的第三方动态库</span><br><span class="line">target_link_libraries( # Specifies the target library.</span><br><span class="line">                       native-lib</span><br><span class="line"></span><br><span class="line">                       # Links the target library to the <span class="built_in">log</span> library</span><br><span class="line">                       # included in the NDK.</span><br><span class="line">                       $&#123;<span class="built_in">log</span>-lib&#125; )</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>实现一个简单的逻辑，通过Java层调用C层的函数，把参数交由C层处理，将结果返回Java层显示。<br><strong>native-lib.cpp:</strong><br>函数名为Java_+包名+类名+方法名。<br>参数类型与返回类型都是jint，对应Java的int类型。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jint JNICALL</span><br><span class="line">Java_com_jni_szcatic_myapplication_MainActivity_resultFromJNI(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject <span class="comment">/* this */</span>,jint count1,jint count2) &#123;</span><br><span class="line">    <span class="keyword">return</span> count1+count2;<span class="comment">//将处理结果返回</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Java层的声明与调用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义非静态native方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">resultFromJNI</span><span class="params">(<span class="keyword">int</span> count1,<span class="keyword">int</span> count2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">Button button = (Button) findViewById(R.id.sample_button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>,resultFromJNI(<span class="number">3</span>,<span class="number">6</span>)+<span class="string">""</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
 <pre><code class="java">
 </code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+<p>显示结果：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C4.png" alt=""></p>
+
       
     </div>
 
@@ -466,7 +478,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2018/05/22/JNI（三）：基于OpenCV的图片处理/" title="JNI（三）：基于OpenCV的图片处理">http://kangzhou.github.io/2018/05/22/JNI（三）：基于OpenCV的图片处理/</a>
+    <a href="http://kangzhou.github.io/2018/05/16/JNI（二）：环境配置和简单使用/" title="JNI（二）：环境配置和简单使用">http://kangzhou.github.io/2018/05/16/JNI（二）：环境配置和简单使用/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -512,8 +524,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/21/Java注解/" rel="next" title="Java注解">
-                <i class="fa fa-chevron-left"></i> Java注解
+              <a href="/2018/05/08/JNI（一）：基础理论知识/" rel="next" title="JNI（一）：基础理论知识">
+                <i class="fa fa-chevron-left"></i> JNI（一）：基础理论知识
               </a>
             
           </div>
@@ -522,8 +534,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/09/Flutter开发（一）：环境配置/" rel="prev" title="Flutter开发（一）：环境配置">
-                Flutter开发（一）：环境配置 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/21/Java注解/" rel="prev" title="Java注解">
+                Java注解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">57</span>
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -617,7 +629,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -676,7 +690,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -736,7 +760,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建项目"><span class="nav-number">2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
             
 
           </div>

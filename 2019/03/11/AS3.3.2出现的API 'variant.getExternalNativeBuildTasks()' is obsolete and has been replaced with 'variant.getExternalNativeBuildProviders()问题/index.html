@@ -114,27 +114,30 @@
 
 
 
-  <meta name="description" content="概述">
-<meta name="keywords" content="JNI">
+  <meta name="description" content="问题描述在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()">
+<meta name="keywords" content="异常收集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JNI（三）：基于OpenCV的图片处理">
-<meta property="og:url" content="http://kangzhou.github.io/2016/01/01/JNI（三）：基于OpenCV的图片处理/index.html">
+<meta property="og:title" content="API &#39;variant.getExternalNativeBuildTasks()&#39; is obsolete and has been replaced with &#39;variant.getExternalNativeBuildProviders()">
+<meta property="og:url" content="http://kangzhou.github.io/2019/03/11/AS3.3.2出现的API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()问题/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="问题描述在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-03-14T06:49:20.724Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-1.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-2.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-3.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-4.png">
+<meta property="og:updated_time" content="2019-04-11T02:52:30.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JNI（三）：基于OpenCV的图片处理">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="API &#39;variant.getExternalNativeBuildTasks()&#39; is obsolete and has been replaced with &#39;variant.getExternalNativeBuildProviders()">
+<meta name="twitter:description" content="问题描述在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2016/01/01/JNI（三）：基于OpenCV的图片处理/">
+  <link rel="canonical" href="http://kangzhou.github.io/2019/03/11/AS3.3.2出现的API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()问题/">
 
 
 
@@ -144,7 +147,7 @@
   };
 </script>
 
-  <title>JNI（三）：基于OpenCV的图片处理 | 周康的博客</title>
+  <title>API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders() | 周康的博客</title>
   
 
 
@@ -348,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/01/01/JNI（三）：基于OpenCV的图片处理/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2019/03/11/AS3.3.2出现的API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +368,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JNI（三）：基于OpenCV的图片处理
+          <h1 class="post-title" itemprop="name headline">API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()
               
             
           </h1>
@@ -390,7 +393,7 @@
                 
               
 
-              <time title="创建时间：2016-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2016-01-01T00:00:00+08:00">2016-01-01</time>
+              <time title="创建时间：2019-03-11 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-11T00:00:00+08:00">2019-03-11</time>
             
 
             
@@ -442,10 +445,9 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-1.png" alt=""><br>API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()<br><a id="more"></a><br>说我的api过时。<br>当前项目配置：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-2.png" alt=""><br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-3.png" alt=""></p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>将gradle版本降为3.2.1就可以了<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-4.png" alt=""><br>为什么api过时，需要通过降低而不是升高gradle版本来解决，有些费解。</p>
+
       
     </div>
 
@@ -466,7 +468,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2016/01/01/JNI（三）：基于OpenCV的图片处理/" title="JNI（三）：基于OpenCV的图片处理">http://kangzhou.github.io/2016/01/01/JNI（三）：基于OpenCV的图片处理/</a>
+    <a href="http://kangzhou.github.io/2019/03/11/AS3.3.2出现的API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()问题/" title="API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()">http://kangzhou.github.io/2019/03/11/AS3.3.2出现的API 'variant.getExternalNativeBuildTasks()' is obsolete and has been replaced with 'variant.getExternalNativeBuildProviders()问题/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -479,7 +481,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JNI/" rel="tag"># JNI</a>
+            <a href="/tags/异常收集/" rel="tag"># 异常收集</a>
           
         </div>
       
@@ -512,14 +514,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/03/GreeDAO的使用/" rel="next" title="GreeDAO的使用">
+                <i class="fa fa-chevron-left"></i> GreeDAO的使用
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/JNI（二）：环境配置和简单使用/" rel="prev" title="JNI（二）：环境配置和简单使用">
-                JNI（二）：环境配置和简单使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/01/置顶/" rel="prev" title="【置顶】">
+                【置顶】 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -592,7 +598,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">59</span>
+                    <span class="site-state-item-count">62</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -678,7 +684,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -738,7 +750,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
             
 
           </div>
