@@ -114,27 +114,27 @@
 
 
 
-  <meta name="description" content="概述">
+  <meta name="description" content="概述目前GreenDao是最佳的ORM的方案，无论从使用复杂程度还是效率方面，GreenDao的表现都非常出色。当然，每个优秀的框架涉及的知识点或者设计模式都会相对复杂一点，以至于后来的开发人员使用的时候才那么容易上手。 GreenDao介绍GreenDAO是一个开源的Android ORM(“对象/关系映射”)，通过GreenDao，我们可以更快速的操作数据库，我们可以使用简单的面相对象的API">
 <meta name="keywords" content="sqlite">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GreeDAO的使用">
-<meta property="og:url" content="http://kangzhou.github.io/2016/08/03/GreeDAO的使用/index.html">
+<meta property="og:title" content="GreenDao的使用（一）">
+<meta property="og:url" content="http://kangzhou.github.io/2018/08/05/GreenDao的使用（一）/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="概述目前GreenDao是最佳的ORM的方案，无论从使用复杂程度还是效率方面，GreenDao的表现都非常出色。当然，每个优秀的框架涉及的知识点或者设计模式都会相对复杂一点，以至于后来的开发人员使用的时候才那么容易上手。 GreenDao介绍GreenDAO是一个开源的Android ORM(“对象/关系映射”)，通过GreenDao，我们可以更快速的操作数据库，我们可以使用简单的面相对象的API">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-04-19T00:44:02.930Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/greedao1.png">
+<meta property="og:updated_time" content="2019-04-30T09:38:58.527Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GreeDAO的使用">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="GreenDao的使用（一）">
+<meta name="twitter:description" content="概述目前GreenDao是最佳的ORM的方案，无论从使用复杂程度还是效率方面，GreenDao的表现都非常出色。当然，每个优秀的框架涉及的知识点或者设计模式都会相对复杂一点，以至于后来的开发人员使用的时候才那么容易上手。 GreenDao介绍GreenDAO是一个开源的Android ORM(“对象/关系映射”)，通过GreenDao，我们可以更快速的操作数据库，我们可以使用简单的面相对象的API">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/greedao1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2016/08/03/GreeDAO的使用/">
+  <link rel="canonical" href="http://kangzhou.github.io/2018/08/05/GreenDao的使用（一）/">
 
 
 
@@ -144,7 +144,7 @@
   };
 </script>
 
-  <title>GreeDAO的使用 | 周康的博客</title>
+  <title>GreenDao的使用（一） | 周康的博客</title>
   
 
 
@@ -348,7 +348,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/08/03/GreeDAO的使用/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/08/05/GreenDao的使用（一）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +365,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GreeDAO的使用
+          <h1 class="post-title" itemprop="name headline">GreenDao的使用（一）
               
             
           </h1>
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="创建时间：2016-08-03 00:00:00" itemprop="dateCreated datePublished" datetime="2016-08-03T00:00:00+08:00">2016-08-03</time>
+              <time title="创建时间：2018-08-05 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-05T00:00:00+08:00">2018-08-05</time>
             
 
             
@@ -442,10 +442,33 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>目前GreenDao是最佳的ORM的方案，无论从使用复杂程度还是效率方面，GreenDao的表现都非常出色。当然，每个优秀的框架涉及的知识点或者设计模式都会相对复杂一点，以至于后来的开发人员使用的时候才那么容易上手。</p>
+<h1 id="GreenDao介绍"><a href="#GreenDao介绍" class="headerlink" title="GreenDao介绍"></a>GreenDao介绍</h1><p>GreenDAO是一个开源的Android ORM(“对象/关系映射”)，通过GreenDao，我们可以<strong>更快速的操作数据库，我们可以使用简单的面相对象的API来存储，更新，删除和查询Java对象</strong>。</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
+<li>高性能<br>官方统计图：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/greedao1.png" alt="来自网络"></li>
+<li>易使用</li>
+<li>最小的内存消耗;</li>
+<li>数据库加密：greenDAO支持SQLCipher，以确保用户的数据安全;</li>
+</ul>
+<h3 id="主要成员介绍"><a href="#主要成员介绍" class="headerlink" title="主要成员介绍"></a>主要成员介绍</h3><ul>
+<li>DaoMaster：继承自AbstractDaoMaster，提供静态方法删除或者创建数据库，基于DatabaseOpenHelper实现</li>
+<li>DaoSession：管理这Dao对象。</li>
+<li>EntitiesDao：Entities的操作类，可对Entities进行增删改查等操作</li>
+<li>Entities：可持久化对象。通常, 实体对象代表一个数据库行使用标准 Java 属性(如一个JavaBean )。<a id="more"></a>
+</li>
+</ul>
+<h1 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h1><h3 id="简单配置"><a href="#简单配置" class="headerlink" title="简单配置"></a>简单配置</h3><p>project的build.gradle文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">        classpath <span class="string">'com.android.tools.build:gradle:3.2.1'</span></span><br><span class="line">        classpath <span class="string">'org.greenrobot:greendao-gradle-plugin:3.2.1'</span><span class="comment">//添加GreenDao插件</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>app的build.gradle文件<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br><span class="line">apply plugin: <span class="string">'org.greenrobot.greendao'</span> <span class="comment">// apply plugin</span></span><br><span class="line">android&#123;</span><br><span class="line">	greendao &#123;</span><br><span class="line">			schemaVersion <span class="number">1</span><span class="comment">//数据库版本号</span></span><br><span class="line">			daoPackage <span class="string">'com.greedao.greedao_demo.greendao'</span><span class="comment">//设置DaoMaster、DaoSession、Dao包名</span></span><br><span class="line">			targetGenDir <span class="string">'src/main/java'</span><span class="comment">//设置DaoMaster、DaoSession、Dao目录，makeproject生成的目录</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">'org.greenrobot:greendao:3.2.0'</span><span class="comment">//添加依赖</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h3><p>创建学生类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"><span class="meta">@Id</span>(autoincrement = <span class="keyword">true</span>)<span class="comment">//自增长</span></span><br><span class="line">    Long id;<span class="comment">//主键</span></span><br><span class="line">    <span class="meta">@Unique</span> <span class="comment">//学号不可重复值</span></span><br><span class="line">    <span class="keyword">int</span> studentNo;<span class="comment">//学号</span></span><br><span class="line">    String sex;<span class="comment">//性别</span></span><br><span class="line">    String name;<span class="comment">//姓名</span></span><br><span class="line">    <span class="keyword">int</span> age;<span class="comment">//年龄</span></span><br><span class="line">    <span class="meta">@Generated</span>(hash = <span class="number">853818008</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(Long id, <span class="keyword">int</span> studentNo, String sex, String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.studentNo = studentNo;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Generated</span>(hash = <span class="number">1556870573</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//get and set。。。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>GreenDao初始化<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initGreenDao</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        DaoMaster.DevOpenHelper helper = <span class="keyword">new</span> DaoMaster.DevOpenHelper(<span class="keyword">this</span>, <span class="string">"greedao_test.db"</span>);<span class="comment">//创建数据库</span></span><br><span class="line">        SQLiteDatabase db = helper.getWritableDatabase();</span><br><span class="line">        DaoMaster daoMaster = <span class="keyword">new</span> DaoMaster(db);</span><br><span class="line">        daoSession = daoMaster.newSession();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>数据库的操作无非就是增删改查，后面根据api来操作非常简单就不再多说了。<br>现在主要看看Entity类的注解</p>
+<h3 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h3><ul>
+<li>@Entity（类注解）：只有在实体类标注了Entity，才能对该实体进行表创建等操作</li>
+<li>属性注解：<br>@id:用此注解标注属性，意为该属性为表主键。且该属性必须为Long，long也不行。<br>@Property：允许开发这自己定义表字段，例如age默认对应的表字段为AGE，如果设置了Property(nameInDb=”age”)，那么该属性在表中对应的字段名就是age。<br>@NotNull:顾名思义，当前字段不可为空。<br>@Unique:跟主键类似，插入的数据该字段不可重复。<br>@Transient ：添加次标记之后不会生成数据库表的列。标记要从持久性中排除的属性。将它们用于临时状态等。或者，您也可以使用Java中的transient关键字。</li>
+<li>关系注解：<br>@ToOne：一对一对应<br>@ToMany：一对多</li>
+</ul>
+<h1 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h1><p>接下来会展示GreenDao在实际项目中的使用，包括注解，多表关联等等。<br>具体参看《<a href="/2018/08/06/GreenDao的使用（二）/" title="GreenDao的使用（二）">GreenDao的使用（二）</a>》</p>
+
       
     </div>
 
@@ -466,7 +489,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2016/08/03/GreeDAO的使用/" title="GreeDAO的使用">http://kangzhou.github.io/2016/08/03/GreeDAO的使用/</a>
+    <a href="http://kangzhou.github.io/2018/08/05/GreenDao的使用（一）/" title="GreenDao的使用（一）">http://kangzhou.github.io/2018/08/05/GreenDao的使用（一）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -512,8 +535,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/23/ScrollView镶嵌ListView问题原因分析/" rel="next" title="ScrollView镶嵌ListView问题原因分析">
-                <i class="fa fa-chevron-left"></i> ScrollView镶嵌ListView问题原因分析
+              <a href="/2018/07/28/IPC的实现：AIDL/" rel="next" title="IPC的实现：AIDL">
+                <i class="fa fa-chevron-left"></i> IPC的实现：AIDL
               </a>
             
           </div>
@@ -522,8 +545,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/15/View的绘制流程/" rel="prev" title="View的绘制流程">
-                View的绘制流程 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/06/GreenDao的使用（二）/" rel="prev" title="GreenDao的使用（二）">
+                GreenDao的使用（二） <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +619,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">81</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -688,7 +711,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -748,7 +773,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GreenDao介绍"><span class="nav-number">2.</span> <span class="nav-text">GreenDao介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">2.0.1.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要成员介绍"><span class="nav-number">2.0.2.</span> <span class="nav-text">主要成员介绍</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#具体使用"><span class="nav-number">3.</span> <span class="nav-text">具体使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单配置"><span class="nav-number">3.0.1.</span> <span class="nav-text">简单配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单使用"><span class="nav-number">3.0.2.</span> <span class="nav-text">简单使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解"><span class="nav-number">3.0.3.</span> <span class="nav-text">注解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后续"><span class="nav-number">4.</span> <span class="nav-text">后续</span></a></li></div>
             
 
           </div>

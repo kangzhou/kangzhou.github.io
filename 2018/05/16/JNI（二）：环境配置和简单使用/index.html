@@ -126,7 +126,7 @@
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C2.png">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C3.png">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C4.png">
-<meta property="og:updated_time" content="2019-04-11T09:14:19.446Z">
+<meta property="og:updated_time" content="2019-04-22T09:06:31.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JNI（二）：环境配置和简单使用">
 <meta name="twitter:description" content="前期准备下载JNI所需的工具集并进行配置：">
@@ -454,9 +454,8 @@
 </ul>
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>实现一个简单的逻辑，通过Java层调用C层的函数，把参数交由C层处理，将结果返回Java层显示。<br><strong>native-lib.cpp:</strong><br>函数名为Java_+包名+类名+方法名。<br>参数类型与返回类型都是jint，对应Java的int类型。<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> JNIEXPORT jint JNICALL</span><br><span class="line">Java_com_jni_szcatic_myapplication_MainActivity_resultFromJNI(</span><br><span class="line">        JNIEnv* env,</span><br><span class="line">        jobject <span class="comment">/* this */</span>,jint count1,jint count2) &#123;</span><br><span class="line">    <span class="keyword">return</span> count1+count2;<span class="comment">//将处理结果返回</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>Java层的声明与调用：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义非静态native方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">resultFromJNI</span><span class="params">(<span class="keyword">int</span> count1,<span class="keyword">int</span> count2)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">Button button = (Button) findViewById(R.id.sample_button);</span><br><span class="line">        button.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Toast.makeText(MainActivity.<span class="keyword">this</span>,resultFromJNI(<span class="number">3</span>,<span class="number">6</span>)+<span class="string">""</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure></p>
-<pre><code class="java">
-</code></pre>
 <p>显示结果：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jni%E4%BA%8C4.png" alt=""></p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><p><a href="https://github.com/kangzhou/JNI" target="_blank" rel="noopener">点我</a></p>
 
       
     </div>
@@ -608,7 +607,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">81</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -700,7 +699,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -760,7 +761,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建项目"><span class="nav-number">2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#新建项目"><span class="nav-number">2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#源码"><span class="nav-number">4.</span> <span class="nav-text">源码</span></a></li></ol></div>
             
 
           </div>
