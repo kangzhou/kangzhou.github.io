@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-26T02:45:45.745Z">
+<meta property="og:updated_time" content="2019-05-05T09:23:06.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记大全（一）">
 <meta name="twitter:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
@@ -484,7 +484,7 @@
 <li>JVM内存区域划分？哪部分是线程公有的，哪部分是私有的？<br>JVM 的内存区域可以分为两类：线程私有和区域和线程共有的区域。<br>线程私有的区域：程序计数器、JVM 虚拟机栈、本地方法栈；<br>线程共有的区域：堆、方法区、运行时常量池。</li>
 <li>hashcode（）和equals（）的区别、联系？</li>
 <li>Retrofit CreateApi实现原理</li>
-<li>简述双亲委派模型</li>
+<li>简述双亲委派模型<br>该模型是为类的加载服务的，当一个类加载器收到类加载的请求时，首先自己不会去加载该类，而是委托给当前类加载器的父类加载器去加载，每个类加载器都是如此，直到该请求委托给顶部的启动类加载器去加载。假如父类加载器无法加载该类，那才会由子类加载器去加载。<br>系统类加载器分为三种：启动类加载器，拓展类加载器，应用类加载。最下面才是自定义类加载器。</li>
 <li>HashMap如何实现一个Key对应多个value?</li>
 <li>https如何加密？</li>
 <li>EventBus实现原理</li>
@@ -567,7 +567,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/Android热修复方案（二）实践篇/" rel="next" title="">
+              <a href="/2016/01/01/Socket的使用/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -577,7 +577,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/Java反射/" rel="prev" title="">
+              <a href="/2016/01/01/JVM：GC机制/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
