@@ -124,7 +124,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-neicun2.png">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-neicun1.png">
-<meta property="og:updated_time" content="2019-01-22T08:16:52.738Z">
+<meta property="og:updated_time" content="2019-05-08T01:10:57.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM：内存结构">
 <meta name="twitter:description" content="概述Java虚拟机在运行时的区域称为Java运行时数据区，同时会分成不同的区域各司其职，Java虚拟机运行数据区结构如图显示：">
@@ -446,8 +446,8 @@
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Java虚拟机在运行时的区域称为Java运行时数据区，同时会分成不同的区域各司其职，Java虚拟机运行数据区结构如图显示：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
 <h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><ul>
 <li>方法区<br>所有线程共享，存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据。<br>异常：OutOfMemoryError</li>
-<li>Java栈<br>线程私有，存储Java方法中的局部变量，还包括对象的引用<br>异常：OutOfMemoryError、StackOverFlowError</li>
 <li>Java堆<br>所有线程共享，存储实例对象。<br>异常：OutOfMemoryError<br>该区域内存最大，是GC主要管理的区域，也称为GC堆</li>
+<li>Java栈<br>线程私有，存储Java方法中的局部变量，还包括对象的引用<br>异常：OutOfMemoryError、StackOverFlowError</li>
 <li>本地方法栈<br>与Java栈类似，但是服务对象是Netive方法。</li>
 <li>程序计数器<br>线程私有，用于异常处理，线程恢复等基础功能<br>异常：在JVM中唯一没有OutOfMemoryError的内存区域。</li>
 </ul>
@@ -529,8 +529,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/09/添加依赖失败/" rel="prev" title="添加依赖失败">
-                添加依赖失败 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/09/RecyclerView分析/" rel="prev" title="RecyclerView分析">
+                RecyclerView分析 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -603,7 +603,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -697,7 +697,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

@@ -114,27 +114,30 @@
 
 
 
-  <meta name="description" content="概述">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="问题：API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解API ‘variant.getExternalNativeBuildTasks">
+<meta name="keywords" content="异常收集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="周康的博客">
-<meta property="og:url" content="http://kangzhou.github.io/2016/01/01/Android热修复方案（二）实践篇/index.html">
+<meta property="og:title" content="异常记录">
+<meta property="og:url" content="http://kangzhou.github.io/2019/03/11/异常记录/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="问题：API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解API ‘variant.getExternalNativeBuildTasks">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-03-14T06:47:27.573Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-1.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-2.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-3.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-4.png">
+<meta property="og:updated_time" content="2019-05-13T06:20:56.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周康的博客">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="异常记录">
+<meta name="twitter:description" content="问题：API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解API ‘variant.getExternalNativeBuildTasks">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2016/01/01/Android热修复方案（二）实践篇/">
+  <link rel="canonical" href="http://kangzhou.github.io/2019/03/11/异常记录/">
 
 
 
@@ -144,7 +147,7 @@
   };
 </script>
 
-  <title> | 周康的博客</title>
+  <title>异常记录 | 周康的博客</title>
   
 
 
@@ -348,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/01/01/Android热修复方案（二）实践篇/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2019/03/11/异常记录/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +368,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">异常记录
               
             
           </h1>
@@ -390,7 +393,7 @@
                 
               
 
-              <time title="创建时间：2016-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2016-01-01T00:00:00+08:00">2016-01-01</time>
+              <time title="创建时间：2019-03-11 00:00:00" itemprop="dateCreated datePublished" datetime="2019-03-11T00:00:00+08:00">2019-03-11</time>
             
 
             
@@ -408,7 +411,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -442,10 +445,10 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <h1 id="问题：API-‘variant-getExternalNativeBuildTasks-’-is-obsolete-and-has-been-replaced-with-‘variant-getExternalNativeBuildProviders"><a href="#问题：API-‘variant-getExternalNativeBuildTasks-’-is-obsolete-and-has-been-replaced-with-‘variant-getExternalNativeBuildProviders" class="headerlink" title="问题：API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()"></a>问题：API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()</h1><p>在更新了AS为3.3.2之后出现了一些问题，其中有个问题无法理解<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-1.png" alt=""><br>API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()<br><a id="more"></a><br>说我的api过时。<br>当前项目配置：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-2.png" alt=""><br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-3.png" alt=""></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>将gradle版本降为3.2.1就可以了<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/error-4.png" alt=""><br>为什么api过时，需要通过降低而不是升高gradle版本来解决，有些费解。</p>
+<h1 id="问题：Process-‘command-‘F-android-sdk-build-tools-21-1-2-aapt-exe’’-finished-with-non-zero-exit-value-1"><a href="#问题：Process-‘command-‘F-android-sdk-build-tools-21-1-2-aapt-exe’’-finished-with-non-zero-exit-value-1" class="headerlink" title="问题：Process ‘command ‘F:\android-sdk\build-tools\21.1.2\aapt.exe’’ finished with non-zero exit value 1"></a>问题：Process ‘command ‘F:\android-sdk\build-tools\21.1.2\aapt.exe’’ finished with non-zero exit value 1</h1><p>出现这个问题一般都是代码写错了，查看布局文件，看下是否有控件是依赖某个库，而这个库又没有导进来的</p>
+
       
     </div>
 
@@ -466,7 +469,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2016/01/01/Android热修复方案（二）实践篇/" title="">http://kangzhou.github.io/2016/01/01/Android热修复方案（二）实践篇/</a>
+    <a href="http://kangzhou.github.io/2019/03/11/异常记录/" title="异常记录">http://kangzhou.github.io/2019/03/11/异常记录/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -479,7 +482,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/异常收集/" rel="tag"># 异常收集</a>
           
         </div>
       
@@ -512,8 +515,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/Android中的动画/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2018/08/20/Android热修复方案（二）实践篇/" rel="next" title="Android热修复方案（二）实践篇">
+                <i class="fa fa-chevron-left"></i> Android热修复方案（二）实践篇
               </a>
             
           </div>
@@ -522,8 +525,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/Android性能优化方案/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/01/置顶/" rel="prev" title="【置顶】">
+                【置顶】 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +599,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -690,7 +693,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -750,7 +755,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题：API-‘variant-getExternalNativeBuildTasks-’-is-obsolete-and-has-been-replaced-with-‘variant-getExternalNativeBuildProviders"><span class="nav-number">1.</span> <span class="nav-text">问题：API ‘variant.getExternalNativeBuildTasks()’ is obsolete and has been replaced with ‘variant.getExternalNativeBuildProviders()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.0.1.</span> <span class="nav-text">解决方案</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#问题：Process-‘command-‘F-android-sdk-build-tools-21-1-2-aapt-exe’’-finished-with-non-zero-exit-value-1"><span class="nav-number">2.</span> <span class="nav-text">问题：Process ‘command ‘F:\android-sdk\build-tools\21.1.2\aapt.exe’’ finished with non-zero exit value 1</span></a></li></div>
             
 
           </div>

@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T09:23:06.801Z">
+<meta property="og:updated_time" content="2019-05-08T01:37:31.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记大全（一）">
 <meta name="twitter:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
@@ -499,6 +499,12 @@
 <li>组件化实现方案，路由原理 </li>
 <li>https的握手过程及加密算法</li>
 <li>简述GreeDao原理</li>
+<li>冷启动和热启动</li>
+<li>AIDL的使用和原理</li>
+<li>session与cookit的区别</li>
+<li>为什么Intent（或者说Bundle）中携带的数据需要支持序列化呢？<br>因为Intent支持进程间的通信，而进程间的通信又仅支持几种基本的数据类型和序列化的类型，所以Intent传递的数据要支持序列化</li>
+<li>Java对象的创建过程<br>1.类的检查：接收到指令之后虚拟机首先会在常量池中查找是否有该类的引用类型，如无，则进行类的加载（加载，验证，准备，解析，初始化）<br>2.分配内存：为该对象分配内存，两种方法：指针偏移和闲散列表<br>3.内存空间初始化为0<br>4.设置对象：主要是设置对象头，例如对象的哈希码，GC分代信息等。</li>
+<li>虚拟机内存空间？哪些是共享的？哪些是线程私有的？</li>
 </ul>
 
       
@@ -567,7 +573,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/Socket的使用/" rel="next" title="">
+              <a href="/2016/01/01/Java集合类总结篇/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -577,7 +583,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/JVM：GC机制/" rel="prev" title="">
+              <a href="/2016/01/01/APK是如何被解析的/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -651,7 +657,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">81</span>
+                    <span class="site-state-item-count">82</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -745,7 +751,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
