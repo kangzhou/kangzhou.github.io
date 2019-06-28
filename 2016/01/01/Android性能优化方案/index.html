@@ -114,20 +114,18 @@
 
 
 
-  <meta name="description" content="概述">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="概述Android性能优化的方案比较多，在开发过程中，主要考虑从以下几个方面优化：  布局优化 绘制优化 内存泄漏优化 响应速度优化 Bitmap优化 线程优化接下来我们从这几个方面为大家简单介绍优化方案">
+<meta name="keywords" content="理论知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="周康的博客">
+<meta property="og:title" content="Android性能优化方案">
 <meta property="og:url" content="http://kangzhou.github.io/2016/01/01/Android性能优化方案/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="概述Android性能优化的方案比较多，在开发过程中，主要考虑从以下几个方面优化：  布局优化 绘制优化 内存泄漏优化 响应速度优化 Bitmap优化 线程优化接下来我们从这几个方面为大家简单介绍优化方案">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-03-14T06:47:27.573Z">
+<meta property="og:updated_time" content="2019-06-21T01:01:30.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周康的博客">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="Android性能优化方案">
+<meta name="twitter:description" content="概述Android性能优化的方案比较多，在开发过程中，主要考虑从以下几个方面优化：  布局优化 绘制优化 内存泄漏优化 响应速度优化 Bitmap优化 线程优化接下来我们从这几个方面为大家简单介绍优化方案">
 
 
 
@@ -144,7 +142,7 @@
   };
 </script>
 
-  <title> | 周康的博客</title>
+  <title>Android性能优化方案 | 周康的博客</title>
   
 
 
@@ -365,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">Android性能优化方案
               
             
           </h1>
@@ -408,7 +406,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -442,10 +440,37 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Android性能优化的方案比较多，在开发过程中，主要考虑从以下几个方面优化：</p>
+<ol>
+<li>布局优化</li>
+<li>绘制优化</li>
+<li>内存泄漏优化</li>
+<li>响应速度优化</li>
+<li>Bitmap优化</li>
+<li>线程优化<br>接下来我们从这几个方面为大家简单介绍优化方案<a id="more"></a>
+<h1 id="布局优化"><a href="#布局优化" class="headerlink" title="布局优化"></a>布局优化</h1>大家肯定都知道Android中有许多布局，比如Linerlayout、RelativeLayout等，布局优化就是减少布局文件层级，层级减少了，那么程序绘制时就快了许多，所以可以提高性能。<br>在布局代码中，使用什么布局基本遵守以下规则：</li>
+<li>如果布局中既可以使用LinearLayout也可以使用RelativeLayout，那么就采用LinearLayout，这是因为RelativeLayout的功能比较复杂，它的布局过程需要花费更多的CPU时间。</li>
+<li>如果布局需要通过嵌套的方式来完成。这种情况下还是建议采用RelativeLayout，因为ViewGroup的嵌套就相当于增加了布局的层级，同样会降低程序的性能。</li>
+<li>使用<include>或<merge>标签和ViewStub，提取布局中公共部分的布局，可提高布局初始化效率。</merge></include></li>
+</ol>
+<h1 id="绘制优化"><a href="#绘制优化" class="headerlink" title="绘制优化"></a>绘制优化</h1><p>绘制优化就是不要再view的onDraw方法中做大量操作。例如：</p>
+<ol>
+<li>不要在onDraw方法中创建新的对象，因为onDraw方法可能被频繁调用，这样会产生大量的临时文件，导致内存占用过多，程序执行效率降低。</li>
+<li>尽可能的不做耗时的操作，大数量的循环也会占用CPU的时间</li>
+</ol>
+<h1 id="内存泄漏优化"><a href="#内存泄漏优化" class="headerlink" title="内存泄漏优化"></a>内存泄漏优化</h1><p>内存泄漏优化换句话说，就是什么情况可能会导致内存泄漏，相信大家都比较清楚，因为这也算是初级比较经典的面试题了。主要有以下几种情况：</p>
+<ol>
+<li>不要再Acticity中声明静态变量，这样会是的Activity无法完全销毁释放</li>
+<li>单例设计模式一起的内存泄漏，单例设计模式的静态特性会使他的生命周期和应用程序的生命周期一样长，这就说明了如果一个对象不在使用了，而这时单例对象还在持有该对象的引用，这时GC就会无法回收该对象，造成了内存泄露的情况。所以使用单例模式时，传入的context应该使用ApplicationContext</li>
+<li>非静态内部类创建的静态实例造成的内存泄漏</li>
+<li>Handler造成的内存泄漏，不要在Activity中用非静态匿名内部类的方式去引用hanlder，比如<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadData</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Message message = Message.obtain();</span><br><span class="line">        mHandler.sendMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>这样hanlder会持有Activity的引用，handler是运行在一个Looper线程中的，而Looper线程是轮询来处理消息队列中的消息的，假设我们处理的消息有10条，而当他执行到第6条的时候，用户退出销毁了当前的Activity，这个时候消息还没有处理完，handler还在持有Activity的引用，这个时候就会导致无法被GC回收，造成了内存泄漏。</p>
+<h1 id="响应速度优化"><a href="#响应速度优化" class="headerlink" title="响应速度优化"></a>响应速度优化</h1><p>响应速度优化的核心思想是避免在主线程中做耗时操作，Android规定，Activity如果5秒钟之内无法响应屏幕触摸事件或者键盘输入事件就会出现ANR，而BroadcastReceiver如果10秒，Service时20s当然这是小概率事件，如果在相应时间内未得到反映就会出现ANR。当有耗时操作时，可以单独开启一个线程去操作。</p>
+<h1 id="Bitmap优化"><a href="#Bitmap优化" class="headerlink" title="Bitmap优化"></a>Bitmap优化</h1><p>其实思想也很简单，那就是采用BitmapFactory.Options来加载所需尺寸的图片。这里假设通过ImageView来显示图片，很多时候ImageView并没有图片的原始尺寸那么大，这个时候把整个图片加载进来后再设给imageView，这显然是没必要的，因为ImageView并没有办法显示原始的图片。通过BitmapFactory.Options就可以按一定的采样率来加载缩小后的图片，将缩小后的图片在ImageView中显示，这样就会降低内存占用从而在一定程度上避免OOM，提高了Bitmap加载时的性能。</p>
+<h1 id="线程优化"><a href="#线程优化" class="headerlink" title="线程优化"></a>线程优化</h1><p>线程优化的思想是采用线程池，避免程序中存在大量的Thread。线程池可以重用内部的线程，从而避免了线程的创建和销毁所带来的性能开销，同时线程池还能有效地控制线程池的最大并发数，避免大量的线程因互相抢占系统资源从而导致阻塞现象的发生。因此在实际开发中，我们要尽量采用线程池，而不是每次都要创建一个Thread对象。</p>
+
       
     </div>
 
@@ -466,7 +491,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2016/01/01/Android性能优化方案/" title="">http://kangzhou.github.io/2016/01/01/Android性能优化方案/</a>
+    <a href="http://kangzhou.github.io/2016/01/01/Android性能优化方案/" title="Android性能优化方案">http://kangzhou.github.io/2016/01/01/Android性能优化方案/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -479,7 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/理论知识/" rel="tag"># 理论知识</a>
           
         </div>
       
@@ -512,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/MVC,MVP,MVVM的区别/" rel="next" title="MVC,MVP,MVVM的区别">
-                <i class="fa fa-chevron-left"></i> MVC,MVP,MVVM的区别
+              <a href="/2016/01/01/Java集合类总结篇/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -522,7 +547,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/AA_MODEL/" rel="prev" title="">
+              <a href="/2016/01/01/APK是如何被解析的/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -596,7 +621,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -692,7 +717,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -752,7 +787,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布局优化"><span class="nav-number">2.</span> <span class="nav-text">布局优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#绘制优化"><span class="nav-number">3.</span> <span class="nav-text">绘制优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内存泄漏优化"><span class="nav-number">4.</span> <span class="nav-text">内存泄漏优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应速度优化"><span class="nav-number">5.</span> <span class="nav-text">响应速度优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Bitmap优化"><span class="nav-number">6.</span> <span class="nav-text">Bitmap优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程优化"><span class="nav-number">7.</span> <span class="nav-text">线程优化</span></a></li></ol></div>
             
 
           </div>

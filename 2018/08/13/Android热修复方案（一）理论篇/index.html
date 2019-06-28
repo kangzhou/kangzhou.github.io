@@ -123,7 +123,7 @@
 <meta property="og:description" content="概述热修复是我学习Android中早就定下的计划，过往的一些项目中，从来没涉及过有关热修复的需求，最多只是更新了一下.so库而已。所以今次要结合理论和实践来更加深入了解一下热修复。《Android热修复方案（二）实践篇》">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/rexiufu1.png">
-<meta property="og:updated_time" content="2019-05-07T07:28:36.793Z">
+<meta property="og:updated_time" content="2019-05-24T01:26:51.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android热修复方案（一）理论篇">
 <meta name="twitter:description" content="概述热修复是我学习Android中早就定下的计划，过往的一些项目中，从来没涉及过有关热修复的需求，最多只是更新了一下.so库而已。所以今次要结合理论和实践来更加深入了解一下热修复。《Android热修复方案（二）实践篇》">
@@ -499,7 +499,7 @@
 <h1 id="Tinker"><a href="#Tinker" class="headerlink" title="Tinker"></a>Tinker</h1><p>接下来将基于Tinker框架来完成一次热修复需求。<br>缺点：</p>
 <ol>
 <li>不能即时生效，需要下次启动，</li>
-<li>不支持修改AndroidManifest，所以不支持新增组件</li>
+<li>不支持修改AndroidManifest，所以不支持新增组件（目前新版本已支持新增Activity）</li>
 <li>不支持修改remoteView，例如桌面图标，notification icon等。</li>
 </ol>
 <p>尽管Tinker有些缺点，但相较于其他的框架来说，它是目前最佳的热修复方案。目前微信使用的热修复方案就是Tinker。<br>具体实现细节，参看《<a href="/2018/08/20/Android热修复方案（二）实践篇/" title="Android热修复方案（二）实践篇">Android热修复方案（二）实践篇</a>》<br>最后再多说一句，尽管可以利用热修复来解决线上的Bug，但开发过程中还是要尽量避免Bug的出现，通常产品追求的是用户体验，但对于开发者来讲，追求的是算法高效，逻辑清晰，无Bug，技术至上。</p>
@@ -654,7 +654,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-count">84</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -750,7 +750,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
