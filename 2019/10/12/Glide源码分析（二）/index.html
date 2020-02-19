@@ -118,11 +118,11 @@
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Glide源码分析（二）">
-<meta property="og:url" content="http://kangzhou.github.io/2018/02/25/Glide源码分析（二）/index.html">
+<meta property="og:url" content="http://kangzhou.github.io/2019/10/12/Glide源码分析（二）/index.html">
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="概述上一篇《Glide源码分析（一）》我们讲到了Glide在经过with()和load()之后，最终返回了RequestBuilder，这篇来看看into(ImageView)里面发生了什么事，这也是整个Glide最核心复杂的地方。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T01:48:30.782Z">
+<meta property="og:updated_time" content="2020-02-19T03:26:29.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Glide源码分析（二）">
 <meta name="twitter:description" content="概述上一篇《Glide源码分析（一）》我们讲到了Glide在经过with()和load()之后，最终返回了RequestBuilder，这篇来看看into(ImageView)里面发生了什么事，这也是整个Glide最核心复杂的地方。">
@@ -132,7 +132,7 @@
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2018/02/25/Glide源码分析（二）/">
+  <link rel="canonical" href="http://kangzhou.github.io/2019/10/12/Glide源码分析（二）/">
 
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/02/25/Glide源码分析（二）/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2019/10/12/Glide源码分析（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -388,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2018-02-25 00:00:00" itemprop="dateCreated datePublished" datetime="2018-02-25T00:00:00+08:00">2018-02-25</time>
+              <time title="创建时间：2019-10-12 00:00:00" itemprop="dateCreated datePublished" datetime="2019-10-12T00:00:00+08:00">2019-10-12</time>
             
 
             
@@ -440,7 +440,7 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>上一篇《<a href="/2018/02/24/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a>》我们讲到了Glide在经过with()和load()之后，最终返回了<strong>RequestBuilder</strong>，这篇来看看into(ImageView)里面发生了什么事，这也是整个Glide最核心复杂的地方。</p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>上一篇《<a href="/2019/10/11/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a>》我们讲到了Glide在经过with()和load()之后，最终返回了<strong>RequestBuilder</strong>，这篇来看看into(ImageView)里面发生了什么事，这也是整个Glide最核心复杂的地方。</p>
 <a id="more"></a>
 <h1 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h1><p><strong>RequestBuilder.class</strong><br>直接看into(InageView)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NonNull</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> ViewTarget&lt;ImageView, TranscodeType&gt; <span class="title">into</span><span class="params">(@NonNull ImageView view)</span> </span>&#123;</span><br><span class="line">    Util.assertMainThread();</span><br><span class="line">    Preconditions.checkNotNull(view);</span><br><span class="line"></span><br><span class="line">    RequestOptions requestOptions = <span class="keyword">this</span>.requestOptions;</span><br><span class="line">    <span class="keyword">if</span> (!requestOptions.isTransformationSet()</span><br><span class="line">        &amp;&amp; requestOptions.isTransformationAllowed()</span><br><span class="line">        &amp;&amp; view.getScaleType() != <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="comment">// Clone in this method so that if we use this RequestBuilder to load into a View and then</span></span><br><span class="line">      <span class="comment">// into a different target, we don't retain the transformation applied based on the previous</span></span><br><span class="line">      <span class="comment">// View's scale type.</span></span><br><span class="line">      <span class="keyword">switch</span> (view.getScaleType()) &#123;</span><br><span class="line">        <span class="keyword">case</span> CENTER_CROP:</span><br><span class="line">          requestOptions = requestOptions.clone().optionalCenterCrop();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> CENTER_INSIDE:</span><br><span class="line">          requestOptions = requestOptions.clone().optionalCenterInside();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> FIT_CENTER:</span><br><span class="line">        <span class="keyword">case</span> FIT_START:</span><br><span class="line">        <span class="keyword">case</span> FIT_END:</span><br><span class="line">          requestOptions = requestOptions.clone().optionalFitCenter();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> FIT_XY:</span><br><span class="line">          requestOptions = requestOptions.clone().optionalCenterInside();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> CENTER:</span><br><span class="line">        <span class="keyword">case</span> MATRIX:</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">          <span class="comment">// Do nothing.</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> into(</span><br><span class="line">        glideContext.buildImageViewTarget(view, transcodeClass),</span><br><span class="line">        <span class="comment">/*targetListener=*/</span> <span class="keyword">null</span>,</span><br><span class="line">        requestOptions);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
 <p>这个方法内，前面主要根据ImageView的ScaleType属性做一些判断，重点在最后。由glideContext.buildImageViewTarget(view, transcodeClass),null,requestOptions),最终调用的<strong>ImageViewTargetFactory</strong>的buildTarget()方法，返回的ViewTarget<br><strong>ImageViewTargetFactory.class:</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageViewTargetFactory</span> </span>&#123;</span><br><span class="line">  <span class="meta">@NonNull</span></span><br><span class="line">  <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">  <span class="keyword">public</span> &lt;Z&gt; <span class="function">ViewTarget&lt;ImageView, Z&gt; <span class="title">buildTarget</span><span class="params">(@NonNull ImageView view,</span></span></span><br><span class="line"><span class="function"><span class="params">      @NonNull Class&lt;Z&gt; clazz)</span> </span>&#123;<span class="comment">//这里的class传的是GlideDrawable</span></span><br><span class="line">    <span class="keyword">if</span> (Bitmap.class.equals(clazz)) &#123;<span class="comment">//此处根据clazz构建不同的Target对象</span></span><br><span class="line">      <span class="keyword">return</span> (ViewTarget&lt;ImageView, Z&gt;) <span class="keyword">new</span> BitmapImageViewTarget(view);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Drawable.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">      <span class="keyword">return</span> (ViewTarget&lt;ImageView, Z&gt;) <span class="keyword">new</span> DrawableImageViewTarget(view);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">          <span class="string">"Unhandled class: "</span> + clazz + <span class="string">", try .as*(Class).transcode(ResourceTranscoder)"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -478,7 +478,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2018/02/25/Glide源码分析（二）/" title="Glide源码分析（二）">http://kangzhou.github.io/2018/02/25/Glide源码分析（二）/</a>
+    <a href="http://kangzhou.github.io/2019/10/12/Glide源码分析（二）/" title="Glide源码分析（二）">http://kangzhou.github.io/2019/10/12/Glide源码分析（二）/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -524,7 +524,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/24/Glide源码分析（一）/" rel="next" title="Glide源码分析（一）">
+              <a href="/2019/10/11/Glide源码分析（一）/" rel="next" title="Glide源码分析（一）">
                 <i class="fa fa-chevron-left"></i> Glide源码分析（一）
               </a>
             
@@ -534,8 +534,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/01/Okhttp3.0源码分析/" rel="prev" title="OkHttp3.0源码分析">
-                OkHttp3.0源码分析 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/02/自定义控件——bezier曲线的使用/" rel="prev" title="自定义控件——bezier曲线的使用">
+                自定义控件——bezier曲线的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -608,7 +608,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -631,7 +631,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -794,7 +796,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

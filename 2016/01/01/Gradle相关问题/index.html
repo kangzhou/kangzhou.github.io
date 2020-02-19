@@ -114,18 +114,18 @@
 
 
 
-  <meta name="description" content="概述">
+  <meta name="description" content="概述Android Studio是采用gradle来构建项目的，gradle是基于groovy语言的，如果只是用它构建普通Android项目的话，是可以不去学groovy的。当我们创建一个Android项目时会包含两个Android build.gradle配置详解文件，如下图：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gradle相关问题">
 <meta property="og:url" content="http://kangzhou.github.io/2016/01/01/Gradle相关问题/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="概述Android Studio是采用gradle来构建项目的，gradle是基于groovy语言的，如果只是用它构建普通Android项目的话，是可以不去学groovy的。当我们创建一个Android项目时会包含两个Android build.gradle配置详解文件，如下图：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-03-14T06:48:19.371Z">
+<meta property="og:updated_time" content="2019-06-28T05:45:10.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle相关问题">
-<meta name="twitter:description" content="概述">
+<meta name="twitter:description" content="概述Android Studio是采用gradle来构建项目的，gradle是基于groovy语言的，如果只是用它构建普通Android项目的话，是可以不去学groovy的。当我们创建一个Android项目时会包含两个Android build.gradle配置详解文件，如下图：">
 <meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
 
 
@@ -441,7 +441,39 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>Android Studio是采用gradle来构建项目的，gradle是基于groovy语言的，如果只是用它构建普通Android项目的话，是可以不去学groovy的。当我们创建一个Android项目时会包含两个Android build.gradle配置详解文件，如下图：<br><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
+<h1 id="Project的build-gradle文件"><a href="#Project的build-gradle文件" class="headerlink" title="Project的build.gradle文件"></a>Project的build.gradle文件</h1><pre><code>### 代码
+    对应的build.gradle代码如下：
+    <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span></span><br><span class="line"></span><br><span class="line">buildscript &#123;<span class="comment">//这里是gradle脚本执行所需依赖，分别是对应的maven库和插件</span></span><br><span class="line">	</span><br><span class="line">	repositories &#123;</span><br><span class="line">		google()<span class="comment">//从Android Studio3.0后新增了google()配置，可以引用google上的开源项目</span></span><br><span class="line">		jcenter()<span class="comment">//是一个类似于github的代码托管仓库，声明了jcenter()配置，可以轻松引用 jcenter上的开源项目</span></span><br><span class="line">	&#125;</span><br><span class="line">	dependencies &#123;</span><br><span class="line">		classpath <span class="string">'com.android.tools.build:gradle:3.0.0'</span><span class="comment">////此处是android的插件gradle，gradle是一个强大的项目构建工具</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;<span class="comment">//这里是项目本身需要的依赖，比如项目所需的maven库</span></span><br><span class="line">	repositories &#123;</span><br><span class="line">		google()</span><br><span class="line">		jcenter()</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 运行gradle clean时，执行此处定义的task任务。</span></span><br><span class="line"><span class="comment">// 该任务继承自Delete，删除根目录中的build目录。</span></span><br><span class="line"><span class="comment">// 相当于执行Delete.delete(rootProject.buildDir)。</span></span><br><span class="line"><span class="comment">// gradle使用groovy语言，调用method时可以不用加（）。</span></span><br><span class="line"><span class="function">task <span class="title">clean</span><span class="params">(type: Delete)</span> </span>&#123;</span><br><span class="line">	delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    - buildscript{}闭包里是gradle脚本执行所需依赖，分别是对应的maven库和插件。
+    - allprojects{}闭包里是项目本身需要的依赖，比如项目所需的maven库。
+    - task clean(type: Delete){}是运行gradle clean时，执行此处定义的task任务，该任务继承自Delete，删除根目录中的build目录。其中buildscript包含repositories闭包和dependencies闭包。
+### repositories{}闭包：配置远程仓库
+    该闭包中声明了jcenter()和google()的配置，其中jcenter是一个代码托管仓库，上面托管了很多Android开源项目，在这里配置了jcenter后我们可以在项目中方便引用jcenter上的开源项目，从Android Studio3.0后新增了google()配置，可以引用google上的开源项目。
+
+### dependencies{}闭包：配置构建工具
+    该闭包使用classpath声明了一个Gradle插件，由于Gradle并不只是用来构建Android项目，因此此处引入相关插件来构建Android项目，其中&apos;3.0.0&apos;为该插件的版本号，可以根据最新的版本号来调整。
+</code></pre><h1 id="Module的build-gradle文件"><a href="#Module的build-gradle文件" class="headerlink" title="Module的build.gradle文件"></a>Module的build.gradle文件</h1><p>从文件内容可以看出，主要分为三大部分，如下图所示：<br><img src="" alt=""></p>
+<h3 id="apply-plugin："><a href="#apply-plugin：" class="headerlink" title="apply plugin："></a>apply plugin：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明是Android程序，</span></span><br><span class="line"><span class="comment">//com.android.application 表示这是一个应用程序模块</span></span><br><span class="line"><span class="comment">//com.android.library 标识这是一个库模块</span></span><br><span class="line"><span class="comment">//而这区别：前者可以直接运行，后着是依附别的应用程序运行</span></span><br><span class="line">apply plugin: <span class="string">'com.android.application'</span></span><br></pre></td></tr></table></figure>
+<p>文件中第一行使用apply plugin表示应用了一个插件，该插件一般有两种值可选：</p>
+<ul>
+<li>‘com.android.application’，表示该模块为应用程序模块，可以直接运行，打包得到的是.apk文件</li>
+<li>‘com.android.library’，表示该模块为库模块，只能作为代码库依附于别的应用程序模块来运行，打包得到的是.aar文件</li>
+</ul>
+<h3 id="android-闭包："><a href="#android-闭包：" class="headerlink" title="android{}闭包："></a>android{}闭包：</h3><p>这个闭包主要为了配置项目构建的各种属性：</p>
+<h5 id="添加signingConfigs-闭包："><a href="#添加signingConfigs-闭包：" class="headerlink" title="添加signingConfigs{}闭包："></a>添加signingConfigs{}闭包：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">signingConfigs &#123;<span class="comment">// 自动化打包配置</span></span><br><span class="line">        release &#123;<span class="comment">// 线上环境</span></span><br><span class="line">            keyAlias <span class="string">'test'</span></span><br><span class="line">            keyPassword <span class="string">'123456'</span></span><br><span class="line">            <span class="function">storeFile <span class="title">file</span><span class="params">(<span class="string">'test.keystore'</span>)</span></span></span><br><span class="line"><span class="function">            storePassword '123456'</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">        debug </span>&#123;<span class="comment">// 开发环境</span></span><br><span class="line">            keyAlias <span class="string">'test'</span></span><br><span class="line">            keyPassword <span class="string">'123456'</span></span><br><span class="line">            <span class="function">storeFile <span class="title">file</span><span class="params">(<span class="string">'test.keystore'</span>)</span></span></span><br><span class="line"><span class="function">            storePassword '123456'</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br></pre></td></tr></table></figure>
+<p>可以手动添加签名配置，也可以通过Project Structure 选中app，点击Singing添加，具体步骤如下图所示：<br><img src="" alt=""><br>签名配置完成后可以方便带签名打包，在module的Build Variants中有两个Type，分别是debug和release，可以选择任意一个类型进行打包，并且他们会利用各自配置的Key进行打包，执行 Run app或者Build-&gt;Build apk就会自动在module name/app/build/outputs/apk路径下生成Apk文件。另一种打包方式是Build-&gt;Generate Signed APK填写签名信息生成Apk。</p>
+<h5 id="compileSdkVersion：设置编译时用的Android版本"><a href="#compileSdkVersion：设置编译时用的Android版本" class="headerlink" title="compileSdkVersion：设置编译时用的Android版本"></a>compileSdkVersion：设置编译时用的Android版本</h5><h5 id="buildToolsVersion：设置编译时使用的构建工具的版本，Android-Studio3-0后去除此项配置"><a href="#buildToolsVersion：设置编译时使用的构建工具的版本，Android-Studio3-0后去除此项配置" class="headerlink" title="buildToolsVersion：设置编译时使用的构建工具的版本，Android Studio3.0后去除此项配置"></a>buildToolsVersion：设置编译时使用的构建工具的版本，Android Studio3.0后去除此项配置</h5><h5 id="defaultConfig-闭包："><a href="#defaultConfig-闭包：" class="headerlink" title="defaultConfig{}闭包："></a>defaultConfig{}闭包：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">compileSdkVersion <span class="number">27</span><span class="comment">//设置编译时用的Android版本</span></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        applicationId <span class="string">"com.billy.myapplication"</span><span class="comment">//项目的包名</span></span><br><span class="line">        minSdkVersion <span class="number">16</span><span class="comment">//项目最低兼容的版本</span></span><br><span class="line">        targetSdkVersion <span class="number">27</span><span class="comment">//项目的目标版本</span></span><br><span class="line">        versionCode <span class="number">1</span><span class="comment">//版本号</span></span><br><span class="line">        versionName <span class="string">"1.0"</span><span class="comment">//版本名称</span></span><br><span class="line">        testInstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span><span class="comment">//表明要使用AndroidJUnitRunner进行单元测试</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>applicationId：指定了项目的包名。</li>
+<li>minSdkVersion：指定项目最低兼容的版本，如果设备小于这个版本或者大于maxSdkVersion(一般不用)将无法安装这个应用，这里指定为16，表示最低兼容到Android 4.1系统。</li>
+<li>targetSdkVersion：指定项目的目标版本，表示在该目标版本上已经做过充分测试，系统会为该应用启动一些对应该目标系统的最新功能特性，Android系统平台的行为变更，只有targetSdkVersion的属性值被设置为大于或等于该系统平台的API版本时，才会生效。例如，若指定targetSdkVersion值为22，则表示该程序最高只在Android5.1版本上做过充分测试，在Android6.0系统上（对应targetSdkVersion为23）拥有的新特性如系统运行时权限等功能就不会被启用。</li>
+<li>versionCode：表示版本号，一般每次打包上线时该值只能增加，打包后看不见。</li>
+<li>versionName：表示版本名称，展示在应用市场上。</li>
+<li>testInstrumentationRunner “android.support.test.runner.AndroidJUnitRunner”表明要使用AndroidJUnitRunner进行单元测试。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line">```java</span><br></pre></td></tr></table></figure>
 <pre><code class="java">
 </code></pre>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
@@ -505,7 +537,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/数与二叉树/" rel="next" title="">
+              <a href="/2016/01/01/APK是如何被解析的/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -515,7 +547,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/JVM：GC机制/" rel="prev" title="">
+              <a href="/2016/01/01/Android各大版本间的区别/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -589,7 +621,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -612,7 +644,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -755,7 +789,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Project的build-gradle文件"><span class="nav-number">2.</span> <span class="nav-text">Project的build.gradle文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Module的build-gradle文件"><span class="nav-number">3.</span> <span class="nav-text">Module的build.gradle文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#apply-plugin："><span class="nav-number">3.0.1.</span> <span class="nav-text">apply plugin：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#android-闭包："><span class="nav-number">3.0.2.</span> <span class="nav-text">android{}闭包：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加signingConfigs-闭包："><span class="nav-number">3.0.2.0.1.</span> <span class="nav-text">添加signingConfigs{}闭包：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#compileSdkVersion：设置编译时用的Android版本"><span class="nav-number">3.0.2.0.2.</span> <span class="nav-text">compileSdkVersion：设置编译时用的Android版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#buildToolsVersion：设置编译时使用的构建工具的版本，Android-Studio3-0后去除此项配置"><span class="nav-number">3.0.2.0.3.</span> <span class="nav-text">buildToolsVersion：设置编译时使用的构建工具的版本，Android Studio3.0后去除此项配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#defaultConfig-闭包："><span class="nav-number">3.0.2.0.4.</span> <span class="nav-text">defaultConfig{}闭包：</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></div>
             
 
           </div>
@@ -775,7 +809,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

@@ -114,18 +114,18 @@
 
 
 
-  <meta name="description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
+  <meta name="description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？  ViewGoup vg = getWindows().getDecorView().findViewById(android.R.id.content).getChildAt(0); 自定义View？注意事项？  1.尽量使用v">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android笔记大全（一）">
 <meta property="og:url" content="http://kangzhou.github.io/2016/01/01/Android笔记大全（一）/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
+<meta property="og:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？  ViewGoup vg = getWindows().getDecorView().findViewById(android.R.id.content).getChildAt(0); 自定义View？注意事项？  1.尽量使用v">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-03T01:28:24.461Z">
+<meta property="og:updated_time" content="2020-02-18T07:58:45.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记大全（一）">
-<meta name="twitter:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？ View的绘制流程？ Activity的启动流程 Android的启动流程 从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明） 在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能">
+<meta name="twitter:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？  ViewGoup vg = getWindows().getDecorView().findViewById(android.R.id.content).getChildAt(0); 自定义View？注意事项？  1.尽量使用v">
 
 
 
@@ -442,70 +442,132 @@
       
         <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><ul>
 <li>在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？</li>
-<li>在onCreate中的setContenView（布局），如何获取该布局的实例？</li>
+<li>在onCreate中的setContenView（布局），如何获取该布局的实例？<br>  ViewGoup vg = getWindows().getDecorView().findViewById(android.R.id.content).getChildAt(0);</li>
+<li>自定义View？注意事项？<br>  1.尽量使用view.post，而不是handler<br>  2.动画及时停止，防止内存泄露<br>  3.避免大对象及大量变量的创建</li>
 <li>View的绘制流程？</li>
 <li>Activity的启动流程</li>
 <li>Android的启动流程</li>
 <li>从A活动跳转到B活动，调用了哪些周期方法？（注意是否透明）</li>
 <li>在Activty中先start一个Service后，再bind时会回调什么方法？此时如何做才能回调Service的destory()方法？</li>
-<li>Activity如何与Service进行通信？<br>1.在Service中定义一个MyBinder类，该类集成Biner，在该类中声明交互的方法<br>2.在Service的onBind的方法中返回该MyBinder（要声明）<br>3.在Activity中实例化ServiceConnction类，重写他的onServiceConnction方法，在该方法中获取到Service的MyBind。<br>4.在Activity中以BindService方法开启Service。</li>
+<li>Activity如何与Service进行通信？<br>  1.在Service中定义一个MyBinder类，该类集成Biner，在该类中声明交互的方法<br>  2.在Service的onBind的方法中返回该MyBinder（要声明）<br>  3.在Activity中实例化ServiceConnction类，重写他的onServiceConnction方法，在该方法中获取到Service的MyBind。<br>  4.在Activity中以BindService方法开启Service。</li>
 <li>Fragment与Activity生命周期的区别</li>
-<li>谈一下AMS</li>
+<li>谈一下AMS，启动流程？SystemUI什么时候启动？开机动画什么时候停止？</li>
 <li>如何删除SQLite中的一个字段？</li>
-<li>SurfaceView和View的区别？<br>1.SurfaceView是View基类派生出的类。<br>2.View需要在UI线程对画面进行刷新，而SurfaceView可在子线程进行页面的刷新<br>3.View适用于主动更新的情况，而SurfaceView适用于被动更新，如频繁刷新，这是因为如果使用View频繁刷新会阻塞主线程，导致界面卡顿<br>4.SurfaceView在底层已实现双缓冲机制，而View没有，因此SurfaceView更适用于需要频繁刷新、刷新时数据处理量很大的页面</li>
+<li>SurfaceView和View的区别？<br>  1.SurfaceView是View基类派生出的类。<br>  2.View需要在UI线程对画面进行刷新，而SurfaceView可在子线程进行页面的刷新<br>  3.View适用于主动更新的情况，而SurfaceView适用于被动更新，如频繁刷新，这是因为如果使用View频繁刷新会阻塞主线程，导致界面卡顿<br>  4.SurfaceView在底层已实现双缓冲机制，而View没有，因此SurfaceView更适用于需要频繁刷新、刷新时数据处理量很大的页面</li>
 <li>invalidate()和postInvalidate()的区别？</li>
-<li>dp、dpi、px的区别？<br>1.px：像素，如分辨率1920x1080表示高为1920个像素、宽为1080个像素<br>2.dpi：每英寸的像素点，如分辨率为1920x1080的手机尺寸为4.95英寸，则该手机DPI为（1920x1920+ 1080x1080）½/4.95≈445dpi<br>3.dp：密度无关像素，是个相对值</li>
-<li>res目录和assets目录的区别？<br>res中的文件都会被映射到R.java中，分配一个id，通过id获取。<br>而assets中的文件需要通过AssetsManager获取</li>
-<li>Android中的动画<br>1.补间动画（View动画），可以使控件平移，伸缩，旋转，改变透明度。但不能真正改变控件的属性<br>2.逐帧动画，将多个图片按顺序播放，形成的一种动画<br>3.属性动画，真正能改变对象属性的动画，作用于对象。其通过反射技术获取属性的get和set方法，真正改变属性值。</li>
-<li>属性动画插值器和估值器的作用？<br>插值器(Interpolator)：<br>根据时间流逝的百分比计算出当前属性值改变的百分比。确定了动画效果变化的模式，如匀速变化、加速变化等等。View动画和属性动画均可使用。<br>常用的系统内置插值器：<br>线性插值器(LinearInterpolator)：匀速动画<br>加速减速插值器(AccelerateDecelerateInterpolator)：动画两头慢中间快<br>减速插值器(DecelerateInterpolator)：动画越来越慢<br>类型估值器(TypeEvaluator)：根据当前属性改变的百分比计算出改变后的属性值。针对于属性动画，View动画不需要类型估值器。<br>常用的系统内置的估值器：<br>整形估值器(IntEvaluator)<br>浮点型估值器(FloatEvaluator)<br>Color属性估值器(ArgbEvaluator)</li>
-<li>Activity，PhoneWindow是如何被创建的？<br>Activity是在在ActivityThread中在newAvtivity方法里通过ClassLoader创建的<br>PhoneWindow是在ActivityThread的attach()方法中实例化的。是在创建Activity之后调用的。</li>
-<li>Activity，Window和View的关系<br>首先三者的关系是Activity &gt; Window(PhoneWindow) &gt; View。创建Activity之后，在启动过程中初始化了和绑定Window，Activity通过setContent()将View添加到Window中</li>
-<li>AMS的启动流程<br>在系统服务进程SystemServer中的ServerThread线程中run方法里启动，会调用AMS的静态main方法。该方法中创建一个线程等待ASM构造完成，同时，也初始化AcitivtyThread和ActivityStack。</li>
-<li>简述handle机制</li>
+<li>dp、dpi、px的区别？<br>  1.px：像素，如分辨率1920x1080表示高为1920个像素、宽为1080个像素<br>  2.dpi：每英寸的像素点，如分辨率为1920x1080的手机尺寸为4.95英寸，则该手机DPI为（1920x1920+ 1080x1080）½/4.95≈445dpi<br>  3.dp：密度无关像素，是个相对值</li>
+<li>res目录和assets目录的区别？<br>  res中的文件都会被映射到R.java中，分配一个id，通过id获取。<br>  而assets中的文件需要通过AssetsManager获取</li>
+<li>Android中的动画<br>  1.补间动画（View动画），可以使控件平移，伸缩，旋转，改变透明度。但不能真正改变控件的属性<br>  2.逐帧动画，将多个图片按顺序播放，形成的一种动画<br>  3.属性动画，真正能改变对象属性的动画，作用于对象。其通过反射技术获取属性的get和set方法，真正改变属性值。</li>
+<li>属性动画插值器和估值器的作用？<br>  插值器(Interpolator)：<br>  根据时间流逝的百分比计算出当前属性值改变的百分比。确定了动画效果变化的模式，如匀速变化、加速变化等等。View动画和属性动画均可使用。<br>  常用的系统内置插值器：<br>  线性插值器(LinearInterpolator)：匀速动画<br>  加速减速插值器(AccelerateDecelerateInterpolator)：动画两头慢中间快<br>  减速插值器(DecelerateInterpolator)：动画越来越慢<br>  类型估值器(TypeEvaluator)：根据当前属性改变的百分比计算出改变后的属性值。针对于属性动画，View动画不需要类型估值器。<br>  常用的系统内置的估值器：<br>  整形估值器(IntEvaluator)<br>  浮点型估值器(FloatEvaluator)<br>  Color属性估值器(ArgbEvaluator)</li>
+<li>Activity，PhoneWindow是如何被创建的？<br>  Activity是在在ActivityThread中在newAvtivity方法里通过ClassLoader创建的<br>  PhoneWindow是在ActivityThread的attach()方法中实例化的。是在创建Activity之后调用的。</li>
+<li>Activity，Window和View的关系<br>  首先三者的关系是Activity &gt; Window(PhoneWindow) &gt; View。创建Activity之后，在启动过程中初始化了和绑定Window，Activity通过setContent()将View添加到Window中</li>
+<li>AMS的启动流程<br>  在系统服务进程SystemServer中的ServerThread线程中run方法里启动，会调用AMS的静态main方法。该方法中创建一个线程等待ASM构造完成，同时，也初始化AcitivtyThread和ActivityStack。</li>
+<li>简述handle机制？阻塞原理？内存屏障？主线程耗时操作</li>
 <li>Message的创建形式有哪些？</li>
 <li>Handle的postDelay()会使消息队列发生什么变化？</li>
 <li>谈谈HandleThread</li>
 <li>谈谈ThreadLocal</li>
 <li>使用bindService创建IntentService会发生什么？</li>
-<li>线程池的优点、原理、类型？</li>
+<li>线程池的优点、原理、类型？如何区别核心线程与非核心线程？如何保证核心线程不死？</li>
 <li>LRU算法的原理？</li>
-<li>String、StringBuffer和StringBuilder的区别？</li>
 <li>Art和Dalvik和JVM的区别</li>
-<li>插件化开发<br>当业务逻辑越来越复杂庞大的时候，一个应用中dex方法很可能会超过65536.这个时候就需要把其中一些分离出来插件化，它的表现形式有apk，jar或者dex文件等。我们需要动态加载这些文件，再通过反射获取该文件下的资源（图片），给宿主app使用。<br>动态加载有两种类加载器：dexClassLoader和pathClassloader。</li>
-<li>Fragment与Activity之间的交互<br>Fragment与Activity之间的交互可以通过Fragment.setArguments(Bundle args)以及Fragment.getArguments()来实现。</li>
+<li>插件化开发<br>  当业务逻辑越来越复杂庞大的时候，一个应用中dex方法很可能会超过65536.这个时候就需要把其中一些分离出来插件化，它的表现形式有apk，jar或者dex文件等。我们需要动态加载这些文件，再通过反射获取该文件下的资源（图片），给宿主app使用。<br>  动态加载有两种类加载器：dexClassLoader和pathClassloader。</li>
+<li>Fragment与Activity之间的交互<br>  Fragment与Activity之间的交互可以通过Fragment.setArguments(Bundle args)以及Fragment.getArguments()来实现。</li>
 <li>热修复技术原理</li>
 <li>图片的三级缓存</li>
 <li>Debug和Release状态的不同</li>
 <li>MVC、MVP、MVVM应用和彼此本质区别</li>
-<li><p>Broadcast的分类？<br>广播可以分为有序广播、无序广播、本地广播、粘性广播。其中无序广播通过sendBroadcast(intent)发送，有序广播通过sendOrderedBroadcast(intent)发送。<br>有序广播。<br>(1) 有序广播可以用priority来调整优先级，取值范围-1000~+1000，默认为0，数值越大优先级越高，优先级越高越优先获得广播响应。同步广播<br>(2) abortBroadcast()可来终止该广播的传播，对更低优先级的屏蔽，注意只对有序广播生效。<br>(3) 有序广播在传播数据中会发生比如setResultData()，getResultData()，在传播过程中，可以从新设置数据<br>本地广播是通过LocalBroadcastManager内置的Handler来实现的，只是利用了IntentFilter的match功能，至于BroadcastReceiver 换成其他接口也无所谓，顺便利用了现成的类和概念而已。在register()的时候保存BroadcastReceiver以及对应的IntentFilter，在sendBroadcast()的时候找到和Intent对应的BroadcastReceiver，然后通过Handler发送消息，触发executePendingBroadcasts()函数，再在后者中调用对应BroadcastReceiver的onReceive()方法。<br>粘性消息：粘性消息在发送后就一直存在于系统的消息容器里面，等待对应的处理器去处理，如果暂时没有处理器处理这个消息则一直在消息容器里面处于等待状态，粘性广播的Receiver如果被销毁，那么下次重建时会自动接收到消息数据。(在 android 5.0/api 21中deprecated,不再推荐使用，相应的还有粘性有序广播，同样已经deprecated)</p>
+<li><p>Broadcast的分类？<br>  广播可以分为有序广播、无序广播、本地广播、粘性广播。其中无序广播通过sendBroadcast(intent)发送，有序广播通过sendOrderedBroadcast(intent)发送。<br>  有序广播。<br>  (1) 有序广播可以用priority来调整优先级，取值范围-1000~+1000，默认为0，数值越大优先级越高，优先级越高越优先获得广播响应。同步广播<br>  (2) abortBroadcast()可来终止该广播的传播，对更低优先级的屏蔽，注意只对有序广播生效。<br>  (3) 有序广播在传播数据中会发生比如setResultData()，getResultData()，在传播过程中，可以从新设置数据<br>  本地广播是通过LocalBroadcastManager内置的Handler来实现的，只是利用了IntentFilter的match功能，至于BroadcastReceiver 换成其他接口也无所谓，顺便利用了现成的类和概念而已。在register()的时候保存BroadcastReceiver以及对应的IntentFilter，在sendBroadcast()的时候找到和Intent对应的BroadcastReceiver，然后通过Handler发送消息，触发executePendingBroadcasts()函数，再在后者中调用对应BroadcastReceiver的onReceive()方法。<br>  粘性消息：粘性消息在发送后就一直存在于系统的消息容器里面，等待对应的处理器去处理，如果暂时没有处理器处理这个消息则一直在消息容器里面处于等待状态，粘性广播的Receiver如果被销毁，那么下次重建时会自动接收到消息数据。(在 android 5.0/api 21中deprecated,不再推荐使用，相应的还有粘性有序广播，同样已经deprecated)</p>
 </li>
-<li><p>数据库如何进行升级？SQLite增删改查的基础sql语句?<br>在SQLiteOpenHelper的构造函数中，包含了一个version的参数。这个参数即是数据库的版本。 所以，我们可以通过修改version来实现数据库的升级。 当version大于原数据库版本时，onUpgrade()会被触发，可以在该方法中编写数据库升级逻辑<br>增：INSERT INTO table_name (列1, 列2,…) VALUES (值1, 值2,….)<br>删： DELETE FROM 表名称 WHERE 列名称 = 值<br>改：UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值<br>查：SELECT 列名称（通配是*符号） FROM 表名称</p>
+<li><p>数据库如何进行升级？SQLite增删改查的基础sql语句?<br>  在SQLiteOpenHelper的构造函数中，包含了一个version的参数。这个参数即是数据库的版本。 所以，我们可以通过修改version来实现数据库的升级。 当version大于原数据库版本时，onUpgrade()会被触发，可以在该方法中编写数据库升级逻辑<br>  增：INSERT INTO table_name (列1, 列2,…) VALUES (值1, 值2,….)<br>  删： DELETE FROM 表名称 WHERE 列名称 = 值<br>  改：UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值<br>  查：SELECT 列名称（通配是*符号） FROM 表名称</p>
 </li>
-<li>JVM内存区域划分？哪部分是线程公有的，哪部分是私有的？<br>JVM 的内存区域可以分为两类：线程私有和区域和线程共有的区域。<br>线程私有的区域：程序计数器、JVM 虚拟机栈、本地方法栈；<br>线程共有的区域：堆、方法区、运行时常量池。</li>
-<li>hashcode（）和equals（）的区别、联系？</li>
-<li>Retrofit CreateApi实现原理</li>
-<li>简述双亲委派模型<br>该模型是为类的加载服务的，当一个类加载器收到类加载的请求时，首先自己不会去加载该类，而是委托给当前类加载器的父类加载器去加载，每个类加载器都是如此，直到该请求委托给顶部的启动类加载器去加载。假如父类加载器无法加载该类，那才会由子类加载器去加载。<br>系统类加载器分为三种：启动类加载器，拓展类加载器，应用类加载。最下面才是自定义类加载器。</li>
-<li>HashMap如何实现一个Key对应多个value?</li>
-<li>https如何加密？</li>
-<li>EventBus实现原理</li>
+<li><p>Retrofit CreateApi实现原理</p>
+</li>
+<li><p>EventBus实现原理</p>
+</li>
 <li>requestLayout，invalidate，postInvalidate区别与联系</li>
-<li>Activity的onNewIntent </li>
-<li>类的加载机制 </li>
-<li>Java反射 和Java泛型 </li>
+<li>Activity的onNewIntent  </li>
 <li>微信小程序实现原理 </li>
 <li>adb常用命令行</li>
 <li>Glide缓存源码，加载原理 </li>
 <li>RecyclerView与ListView(缓存原理，区别联系，优缺点) </li>
-<li>组件化实现方案，路由原理 </li>
-<li>https的握手过程及加密算法</li>
-<li>简述GreeDao原理</li>
+<li><p>组件化实现方案，路由原理 </p>
+</li>
+<li><p>简述GreeDao原理</p>
+</li>
 <li>冷启动和热启动</li>
-<li>AIDL的使用和原理</li>
-<li>session与cookit的区别</li>
-<li>为什么Intent（或者说Bundle）中携带的数据需要支持序列化呢？<br>因为Intent支持进程间的通信，而进程间的通信又仅支持几种基本的数据类型和序列化的类型，所以Intent传递的数据要支持序列化</li>
-<li>Java对象的创建过程<br>1.类的检查：接收到指令之后虚拟机首先会在常量池中查找是否有该类的引用类型，如无，则进行类的加载（加载，验证，准备，解析，初始化）<br>2.分配内存：为该对象分配内存，两种方法：指针偏移和闲散列表<br>3.内存空间初始化为0<br>4.设置对象：主要是设置对象头，例如对象的哈希码，GC分代信息等。</li>
-<li>虚拟机内存空间？哪些是共享的？哪些是线程私有的？</li>
-<li>内部类如何访问外部类的变量和方法？</li>
+<li><p>AIDL的使用和原理</p>
+</li>
+<li><p>为什么Intent（或者说Bundle）中携带的数据需要支持序列化呢？<br>  因为Intent支持进程间的通信，而进程间的通信又仅支持几种基本的数据类型和序列化的类型，所以Intent传递的数据要支持序列化</p>
+</li>
+<li><p>SharedPreferences数据存储的apply()和commit()区别</p>
+</li>
+<li><p>bitmap如何处理大图，如一张30M的大图。一张200k的图片为什么会oom？</p>
+</li>
+<li>Android相关优化（如内存优化、网络优化、布局优化、电量优化、业务优化）</li>
+<li><p>EventBus实现原理和观察者模式在开发中的运用？</p>
+</li>
+<li><p>IntentFilter的匹配规则<br>  在AndroidMinifast中注册一个Activity、Service、Broadcast时，可以给组件添加</p>
+</li>
+<li>在handlerThread中获取的looper时是如何保持同步的？<br>  创建looper是在run方法下进行的，此时获取looper会用getlooper()来获取looper，当looper为空时getLopper会调用wait()，一旦在run方法下创建好looper，则会notifyAll()，结束wait的线程。此时获取looper就不为空了。</li>
+<li>估值（TypeEvator）器原理<br>  起始值+fraction*（结束值-起始值）</li>
+<li>ThreadLocal的原理<br>  ThreadLocal内部用一个Map来储存该线程下的资源。Map的key为当前线程的实例，value则是储存的值。访问该线程，实质上就是访问该线程下的已经储存好的资源。</li>
+<li>Handler如何实现线程切换的<br>  例如现在有A、B两个线程，在A线程中有创建了handler，然后在B线程中调用handler发送一个message。<br>  当在A线程中创建handler的时候，同时创建了MessageQueue与Looper，Looper在A线程中调用loop进入一个无限的for循环从MessageQueue中取消息，当B线程调用handler发送一个message的时候，会通过msg.target.dispatchMessage(msg);将message插入到handler对应的MessageQueue中，Looper发现有message插入到MessageQueue中，便取出message执行相应的逻辑，因为Looper.loop()是在A线程中启动的，所以则回到了A线程，达到了从B线程切换到A线程的目的。</li>
+<li>getMeasureWidth()和getWidth()的区别</li>
+<li>dex文件的加载原理？</li>
+<li>Binder原理？实现模型？如何使用？</li>
+<li>ViewRootImpl的requestLayout()与view的requestLayout()的区别？<br>  view.requestLayout() -&gt; ViewPatent.requestLayout() -&gt; ViewRootImpl.requestLayout();</li>
+<li>Activity的事件是谁传递的？<br>  底层硬件 -&gt; ViewRootImpl.disPatchInputEvent封装放入队列处理，队列循环分发 -&gt; DecorView.disPatchTouchEvent() -&gt; window.callback.dispatchTouchEvent() -&gt; Activity.dispatchTouchEvent() -&gt; window.superDispatchTouchEvent() -&gt; DecorView.superDispatchTouchEvent() -&gt; ViewGoup</li>
+<li>MultiDex原理及优化方式<br>  1.开启MultiDex模式，编译出含多个dex的apk<br>  2.安装<pre><code>2.1：MultiDex类install方法，5.0以下不支持
+2.2：5.0以上交由MultidexExtrator去加载非主dex
+    2.2.1：先读取缓存的dex文件，无缓存的话就从apk中重新解压获取（耗时大）
+    2.2.2：将读取到的多个dex文件压缩成zip压缩包（耗时大），对应的对象为ExtractedDex，并放进一个压缩列表中List&lt;ExtractedDex&gt;
+2.3: 利用反射获取到ClassLoader的DexPathList对象，获取DexPathList的makeDexElements方法，将上一步的压缩列表传进该方法中，生产Element数组
+2.4： 将非主dex产生的Element数组，加入到主Dex产生的Element数组中（尾插法），最终生成一个完成的Element数组
+2.5： 上一步生成的数组由ClassLoader（BaseDexClassLoader）的findclass方法进行遍历，拿到DexFile对象，通过DexFile对象的native方法（loadClassBinaryName）生成Class对象
+</code></pre></li>
+<li>如何获取启动时间？<br>  指令：adb shell am start -W [pag+activity]<br>  埋点</li>
+<li>ASM插桩原理<br>  1.继承Transform自定义一个Gradle插件。在transform()方法下获取transformInput列表，该列表分别包含了文件夹（Directory）下的.class和jar下的.class，遍历获得该列表<br>  2.将获取到的class交给ASM处理。即ClassReader和ClassWriter，然后交给Visitor，Visitor在visiMethod()方法下判断是否为目标class，是的话再交给MethodVisitor进行内容插入。visitCode()方法内插入想要埋点的内容，visitInsn()方法为方法结束时埋点内容。<pre><code>关于字节码内容修改，可利用ASM Bytecode Outline插件
+</code></pre>  3.修改完成后得到ClassWriter交给FileOutputStream修改写入byte流，完成替换<br>  4.又dx/d8打包.dex文件，继续接下来的生成apk任务</li>
+<li>handle的底层原理？Handle如何阻塞的？</li>
+<li>为什么Application下的R.java的资源id是final的，而libs下的R.java的资源id是非final的？</li>
+<li>apk的安装原理</li>
+<li>怎么检查内存泄漏？</li>
+<li>Launcher如何启动应用的？</li>
+<li>CordinateLayout原理？如何实现滚动的？</li>
+<li>识别一个字符串是否是ipv4地址</li>
+<li>Android中的注解有哪几种</li>
+<li>WindowManager的addView()与ViewGoup的addView()有什么区别？</li>
+<li>APK是如何被解析的？</li>
+<li>单元测试</li>
+<li>so是如何被加载的？生命周期是怎么样的？</li>
+<li>native怎么检测内存泄漏？</li>
+<li>IO优化</li>
+<li>mmap<br>  <a href="https://www.cnblogs.com/huxiao-tee/p/4660352.html" target="_blank" rel="noopener">https://www.cnblogs.com/huxiao-tee/p/4660352.html</a></li>
+<li>B数/B+数</li>
+<li>wrap_content如何计算的？</li>
+<li>跨进程传递大内存数据如何做？<br>  <a href="https://www.jianshu.com/p/9b4cfafe069e" target="_blank" rel="noopener">https://www.jianshu.com/p/9b4cfafe069e</a></li>
+<li>如何加入点击事件？如何添加长按事件？事件优先级？</li>
+<li>RxJava处理异常错误，线程切换原理？</li>
+<li>加密？签名？对称加密？非对称加密？MD5？SHA1？</li>
+<li>okio的原理？与原生javaIO对比优点在哪里？</li>
+<li>储存优化措施？<br>  sp缺点、文件io、sqlite</li>
+<li>sqlite的锁机制</li>
+<li>Android开机动画的启动/关闭流程？如何替换开机动画？</li>
+<li>Zygote的fork的过程？</li>
+<li>okHttp的缓存策略、连接复用、okio<br>  <a href="https://www.jianshu.com/p/5249eed1cc53" target="_blank" rel="noopener">https://www.jianshu.com/p/5249eed1cc53</a></li>
+<li>简单工厂、方法工厂、抽象工厂</li>
+<li>生产者&amp;消费者模式</li>
+<li><a href="https://blog.csdn.net/qq_17250009/article/details/52175211" target="_blank" rel="noopener">https://blog.csdn.net/qq_17250009/article/details/52175211</a></li>
+<li>Binder驱动原理<br>  <a href="http://gityuan.com/2015/10/31/binder-prepare/" target="_blank" rel="noopener">http://gityuan.com/2015/10/31/binder-prepare/</a><br>  <a href="http://gityuan.com/2016/09/04/binder-start-service/" target="_blank" rel="noopener">http://gityuan.com/2016/09/04/binder-start-service/</a><br>  <a href="https://www.jianshu.com/p/adaa1a39a274" target="_blank" rel="noopener">https://www.jianshu.com/p/adaa1a39a274</a></li>
+<li>如何获取ANR信息后上传服务器？<br>  <a href="https://blog.csdn.net/codezjx/article/details/78648333" target="_blank" rel="noopener">https://blog.csdn.net/codezjx/article/details/78648333</a><pre><code>1. 什么时候获取信息？
+    根据源码当发生ANR时，首先会调用AMS的appnotResponeing方法，会优先dump出当前进程栈信息，设置ANR标记，dumpStackTraces方法记录info信息，调用makeAppNotRespondingLocked方法生成ProcessErrorState对象。
+    dumpStackTraces时会通过FileObserver监听写入操作。
+    所以我们需要用FileObserver来监听app/anr目录即可，并筛选traces文件，就能知道此时发生了ANR.
+2. 去哪里获取信息？
+    根据源码知道ANR时最终会产生ProcessErrorStateInfo对象，该对象可通过ActivityManager的getProcessInErrorState方法进行跨进程通信，返回ProcessErrorStateINfo对象列表，通过当前进程信息设置condition筛选出自己进程的ProcessErrorState即可。
+</code></pre></li>
+<li>select、poll和epoll<br>  <a href="https://www.cnblogs.com/aspirant/p/9166944.html" target="_blank" rel="noopener">https://www.cnblogs.com/aspirant/p/9166944.html</a><br>  select，poll实现需要自己不断轮询所有fd集合，直到设备就绪，期间可能要睡眠和唤醒多次交替。而epoll其实也需要调用epoll_wait不断轮询就绪链表，期间也可能多次睡眠和唤醒交替，但是它是设备就绪时，调用回调函数，把就绪fd放入就绪链表中，并唤醒在epoll_wait中进入睡眠的进程。虽然都要睡眠和交替，但是select和poll在“醒着”的时候要遍历整个fd集合，而epoll在“醒着”的时候只要判断一下就绪链表是否为空就行了，这节省了大量的CPU时间。这就是回调机制带来的性能提升。</li>
 </ul>
 
       
@@ -574,8 +636,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/JVM：GC机制/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/01/01/IntentFilter的匹配规则/" rel="next" title="IntentFilter的匹配规则">
+                <i class="fa fa-chevron-left"></i> IntentFilter的匹配规则
               </a>
             
           </div>
@@ -584,7 +646,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/Java集合类总结篇/" rel="prev" title="">
+              <a href="/2016/01/01/Android笔记大全（三）/" rel="prev" title="">
                  <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -658,7 +720,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -681,7 +743,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -844,7 +908,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

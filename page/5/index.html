@@ -345,6 +345,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/22/微信小程序（四）——数据库设计篇/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="周  康">
+      <meta itemprop="description" content="猥琐发育，别浪！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周康的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/22/微信小程序（四）——数据库设计篇/" itemprop="url">
+                  微信小程序（四）——数据库设计篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-22 00:00:00" itemprop="dateCreated datePublished" datetime="2018-01-22T00:00:00+08:00">2018-01-22</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>这次的数据库采用了MYSQL，设计了6张表，其实还应该再细分多两三个表出来的，如果再改的话很多表和后台的代码也都要跟着改，都是多表联动，耦合性很强，比较麻烦，因为也能正常运作，索性就没再改了。接下来细说这6张表。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/22/微信小程序（四）——数据库设计篇/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2018/01/21/微信小程序（五）——服务器搭建篇/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1236,169 +1394,10 @@
 
       
         
-          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Android应用中，体现给用户最多的就是图片，所以选择一种适合自己的图片加载框架是我开发中需要慎重考虑的事情，今天来对比一下当下最火的三款图片加载框架的区别。它们分别是：Glide、Fasco和Picasso。目前个人对于Glide比较熟悉，因为在过往的项目中运用的最多的就是Glide，写过《<a href="/2018/02/24/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a>》这篇文章帮助自己更好的运用这个框架。而今天这篇文章的目的就是更好的理解这些图片加载框架之间的优缺点。以便日后的开发工作。<br>
+          <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在Android应用中，体现给用户最多的就是图片，所以选择一种适合自己的图片加载框架是我开发中需要慎重考虑的事情，今天来对比一下当下最火的三款图片加载框架的区别。它们分别是：Glide、Fasco和Picasso。目前个人对于Glide比较熟悉，因为在过往的项目中运用的最多的就是Glide，写过《<a href="/2019/10/11/Glide源码分析（一）/" title="Glide源码分析（一）">Glide源码分析（一）</a>》这篇文章帮助自己更好的运用这个框架。而今天这篇文章的目的就是更好的理解这些图片加载框架之间的优缺点。以便日后的开发工作。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/09/Glide、Fasco、Picasso的对比/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2017/12/02/自定义控件——bezier曲线的使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="周  康">
-      <meta itemprop="description" content="猥琐发育，别浪！">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="周康的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/02/自定义控件——bezier曲线的使用/" itemprop="url">
-                  自定义控件——bezier曲线的使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-12-02 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-02T00:00:00+08:00">2017-12-02</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png" alt=""></p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客<a href="http://hencoder.com/" target="_blank" rel="noopener">HenCoder</a><br>今天尝试用贝瑟尔曲线自定义一个控件，效果如下：<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/02/自定义控件——bezier曲线的使用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1965,7 +1964,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1988,7 +1987,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2135,7 +2136,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

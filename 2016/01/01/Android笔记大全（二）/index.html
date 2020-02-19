@@ -114,20 +114,18 @@
 
 
 
-  <meta name="description" content="概述">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="题目 String、StringBuffer和StringBuilder的区别？ hashcode（）和equals（）的区别、联系？ Java反射 和Java泛型 session与cookit的区别 synchronize用法，volatile用法，原理？两者的区别和场景？偏向锁、轻量锁、重量锁。手写DCL  https://www.cnblogs.com/deltadeblog/p/95590">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="周康的博客">
 <meta property="og:url" content="http://kangzhou.github.io/2016/01/01/Android笔记大全（二）/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="题目 String、StringBuffer和StringBuilder的区别？ hashcode（）和equals（）的区别、联系？ Java反射 和Java泛型 session与cookit的区别 synchronize用法，volatile用法，原理？两者的区别和场景？偏向锁、轻量锁、重量锁。手写DCL  https://www.cnblogs.com/deltadeblog/p/95590">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-03-14T06:47:27.573Z">
+<meta property="og:updated_time" content="2019-12-31T08:17:08.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="周康的博客">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:description" content="题目 String、StringBuffer和StringBuilder的区别？ hashcode（）和equals（）的区别、联系？ Java反射 和Java泛型 session与cookit的区别 synchronize用法，volatile用法，原理？两者的区别和场景？偏向锁、轻量锁、重量锁。手写DCL  https://www.cnblogs.com/deltadeblog/p/95590">
 
 
 
@@ -442,9 +440,30 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><ul>
+<li>String、StringBuffer和StringBuilder的区别？</li>
+<li>hashcode（）和equals（）的区别、联系？</li>
+<li>Java反射 和Java泛型</li>
+<li>session与cookit的区别</li>
+<li>synchronize用法，volatile用法，原理？两者的区别和场景？偏向锁、轻量锁、重量锁。手写DCL<br>  <a href="https://www.cnblogs.com/deltadeblog/p/9559035.html" target="_blank" rel="noopener">https://www.cnblogs.com/deltadeblog/p/9559035.html</a></li>
+<li>简述ReetrantLock？synchronzize与ReetrantLock的区别？</li>
+<li>内部类如何访问外部类的变量和方法？</li>
+<li>JVM内存区域划分？哪部分是线程公有的，哪部分是私有的？<br>  JVM 的内存区域可以分为两类：线程私有和区域和线程共有的区域。<br>  线程私有的区域：程序计数器、JVM 虚拟机栈、本地方法栈；<br>  线程共有的区域：堆、方法区、运行时常量池。</li>
+<li>Java对象的创建过程<br>  1.类的检查：接收到指令之后虚拟机首先会在常量池中查找是否有该类的引用类型，如无，则进行类的加载（加载，验证，准备，解析，初始化）<br>  2.分配内存：为该对象分配内存，两种方法：指针偏移和闲散列表<br>  3.内存空间初始化为0<br>  4.设置对象：主要是设置对象头，例如对象的哈希码，锁信息，GC分代信息等。</li>
+<li>GC回收算法（优缺点）<br>  1.标记-清除(标记的方式)<br>  2.复制（简述内存担保）<br>  3.标记-整理<br>  4.分代回收(新生代&amp;老年代，大对象回收，新生代如何变成老年代)</li>
+<li>垃圾收集器<br>  1.Serial：这个收集器是一个单线程的收集器，但它 的“单线程”的意义并不仅仅说明它只会使用一个CPU或一条收集线程去完成垃圾收集工作， 更重要的是在它进行垃圾收集时，必须暂停其他所有的工作线程，直到它收集结束。“Stop The World”<br>  2.ParNew:ParNew收集器其实就是Serial收集器的多线程版本</li>
+<li>对象如何从年轻代变成老年代？</li>
+<li>简述双亲委派模型<br>  该模型是为类的加载服务的，当一个类加载器收到类加载的请求时，首先自己不会去加载该类，而是委托给当前类加载器的父类加载器去加载，每个类加载器都是如此，直到该请求委托给顶部的启动类加载器去加载。假如父类加载器无法加载该类，那才会由子类加载器去加载。<br>  系统类加载器分为三种：启动类加载器，拓展类加载器，应用类加载。最下面才是自定义类加载器。</li>
+<li>HashMap如何实现一个Key对应多个value?<br>  new HashMap&lt;String,List<string>&gt;;</string></li>
+<li>HashMap如何扩容？扩容为什么是2的幂次方？1.7与1.8的区别？插入的方式？扩容后的位置变化？什么时候rehash？</li>
+<li>判断一个对象实例可回收的条件？<br>  1.引用计数法<br>  2.可达性分析（被分析不可达的对象并非一定要被回收，需经过两次标记阶段。）</li>
+<li>判断一个类是否为无用类的方法？<br>  1.该类所有的实例都已经被回收，也就是Java堆中不存在该类的任何实例。<br>  2.加载该类的ClassLoader已经被回收。<br>  3.该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问该 类的方法。 </li>
+<li>判断一个常量为废弃常量的条件<br>  假如一个字符串“abc”已经进入了 常量池中，但是当前系统没有任何一个String对象是叫做“abc”的，换句话说，就是没有任何 String对象引用常量池中的“abc”常量，也没有其他地方引用了这个字面量，如果这时发生内 存回收，而且必要的话，这个“abc”常量就会被系统清理出常量池</li>
+<li>并行与并发</li>
+<li>线程的几种状态，代表着什么意思<br>  NEW,RUNNING,TIME_WAITING(超时等待，wait(long),join(long)),WAITING(调用wait,join,lock),BLOCKED(出现资源竞争，等待获取锁),TERMINATED(线程结束)</li>
+<li>开启线程的三种方式？</li>
+<li>线程的join()和yield()是什么意思？</li>
+</ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
       
     </div>
@@ -479,7 +498,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/面试/" rel="tag"># 面试</a>
           
         </div>
       
@@ -512,7 +531,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/PMS(PackegeManagerService)与WMS(WindowManagerService)/" rel="next" title="">
+              <a href="/2016/01/01/AA_MODEL/" rel="next" title="">
                 <i class="fa fa-chevron-left"></i> 
               </a>
             
@@ -522,8 +541,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/MVC,MVP,MVVM的区别/" rel="prev" title="MVC,MVP,MVVM的区别">
-                MVC,MVP,MVVM的区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/01/01/封装RxJava+Retrofit/" rel="prev" title="封装RxJava+Retrofit">
+                封装RxJava+Retrofit <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +615,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">84</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -619,7 +638,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -762,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -782,7 +803,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

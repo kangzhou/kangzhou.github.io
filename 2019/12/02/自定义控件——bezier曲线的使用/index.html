@@ -114,27 +114,29 @@
 
 
 
-  <meta name="description" content="概述">
-<meta name="keywords" content="JVM">
+  <meta name="description" content="概述关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客HenCoder今天尝试用贝瑟尔曲线自定义一个控件，效果如下：">
+<meta name="keywords" content="自定义控件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="周康的博客">
-<meta property="og:url" content="http://kangzhou.github.io/2016/01/01/HandleThead,Handle和Thead/index.html">
+<meta property="og:title" content="自定义控件——bezier曲线的使用">
+<meta property="og:url" content="http://kangzhou.github.io/2019/12/02/自定义控件——bezier曲线的使用/index.html">
 <meta property="og:site_name" content="周康的博客">
-<meta property="og:description" content="概述">
+<meta property="og:description" content="概述关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客HenCoder今天尝试用贝瑟尔曲线自定义一个控件，效果如下：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
-<meta property="og:updated_time" content="2019-03-14T06:47:27.573Z">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view1.gif">
+<meta property="og:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png">
+<meta property="og:updated_time" content="2020-02-19T03:25:41.648Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周康的博客">
-<meta name="twitter:description" content="概述">
-<meta name="twitter:image" content="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png">
+<meta name="twitter:title" content="自定义控件——bezier曲线的使用">
+<meta name="twitter:description" content="概述关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客HenCoder今天尝试用贝瑟尔曲线自定义一个控件，效果如下：">
+<meta name="twitter:image" content="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kangzhou.github.io/2016/01/01/HandleThead,Handle和Thead/">
+  <link rel="canonical" href="http://kangzhou.github.io/2019/12/02/自定义控件——bezier曲线的使用/">
 
 
 
@@ -144,7 +146,7 @@
   };
 </script>
 
-  <title> | 周康的博客</title>
+  <title>自定义控件——bezier曲线的使用 | 周康的博客</title>
   
 
 
@@ -348,7 +350,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/01/01/HandleThead,Handle和Thead/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2019/12/02/自定义控件——bezier曲线的使用/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -365,7 +367,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">自定义控件——bezier曲线的使用
               
             
           </h1>
@@ -390,7 +392,7 @@
                 
               
 
-              <time title="创建时间：2016-01-01 00:00:00" itemprop="dateCreated datePublished" datetime="2016-01-01T00:00:00+08:00">2016-01-01</time>
+              <time title="创建时间：2019-12-02 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-02T00:00:00+08:00">2019-12-02</time>
             
 
             
@@ -408,7 +410,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -442,10 +444,35 @@
       
 
       
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="http://oxr4g4c3v.bkt.clouddn.com/jvm-neicun2.png" alt=""><br><a id="more"></a></p>
-<pre><code class="java">
-</code></pre>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1>
+        <p><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png" alt=""></p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>关于自定义View的话，这里先给自己标注一下，用于以后方便查看，介绍一个技术博主的技术博客<a href="http://hencoder.com/" target="_blank" rel="noopener">HenCoder</a><br>今天尝试用贝瑟尔曲线自定义一个控件，效果如下：<br><a id="more"></a><br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/view1.gif" alt=""><br>是不是有种似曾相识的感觉，没错啦，就是QQ消息拖拽的效果。<br>如果还有人不太了解贝瑟尔曲线，可以<a href="http://www.html-js.com/article/1628" target="_blank" rel="noopener">拼命戳我</a>,里面介绍的很详细。</p>
+<h1 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h1><p>首先看下这个图：<br><img src="http://zhoukanghblog.oss-cn-beijing.aliyuncs.com/bezierAn.png" alt=""><br>可以看出这里涉及到一些三角函数方面的数学知识，我们都可以用代码的形式把它表述出来。以下：</p>
+<ol>
+<li><p>先有一个拖动大圆c1的圆心，和一个固定小圆c0圆心。我点击屏幕的地方就是两个圆的圆心，获取圆心：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">switch</span> (event.getAction())&#123;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">               iniPoint(event.getX(),event.getY());<span class="comment">//获取圆心</span></span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">               upPoint(event.getX(),event.getY());<span class="comment">//移动的时候拖动圆一直在动，固定圆不动</span></span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       invalidate();</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 按下便初始化该点</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">iniPoint</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>&#123;</span><br><span class="line">       PressPoint = <span class="keyword">new</span> PointF(x,y);</span><br><span class="line">       unPressPoint = <span class="keyword">new</span> PointF(x,y);</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 移动该点</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> x</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> y</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">upPoint</span><span class="params">(<span class="keyword">float</span> x, <span class="keyword">float</span> y)</span> </span>&#123;<span class="comment">//移动的时候拖动圆一直在动，固定圆不动</span></span><br><span class="line">       PressPoint.x = x;</span><br><span class="line">       PressPoint.y = y;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拖拽大圆的半径不变的，我们可以写死，不动小圆的半径时根据两圆心的距离的变化而变化的，然后在onDrew()方法里绘制这两个圆</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(PressPoint==<span class="keyword">null</span>&amp;&amp;unPressPoint==<span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//绘制拖拽圆</span></span><br><span class="line">        canvas.drawCircle(PressPoint.x,PressPoint.y,mPressRadius,mPaint);<span class="comment">//mPressRadius是写死的常量</span></span><br><span class="line">        <span class="comment">//计算两圆心c1和c0的距离，在坐标系中计算两个点的距离，公式是x的平方加上y的平方之和，然后开根号，表达式如下：</span></span><br><span class="line">        <span class="keyword">int</span> distence = (<span class="keyword">int</span>) Math.sqrt((PressPoint.x-unPressPoint.x)*(PressPoint.x-unPressPoint.x)+(PressPoint.y-unPressPoint.y)*(PressPoint.y-unPressPoint.y));</span><br><span class="line">		<span class="comment">//固定小圆的半径变化形式，两圆越远，小圆半径越小</span></span><br><span class="line">        mUnPressRadius = MIX_UNPRESSRADIUS-distence/<span class="number">20</span>;</span><br><span class="line">		</span><br><span class="line">        Path bazier = getBazierPath();<span class="comment">//路径</span></span><br><span class="line">        <span class="comment">//绘制固定圆和贝瑟尔曲线</span></span><br><span class="line">        <span class="keyword">if</span>(bazier!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            canvas.drawCircle(unPressPoint.x,unPressPoint.y,mUnPressRadius,mPaint);<span class="comment">//固定小圆</span></span><br><span class="line">            canvas.drawPath(bazier,mPaint);<span class="comment">//曲线</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>接下来最重要的一点是获取四个点（p0,p1,p2,p3）的坐标,先求出a的角度，小圆半径有了，然后就能得到x，y的值了，我们知道x，y和角度a的关系是：tan a = x/y。</p>
+</li>
+</ol>
+<p>求角度a<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//角度a，对着图来看这个公式</span></span><br><span class="line"><span class="keyword">float</span> a = (<span class="keyword">float</span>) Math.atan((PressPoint.y-unPressPoint.y)/(PressPoint.x-unPressPoint.x));</span><br><span class="line"><span class="comment">//x = mUnPressRadius*Math.sin(a),半径乘以sin(a)</span></span><br><span class="line"><span class="comment">//y = mUnPressRadius*Math.cos(a)</span></span><br></pre></td></tr></table></figure></p>
+<p>求p0(x,y)，这里需要注意一下的是，屏幕的坐标系x轴向右是正方向，但是y轴的是向下才是正的。所以，<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p0x = c0x+x</span><br><span class="line">p0y = c0y-y</span><br></pre></td></tr></table></figure></p>
+<p>同理我们就能求出p1,p2,p3点了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//四个点的位置</span></span><br><span class="line">      <span class="keyword">float</span> p0x = (<span class="keyword">float</span>) (mUnPressRadius*Math.sin(a)+unPressPoint.x);</span><br><span class="line">      <span class="keyword">float</span> p0y = (<span class="keyword">float</span>) (unPressPoint.y-mUnPressRadius*Math.cos(a));</span><br><span class="line">      <span class="keyword">float</span> p1x = (<span class="keyword">float</span>) (mPressRadius*Math.sin(a)+PressPoint.x);</span><br><span class="line">      <span class="keyword">float</span> p1y = (<span class="keyword">float</span>) (PressPoint.y-mPressRadius*Math.cos(a));</span><br><span class="line">      <span class="keyword">float</span> p2x = (<span class="keyword">float</span>) (PressPoint.x-mPressRadius*Math.sin(a));</span><br><span class="line">      <span class="keyword">float</span> p2y = (<span class="keyword">float</span>) (PressPoint.y+mPressRadius*Math.cos(a));</span><br><span class="line">      <span class="keyword">float</span> p3x = (<span class="keyword">float</span>) (unPressPoint.x-mUnPressRadius*Math.sin(a));</span><br><span class="line">      <span class="keyword">float</span> p3y = (<span class="keyword">float</span>) (unPressPoint.y+mUnPressRadius*Math.cos(a));</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li><p>控制点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取控制点，取两个圆心的中点为控制点</span></span><br><span class="line">PointF contrlPoint = <span class="keyword">new</span> PointF((PressPoint.x+unPressPoint.x)/<span class="number">2</span>,(PressPoint.y+unPressPoint.y)/<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>所有东西都准备好就可以把路径画出来了，就是把p0,p1,p2,p3围起来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bazier.moveTo(p0x,p0y);<span class="comment">//移动到p0点</span></span><br><span class="line">      bazier.quadTo(contrlPoint.x,contrlPoint.y,p1x,p1y);<span class="comment">//曲线路径</span></span><br><span class="line">      bazier.lineTo(p2x,p2y);</span><br><span class="line">      bazier.quadTo(contrlPoint.x,contrlPoint.y,p3x,p3y);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最后我们在布局文件中使用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span><br><span class="line">&lt;RelativeLayout xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">   xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span></span><br><span class="line">   xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span></span><br><span class="line">   android:id=<span class="string">"@+id/activity_main"</span></span><br><span class="line">   android:orientation=<span class="string">"vertical"</span></span><br><span class="line">   android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">   android:layout_height=<span class="string">"match_parent"</span></span><br><span class="line">   tools:context=<span class="string">"acase.zhoukang.com.studydemo.MainActivity"</span>&gt;</span><br><span class="line">&lt;acase.zhoukang.com.studydemo.view.BezierView</span><br><span class="line">       android:layout_width=<span class="string">"match_parent"</span></span><br><span class="line">       android:layout_height=<span class="string">"match_parent"</span> /&gt;</span><br><span class="line">&lt;/RelativeLayout&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>关键点是在于求p0，p1，p2，p3四个点的位置，<a href="https://github.com/Kanging/StudyDemo/blob/master/app/src/main/java/acase/zhoukang/com/studydemo/view/BezierView.java" target="_blank" rel="noopener">源码戳我</a></p>
+
       
     </div>
 
@@ -466,7 +493,7 @@
     <strong>本文作者： </strong>周  康</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://kangzhou.github.io/2016/01/01/HandleThead,Handle和Thead/" title="">http://kangzhou.github.io/2016/01/01/HandleThead,Handle和Thead/</a>
+    <a href="http://kangzhou.github.io/2019/12/02/自定义控件——bezier曲线的使用/" title="自定义控件——bezier曲线的使用">http://kangzhou.github.io/2019/12/02/自定义控件——bezier曲线的使用/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -479,7 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"># JVM</a>
+            <a href="/tags/自定义控件/" rel="tag"># 自定义控件</a>
           
         </div>
       
@@ -512,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/封装一套自己的网络框架/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/10/12/Glide源码分析（二）/" rel="next" title="Glide源码分析（二）">
+                <i class="fa fa-chevron-left"></i> Glide源码分析（二）
               </a>
             
           </div>
@@ -522,8 +549,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/Android笔记大全（二）/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2022/01/01/置顶/" rel="prev" title="【置顶】">
+                【置顶】 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +623,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">82</span>
+                    <span class="site-state-item-count">89</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -619,7 +646,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -692,7 +721,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">30</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -752,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#具体实现："><span class="nav-number">2.</span> <span class="nav-text">具体实现：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -772,7 +811,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
