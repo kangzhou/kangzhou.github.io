@@ -1792,7 +1792,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/01/01/Android笔记大全（三）/">
+    <link itemprop="mainEntityOfPage" href="http://kangzhou.github.io/2016/01/01/关于ActivityManagerService的理论知识/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="周  康">
@@ -1811,8 +1811,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/01/01/Android笔记大全（三）/" itemprop="url">
-                  Android笔记大全（三）
+                <a class="post-title-link" href="/2016/01/01/关于ActivityManagerService的理论知识/" itemprop="url">
+                  关于ActivityManagerService的理论知识
                 </a>
               
             
@@ -1856,7 +1856,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span>
 
                 
                 
@@ -1892,14 +1892,12 @@
       
         
           
-          题目
-https的握手过程及加密算法  https://www.jianshu.com/p/ca7df01a9041
-弱网环境解决方案
-OSI七层协议  1.物理层：为传输的比特流提供物理介质  2.数据链接层：为保证传输准确性，将数据封装成帧，按帧判别数据准确性，将网络层的数据以帧为单位，发送到目的主机的网络层  3.网络层：最复杂的一层，完成网络中主机间的传输  4.传输层：提供会话之间的连接
+          概述AMS是android中SystemServer进程中的一个线程，单从名字看以为只是管理Activity ,其实AMS是管理四大组件运行状态的系统服务线程。 
+AMS的启动SystemServer的starBoottrapService()方法 ——&gt; SystemServiceManager.startService(AMS.LifeCycle.class) ——&gt; LiftCy
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/01/01/Android笔记大全（三）/#more" rel="contents">
+            <a class="btn" href="/2016/01/01/关于ActivityManagerService的理论知识/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
