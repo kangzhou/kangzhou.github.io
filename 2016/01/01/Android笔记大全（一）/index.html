@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="周康的博客">
 <meta property="og:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？  ViewGoup vg = getWindows().getDecorView().findViewById(android.R.id.content).getChildAt(0); 自定义View？注意事项？  1.尽量使用v">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-02-18T07:58:45.126Z">
+<meta property="og:updated_time" content="2020-02-24T00:41:52.784Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android笔记大全（一）">
 <meta name="twitter:description" content="题目 在Activity启动的时候，去获取某个view的宽高，会发生什么事？如何处理？ 在onCreate中的setContenView（布局），如何获取该布局的实例？  ViewGoup vg = getWindows().getDecorView().findViewById(android.R.id.content).getChildAt(0); 自定义View？注意事项？  1.尽量使用v">
@@ -568,6 +568,7 @@
     根据源码知道ANR时最终会产生ProcessErrorStateInfo对象，该对象可通过ActivityManager的getProcessInErrorState方法进行跨进程通信，返回ProcessErrorStateINfo对象列表，通过当前进程信息设置condition筛选出自己进程的ProcessErrorState即可。
 </code></pre></li>
 <li>select、poll和epoll<br>  <a href="https://www.cnblogs.com/aspirant/p/9166944.html" target="_blank" rel="noopener">https://www.cnblogs.com/aspirant/p/9166944.html</a><br>  select，poll实现需要自己不断轮询所有fd集合，直到设备就绪，期间可能要睡眠和唤醒多次交替。而epoll其实也需要调用epoll_wait不断轮询就绪链表，期间也可能多次睡眠和唤醒交替，但是它是设备就绪时，调用回调函数，把就绪fd放入就绪链表中，并唤醒在epoll_wait中进入睡眠的进程。虽然都要睡眠和交替，但是select和poll在“醒着”的时候要遍历整个fd集合，而epoll在“醒着”的时候只要判断一下就绪链表是否为空就行了，这节省了大量的CPU时间。这就是回调机制带来的性能提升。</li>
+<li>Retrofit原理？    </li>
 </ul>
 
       
@@ -636,8 +637,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/Gradle相关问题/" rel="next" title="Gradle相关问题">
-                <i class="fa fa-chevron-left"></i> Gradle相关问题
+              <a href="/2016/01/01/Android笔记大全（四）/" rel="next" title="Android笔记大全（四）">
+                <i class="fa fa-chevron-left"></i> Android笔记大全（四）
               </a>
             
           </div>
@@ -646,8 +647,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/01/01/Android性能优化方案/" rel="prev" title="Android性能优化方案">
-                Android性能优化方案 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/01/01/Gradle相关问题/" rel="prev" title="Gradle相关问题">
+                Gradle相关问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -720,7 +721,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">75</span>
+                    <span class="site-state-item-count">76</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -828,7 +829,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">35</span>
+                      
+                    
+                    <span class="site-state-item-count">36</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
